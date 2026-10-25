@@ -1,0 +1,7 @@
+.Avatar {
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 12px;
+  flex: none;
+}

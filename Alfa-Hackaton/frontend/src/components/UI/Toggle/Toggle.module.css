@@ -1,0 +1,24 @@
+.Toggle {
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--line);
+  position: relative;
+  flex: none;
+  transition: background-color var(--motion-fast) ease;
+}
+.Toggle::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+.on::after {
+  transform: translateX(16px);
+}

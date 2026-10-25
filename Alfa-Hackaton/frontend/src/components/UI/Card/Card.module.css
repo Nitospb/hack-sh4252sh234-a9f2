@@ -1,0 +1,21 @@
+.Card {
+  background: var(--card);
+  border: 0 solid transparent;
+  border-radius: var(--r);
+  padding: 16px 18px;
+  min-width: 0;
+}
+
+.heading {
+  margin: 0 0 10px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.action {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+}

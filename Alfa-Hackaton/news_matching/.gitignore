@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+models/*.onnx
+vendor/
+.venv-mps/
+models/e5-torch/model.safetensors

@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "repository": "Nitospb/hack-sh4252sh234-a9f2",
+  "tag": "full-snapshot-v1",
+  "created_at": "2026-10-25T02:55:09.339331+00:00",
+  "archive_format": "concatenated gzip tar parts",
+  "parts": [
+    {
+      "file": "project-data.tar.gz.part0001",
+      "bytes": 67108864,
+      "sha256": "ee8f19009208bc1daae2bf694442f34c8a2462219e4701c1f02b13b99851ece4"
+    },
+    {
+      "file": "project-data.tar.gz.part0002",
+      "bytes": 67108864,
+      "sha256": "2c09686fb31d303fc13387974b7defc22b431dac78e9f950c3a5eb2a8039d958"
+    },
+    {
+      "file": "project-data.tar.gz.part0003",
+      "bytes": 67108864,
+      "sha256": "16f774ae49fbe7a346c0265d447cf2ee6b9e06880df4635c95bacb9e2742adad"
+    },
+    {
+      "file": "project-data.tar.gz.part0004",
+      "bytes": 67108864,
+      "sha256": "2841366145bbba77d23cada22132e334796a778170e917cb053c6a1d97e39b0a"
+    },
+    {
+      "file": "project-data.tar.gz.part0005",
+      "bytes": 67108864,
+      "sha256": "cf6b62a27e79d0b5f4b382f9bffcc32763dc2511161b159d37e89fecf5cbb51f"
+    },
+    {
+      "file": "project-data.tar.gz.part0006",
+      "bytes": 67108864,
+      "sha256": "e54453b2c199021253bb7324bec0022658a6c752f2cb4aa9ef5e93e70b47dd78"
+    },
+    {
+      "file": "project-data.tar.gz.part0007",
+      "bytes": 67108864,
+      "sha256": "c3f2f0e8be7fa1d14daf99248744ebd8d5b1f9899633201f467d6df0bb167868"
+    },
+    {
+      "file": "project-data.tar.gz.part0008",
+      "bytes": 67108864,
+      "sha256": "bc8e8be650311c7808e8b250df60fcbecddee5e5fc913602861a0c5004f81f74"
+    },
+    {
+      "file": "project-data.tar.gz.part0009",
+      "bytes": 67108864,
+      "sha256": "1a6aeee08f3b37960608161cc5ee0cde8e6d9436b64d0ec4c0f454002f85dd69"
+    },
+    {
+      "file": "project-data.tar.gz.part0010",
+      "bytes": 67108864,
+      "sha256": "369022cb88226900787f023805cca22b1426b251e18e2df1df8dd0ec4d90200f"
+    },
+    {
+      "file": "project-data.tar.gz.part0011",
+      "bytes": 67108864,
+      "sha256": "b8cbb255034c059b443b5bf6c6e85e7a8f9ef2a7ad062907cefeabb9c130ddd7"
+    },
+    {
+      "file": "project-data.tar.gz.part0012",
+      "bytes": 67108864,
+      "sha256": "64300a64cd473b685bee7654dad96ec0066b9cba11780c72921f7f665bceb6a1"
+    },
+    {
+      "file": "project-data.tar.gz.part0013",
+      "bytes": 67108864,
+      "sha256": "3d7e34237d1debee857e0205c5948ec653cf59475daa401934480545277f2c8a"
+    },
+    {
+      "file": "project-data.tar.gz.part0014",
+      "bytes": 67108864,
+      "sha256": "4e7962c4c6cf060287b16bb2231651be5abc1108288fea7923ba5ce36667efff"
+    },
+    {
+      "file": "project-data.tar.gz.part0015",
+      "bytes": 67108864,
+      "sha256": "2d06ac71b73c9d275733c8f97eaf0159f05a32aa5875431c5b47aa2e02b74b66"
+    },
+    {
+      "file": "project-data.tar.gz.part0016",
+      "bytes": 67108864,
+      "sha256": "d56b16e3919183440fd597f171843b51d5b75e1b6e8c42fd1bfd7ff2f091cb00"
+    },
+    {
+      "file": "project-data.tar.gz.part0017",
+      "bytes": 67108864,
+      "sha256": "3ac633410302622ae348bb7cb9a2f87cd0e30d5f6e1354debeed91af190dac58"
+    },
+    {
+      "file": "project-data.tar.gz.part0018",
+      "bytes": 67108864,
+      "sha256": "b4b0a53f8080ff4019b210ba395a44d0b820f2dc7a69d9d7bf6c8a6d3ec7ec4f"
+    },
+    {
+      "file": "project-data.tar.gz.part0019",
+      "bytes": 67108864,
+      "sha256": "d6a6635a8643cba412b336d0fb4ccb7185d526fedee733ba778d9169976d98ba"
+    },
+    {
+      "file": "project-data.tar.gz.part0020",
+      "bytes": 67108864,
+      "sha256": "a49355b48da694c7f444422acc2ebb11d5552923b9681ec6ee71c19710f26631"
+    },
+    {
+      "file": "project-data.tar.gz.part0021",
+      "bytes": 67108864,
+      "sha256": "f892caac90fc40d743383ab6a44b591f095e34763b09122c9e8a97b3eab1553e"
+    },
+    {
+      "file": "project-data.tar.gz.part0022",
+      "bytes": 67108864,
+      "sha256": "f84716b51e15dfab0df912747b4b9466ebf6f273da4606f3eec1393f7a50f09b"
+    },
+    {
+      "file": "project-data.tar.gz.part0023",
+      "bytes": 67108864,
+      "sha256": "90f1c3633a11a403bfc5d246fce91268066cf4d7642352d5e2701cfcab4a4092"
+    },
+    {
+      "file": "project-data.tar.gz.part0024",
+      "bytes": 67108864,
+      "sha256": "54501381dc215160bfeae432a2db174f1067f99dff5eff7bd136c215299fb137"
+    },
+    {
+      "file": "project-data.tar.gz.part0025",
+      "bytes": 67108864,
+      "sha256": "16d419483de1a32f64c05666763e01e90aa3949dfbdb0b1db56d9c984ba3dc8a"
+    },
+    {
+      "file": "project-data.tar.gz.part0026",
+      "bytes": 67108864,
+      "sha256": "6bd0e35c92f39ffd6f20fde62f4642276f299686a7de358f82248d15b389518b"
+    },
+    {
+      "file": "project-data.tar.gz.part0027",
+      "bytes": 67108864,
+      "sha256": "368fd5b732478f0d4d28580a7110a760e84416689b5a1798f91f13902a4c6864"
+    },
+    {
+      "file": "project-data.tar.gz.part0028",
+      "bytes": 67108864,
+      "sha256": "ef1189362b5b19908ef3bdf6d2c2134cfb5c995a2e4148b6855a0a0636db5141"
+    },
+    {
+      "file": "project-data.tar.gz.part0029",
+      "bytes": 67108864,
+      "sha256": "639f7bbd7f85fa4a1a71b5e721b2fc15876fedd69a2bcf26b83f9a08d22ceae6"
+    },
+    {
+      "file": "project-data.tar.gz.part0030",
+      "bytes": 67108864,
+      "sha256": "af3407e8760b16d2f908b46868b90d3eade3252bc8525ebaf234146b421c5dfa"
+    },
+    {
+      "file": "project-data.tar.gz.part0031",
+      "bytes": 67108864,
+      "sha256": "163e5a322fb6318664c8ebb705e875bb503da60e96e987068b74a70f37c133ec"
+    },
+    {
+      "file": "project-data.tar.gz.part0032",
+      "bytes": 67108864,
+      "sha256": "ce9062f8e12136c93f18406fb0f8c298b9d5cf01d57379b83e93cfa2f454f024"
+    },
+    {
+      "file": "project-data.tar.gz.part0033",
+      "bytes": 67108864,
+      "sha256": "063c1e7be555f689c9edc51f843b079db33dccf808189f95468670a50cd2ee21"
+    },
+    {
+      "file": "project-data.tar.gz.part0034",
+      "bytes": 44556095,
+      "sha256": "0d394ad261afa60b349f2b848e4a1f12ba853a77134f3c46b1bd9c81cda8ee9d"
+    }
+  ],
+  "excluded": [
+    "installed dependencies",
+    "build and browser caches",
+    "credentials and .env",
+    "personal browser profiles",
+    "WAL/SHM sidecars (SQLite backup includes committed records)",
+    "debug logs"
+  ],
+  "snapshot_note": "Each SQLite is a consistent read-only backup; different DBs do not share one global transaction.",
+  "total_files": 8928,
+  "total_uncompressed_bytes": 6866621884,
+  "total_compressed_bytes": 2259148607
+}

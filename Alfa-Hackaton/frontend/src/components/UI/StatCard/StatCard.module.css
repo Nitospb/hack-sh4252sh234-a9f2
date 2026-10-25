@@ -1,0 +1,20 @@
+.StatCard small {
+  color: var(--ink-3);
+}
+.StatCard b {
+  display: block;
+  font-size: 26px;
+  margin: 4px 0 2px;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+.compact b {
+  font-size: 20px;
+  margin-top: 6px;
+}
+.StatCard .positive {
+  color: var(--green);
+}
+.StatCard .negative {
+  color: var(--red);
+}

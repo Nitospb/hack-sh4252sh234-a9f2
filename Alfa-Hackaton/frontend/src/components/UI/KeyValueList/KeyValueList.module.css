@@ -1,0 +1,15 @@
+.KeyValueList {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+  font-size: 13px;
+  margin: 0;
+}
+.KeyValueList dt {
+  color: var(--ink-3);
+}
+.KeyValueList dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}

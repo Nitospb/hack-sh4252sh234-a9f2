@@ -1,0 +1,529 @@
+{
+  "Автомобильная торговля": [
+    "autostat",
+    "retail",
+    "new_retail"
+  ],
+  "Маркетинг и коммуникации": [
+    "adindex",
+    "sostav",
+    "cossa",
+    "oborot",
+    "seonews"
+  ],
+  "Корпоративные инвестиции": [
+    "akm",
+    "inc_russia",
+    "rb",
+    "frankmedia"
+  ],
+  "Амбулаторная медицина": [
+    "medvestnik",
+    "vademec",
+    "remedium"
+  ],
+  "Аренда коммерческой недвижимости": [
+    "cre",
+    "nsp",
+    "dk"
+  ],
+  "Лизинговое финансирование": [
+    "all_leasing",
+    "frankmedia",
+    "bankinform",
+    "akm"
+  ],
+  "Минеральные стройматериалы": [
+    "nsp",
+    "rupec",
+    "expert"
+  ],
+  "Спорт и досуг": [
+    "retail",
+    "inc_russia",
+    "dk"
+  ],
+  "Аудиовизуальные медиа": [
+    "telesputnik",
+    "comnews",
+    "adindex"
+  ],
+  "Телекоммуникационные услуги": [
+    "comnews",
+    "telesputnik",
+    "ict_online"
+  ],
+  "Нерудная добыча": [
+    "mining_com",
+    "nsp",
+    "expert"
+  ],
+  "Специальная химия": [
+    "rupec",
+    "agroxxi",
+    "unipack"
+  ],
+  "Бытовые услуги": [
+    "inc_russia",
+    "secretmag",
+    "dk"
+  ],
+  "Бакалея и хлебопечение": [
+    "sfera",
+    "agroinvestor",
+    "retail"
+  ],
+  "Сахар и кондитерские изделия": [
+    "sfera",
+    "retail",
+    "agroxxi"
+  ],
+  "Пассажирский наземный транспорт": [
+    "rzd_partner",
+    "autostat",
+    "logirus"
+  ],
+  "Напитки": [
+    "sfera",
+    "retail",
+    "new_retail"
+  ],
+  "Текстиль и одежда": [
+    "retail",
+    "new_retail",
+    "unipack"
+  ],
+  "Металлоизделия": [
+    "mashnews",
+    "ruscable",
+    "expert",
+    "mining_com"
+  ],
+  "Разработка программного обеспечения": [
+    "cnews",
+    "it_world",
+    "ict_online"
+  ],
+  "Финансовая отчетность и аудит": [
+    "audit_it",
+    "buh",
+    "buhonline",
+    "eg_online"
+  ],
+  "Гостиничные услуги": [
+    "ator",
+    "ratanews",
+    "tourdom",
+    "trn_news"
+  ],
+  "Электротехника и электроника": [
+    "elec",
+    "ruscable",
+    "3dnews",
+    "ixbt"
+  ],
+  "Издательское дело": [
+    "sostav",
+    "adindex",
+    "unipack"
+  ],
+  "Животноводство": [
+    "agroinvestor",
+    "agroxxi",
+    "meatinfo",
+    "milknews"
+  ],
+  "Деревообработка и мебель": [
+    "lesprominform",
+    "lesprom",
+    "unipack"
+  ],
+  "Овощеводство и садоводство": [
+    "agroxxi",
+    "agroinvestor",
+    "sfera"
+  ],
+  "Мясопереработка": [
+    "meatinfo",
+    "sfera",
+    "agroinvestor"
+  ],
+  "Жилищное строительство": [
+    "nsp",
+    "cre",
+    "expert"
+  ],
+  "Управление недвижимостью": [
+    "nsp",
+    "cre",
+    "eg_online"
+  ],
+  "Нежилое строительство": [
+    "cre",
+    "nsp",
+    "expert"
+  ],
+  "Общественное питание": [
+    "retail",
+    "new_retail",
+    "inc_russia"
+  ],
+  "Управление продажами": [
+    "retail",
+    "new_retail",
+    "oborot"
+  ],
+  "Искусственный интеллект": [
+    "cnews",
+    "3dnews",
+    "it_world",
+    "ict_online"
+  ],
+  "Корпоративные информационные системы": [
+    "cnews",
+    "it_world",
+    "ict_online"
+  ],
+  "Юридическое сопровождение": [
+    "pravo",
+    "advgazeta",
+    "garant",
+    "rapsi"
+  ],
+  "Грузовые автоперевозки": [
+    "logirus",
+    "infranews",
+    "rzd_partner"
+  ],
+  "Корпоративное управление": [
+    "akm",
+    "eg_online",
+    "ko"
+  ],
+  "Управленческий учет": [
+    "audit_it",
+    "buh",
+    "eg_online",
+    "klerk"
+  ],
+  "Нефтепереработка": [
+    "oilcapital",
+    "angi",
+    "nangs",
+    "rupec"
+  ],
+  "Оптовая торговля непродовольственными товарами": [
+    "retail",
+    "new_retail",
+    "oborot"
+  ],
+  "Складская логистика": [
+    "logirus",
+    "infranews",
+    "cre"
+  ],
+  "Управление данными": [
+    "cnews",
+    "it_world",
+    "ict_online"
+  ],
+  "Корпоративная ИТ-инфраструктура": [
+    "cnews",
+    "ict_online",
+    "it_world",
+    "comnews"
+  ],
+  "Фармацевтическое производство": [
+    "pharmvestnik",
+    "gxpnews",
+    "remedium",
+    "vademec"
+  ],
+  "Медицинская диагностика": [
+    "medvestnik",
+    "vademec",
+    "remedium"
+  ],
+  "Управление рисками": [
+    "acra",
+    "asn_news",
+    "frankmedia",
+    "eg_online"
+  ],
+  "Оптовая торговля продовольствием": [
+    "retail",
+    "sfera",
+    "agroinvestor"
+  ],
+  "Рудная добыча": [
+    "mining_com",
+    "expert"
+  ],
+  "Чёрная металлургия": [
+    "expert",
+    "mining_com",
+    "finmarket"
+  ],
+  "Промышленное машиностроение": [
+    "mashnews",
+    "expert",
+    "elec",
+    "ruscable"
+  ],
+  "Закупочная деятельность": [
+    "eg_online",
+    "garant",
+    "consultant",
+    "pravo"
+  ],
+  "Продуктовая розница": [
+    "retail",
+    "new_retail",
+    "e_pepper"
+  ],
+  "Основная химия": [
+    "rupec",
+    "angi",
+    "expert"
+  ],
+  "Сельскохозяйственная и специальная техника": [
+    "mashnews",
+    "agroxxi",
+    "agroinvestor",
+    "autostat"
+  ],
+  "Полимеры и резина": [
+    "rupec",
+    "unipack",
+    "angi"
+  ],
+  "Торговля электроникой": [
+    "retail",
+    "3dnews",
+    "ixbt"
+  ],
+  "Растениеводство": [
+    "agroinvestor",
+    "agroxxi",
+    "sfera"
+  ],
+  "Налоговое управление": [
+    "buh",
+    "buhonline",
+    "audit_it",
+    "klerk",
+    "eg_online"
+  ],
+  "Туристические услуги": [
+    "ator",
+    "tourdom",
+    "ratanews",
+    "trn_news"
+  ],
+  "Стоматология": [
+    "medvestnik",
+    "vademec",
+    "remedium"
+  ],
+  "Корпоративные сделки": [
+    "akm",
+    "ko",
+    "frankmedia"
+  ],
+  "Инфраструктурное строительство": [
+    "nsp",
+    "rzd_partner",
+    "infranews"
+  ],
+  "Розница товаров для дома": [
+    "retail",
+    "new_retail",
+    "e_pepper"
+  ],
+  "Аптечная розница": [
+    "pharmvestnik",
+    "gxpnews",
+    "remedium",
+    "vademec"
+  ],
+  "Удобрения": [
+    "agroxxi",
+    "agroinvestor",
+    "rupec"
+  ],
+  "Рынок долгового капитала": [
+    "cbonds",
+    "investfunds",
+    "finmarket"
+  ],
+  "Курьерская доставка": [
+    "logirus",
+    "oborot",
+    "e_pepper"
+  ],
+  "Целлюлоза и бумага": [
+    "lesprominform",
+    "lesprom",
+    "unipack"
+  ],
+  "Управление персоналом": [
+    "klerk",
+    "buh",
+    "inc_russia"
+  ],
+  "Производство наземной техники": [
+    "mashnews",
+    "autostat",
+    "rzd_partner",
+    "expert"
+  ],
+  "Нефтегазодобыча": [
+    "angi",
+    "oilcapital",
+    "nangs"
+  ],
+  "Розница одежды и обуви": [
+    "retail",
+    "new_retail",
+    "e_pepper"
+  ],
+  "Электрогенерация": [
+    "elec",
+    "ruscable",
+    "expert"
+  ],
+  "Рыбное хозяйство": [
+    "fishnews",
+    "sfera",
+    "agroinvestor"
+  ],
+  "Корпоративное кредитование": [
+    "frankmedia",
+    "bankinform",
+    "bank_delo"
+  ],
+  "Водные грузоперевозки": [
+    "portnews",
+    "seanews",
+    "infranews",
+    "gcaptain"
+  ],
+  "Платежная инфраструктура": [
+    "plusworld",
+    "frankmedia",
+    "bankinform"
+  ],
+  "Лесозаготовка": [
+    "lesprominform",
+    "lesprom",
+    "expert"
+  ],
+  "Детское образование": [
+    "inc_russia",
+    "secretmag",
+    "dk"
+  ],
+  "Образование взрослых": [
+    "inc_russia",
+    "cnews",
+    "secretmag"
+  ],
+  "Железнодорожные грузоперевозки": [
+    "rzd_partner",
+    "logirus",
+    "infranews"
+  ],
+  "Управление страховыми операциями": [
+    "asn_news",
+    "frankmedia",
+    "bank_delo"
+  ],
+  "Масложировая и консервная продукция": [
+    "sfera",
+    "agroinvestor",
+    "retail"
+  ],
+  "Молочная промышленность": [
+    "milknews",
+    "dairynews",
+    "sfera"
+  ],
+  "Угольная промышленность": [
+    "mining_com",
+    "angi",
+    "expert"
+  ],
+  "Судостроение и авиастроение": [
+    "mashnews",
+    "portnews",
+    "rzd_partner",
+    "expert"
+  ],
+  "Расчетные банковские услуги": [
+    "bankinform",
+    "bank_delo",
+    "frankmedia"
+  ],
+  "Цветная металлургия": [
+    "mining_com",
+    "expert",
+    "finmarket"
+  ],
+  "Устойчивое развитие": [
+    "akm",
+    "expert",
+    "ko"
+  ],
+  "Факторинговое финансирование": [
+    "frankmedia",
+    "bankinform",
+    "bank_delo"
+  ],
+  "Комплаенс бизнеса": [
+    "pravo",
+    "garant",
+    "eg_online"
+  ],
+  "Макроэкономика и денежно-кредитная политика": [
+    "finmarket",
+    "prime",
+    "interfax",
+    "frankmedia"
+  ],
+  "Корпоративное казначейство": [
+    "frankmedia",
+    "bank_delo",
+    "eg_online"
+  ],
+  "Депозитные продукты бизнеса": [
+    "bankinform",
+    "frankmedia",
+    "bank_delo"
+  ],
+  "Внешнеторговые операции": [
+    "infranews",
+    "logirus",
+    "pravo",
+    "eg_online"
+  ],
+  "Банковские гарантии": [
+    "bankinform",
+    "bank_delo",
+    "eg_online"
+  ],
+  "Кибербезопасность": [
+    "cnews",
+    "it_world",
+    "ict_online"
+  ],
+  "Страхование бизнеса": [
+    "asn_news",
+    "frankmedia",
+    "bank_delo"
+  ],
+  "Пассажирская авиация": [
+    "ator",
+    "tourdom",
+    "ratanews"
+  ]
+}

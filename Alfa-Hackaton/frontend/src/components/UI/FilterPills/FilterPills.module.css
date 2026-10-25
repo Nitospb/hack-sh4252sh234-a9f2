@@ -1,0 +1,28 @@
+.FilterPills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.pill {
+  font-size: 12px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition:
+    background-color var(--motion-fast) ease,
+    color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .pill:hover {
+    border-color: var(--ink-3);
+  }
+}
+.on {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}

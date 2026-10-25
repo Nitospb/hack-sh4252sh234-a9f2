@@ -1,0 +1,9 @@
+{
+  "automatic_cosine_min": 0.82,
+  "automatic_reranker_min": 0.0,
+  "body_only_cosine_min": 0.85,
+  "body_only_reranker_min": 1.0,
+  "automatic_languages": ["ru"],
+  "maximum_automatic_topics": 6,
+  "policy_note": "Conservative evidence gates plus initial retrieval/reranker cutoffs. Not a calibrated probability or a claimed production precision estimate."
+}

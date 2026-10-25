@@ -1,0 +1,3500 @@
+{
+  "schema_version": 1,
+  "purpose": "internal_analytics",
+  "channels": [
+    {
+      "handle": "cbonds",
+      "name": "Cbonds",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://cbonds.ru/news/4138779/",
+          "kind": "linked_from_publisher",
+          "source_id": "cbonds"
+        },
+        {
+          "url": "https://cbonds.ru/news/4138779/",
+          "kind": "linked_from_publisher",
+          "source_id": "cbonds"
+        }
+      ]
+    },
+    {
+      "handle": "incrussiamedia",
+      "name": "Inc. Russia",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://incrussia.ru/news/lish-5-rossijskih-kompanij-polnotsenno-ispolzuyut-promyshlennyh-robotov-s-ii/",
+          "kind": "linked_from_publisher",
+          "source_id": "inc_russia"
+        },
+        {
+          "url": "https://incrussia.ru/news/lish-5-rossijskih-kompanij-polnotsenno-ispolzuyut-promyshlennyh-robotov-s-ii/",
+          "kind": "linked_from_publisher",
+          "source_id": "inc_russia"
+        }
+      ]
+    },
+    {
+      "handle": "investfundsru",
+      "name": "Investfunds",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://investfunds.ru/news/172651/",
+          "kind": "linked_from_publisher",
+          "source_id": "investfunds"
+        },
+        {
+          "url": "https://investfunds.ru/news/172649/",
+          "kind": "linked_from_publisher",
+          "source_id": "investfunds"
+        }
+      ]
+    },
+    {
+      "handle": "plusjournal",
+      "name": "PLUSworld",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://plusworld.ru/articles/74897/",
+          "kind": "linked_from_publisher",
+          "source_id": "plusworld"
+        },
+        {
+          "url": "https://plusworld.ru/articles/74897/",
+          "kind": "linked_from_publisher",
+          "source_id": "plusworld"
+        }
+      ]
+    },
+    {
+      "handle": "ACRAru",
+      "name": "АКРА",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.acra-ratings.ru/press-releases/7424/",
+          "kind": "linked_from_publisher",
+          "source_id": "acra"
+        },
+        {
+          "url": "https://www.acra-ratings.ru/press-releases/7424/",
+          "kind": "linked_from_publisher",
+          "source_id": "acra"
+        }
+      ]
+    },
+    {
+      "handle": "audit_it",
+      "name": "Аудит-ИТ",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.audit-it.ru/news/finance/1140862.html",
+          "kind": "linked_from_publisher",
+          "source_id": "audit_it"
+        },
+        {
+          "url": "https://www.audit-it.ru/news/account/1140413.html",
+          "kind": "linked_from_publisher",
+          "source_id": "audit_it"
+        }
+      ]
+    },
+    {
+      "handle": "bankinform_ru",
+      "name": "БанкИнформСервис",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://bankinform.ru/news/143497",
+          "kind": "linked_from_publisher",
+          "source_id": "bankinform"
+        },
+        {
+          "url": "https://bankinform.ru/news/143497",
+          "kind": "linked_from_publisher",
+          "source_id": "bankinform"
+        }
+      ]
+    },
+    {
+      "handle": "bankdelo_ru",
+      "name": "Банковское дело",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.bankdelo.ru/news/pub/14226",
+          "kind": "linked_from_publisher",
+          "source_id": "bank_delo"
+        },
+        {
+          "url": "https://www.bankdelo.ru/news/pub/14157",
+          "kind": "linked_from_publisher",
+          "source_id": "bank_delo"
+        }
+      ]
+    },
+    {
+      "handle": "BFMnews",
+      "name": "Бизнес FM",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.bfm.ru/news/621818",
+          "kind": "linked_from_publisher",
+          "source_id": "bfm"
+        },
+        {
+          "url": "https://www.bfm.ru/news/621818",
+          "kind": "linked_from_publisher",
+          "source_id": "bfm"
+        }
+      ]
+    },
+    {
+      "handle": "DK_RU_news",
+      "name": "Деловой квартал",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.dk.ru/news/237249496",
+          "kind": "linked_from_publisher",
+          "source_id": "dk"
+        },
+        {
+          "url": "https://www.dk.ru/news/237249496",
+          "kind": "linked_from_publisher",
+          "source_id": "dk"
+        }
+      ]
+    },
+    {
+      "handle": "interfaxonline",
+      "name": "Интерфакс",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.interfax.ru/business/1124533",
+          "kind": "linked_from_publisher",
+          "source_id": "interfax"
+        },
+        {
+          "url": "https://www.interfax.ru/business/1124533",
+          "kind": "linked_from_publisher",
+          "source_id": "interfax"
+        }
+      ]
+    },
+    {
+      "handle": "klerkonline",
+      "name": "Клерк",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.klerk.ru/buh/news/715136/",
+          "kind": "linked_from_publisher",
+          "source_id": "klerk"
+        },
+        {
+          "url": "https://www.klerk.ru/buh/articles/715171/",
+          "kind": "linked_from_publisher",
+          "source_id": "klerk"
+        }
+      ]
+    },
+    {
+      "handle": "kojournal",
+      "name": "Компания",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://ko.ru/articles/volga-puteshestvie-k-istokam/",
+          "kind": "linked_from_publisher",
+          "source_id": "ko"
+        },
+        {
+          "url": "https://ko.ru/articles/volga-puteshestvie-k-istokam/",
+          "kind": "linked_from_publisher",
+          "source_id": "ko"
+        }
+      ]
+    },
+    {
+      "handle": "prime1",
+      "name": "ПРАЙМ",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://1prime.ru/20261023/minekonomrazvitie-874569211.html",
+          "kind": "linked_from_publisher",
+          "source_id": "prime"
+        },
+        {
+          "url": "https://1prime.ru/20261023/minekonomrazvitie-874569211.html",
+          "kind": "linked_from_publisher",
+          "source_id": "prime"
+        }
+      ]
+    },
+    {
+      "handle": "rbc_news",
+      "name": "РБК",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.rbc.ru/economics/21/10/2026/6ad77c26e2f93ca9b44c0a83",
+          "kind": "linked_from_publisher",
+          "source_id": "rbc"
+        },
+        {
+          "url": "https://www.rbc.ru/business/23/10/2026/6ad8bcb715feda13a128982c",
+          "kind": "linked_from_publisher",
+          "source_id": "rbc"
+        }
+      ]
+    },
+    {
+      "handle": "businesssecrets",
+      "name": "Секрет фирмы",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://secretmag.ru/news/bank-rossii-sohranil-klyuchevuyu-stavku-na-urovne-14-chto-budet-dalshe-23-10-2026.htm",
+          "kind": "linked_from_publisher",
+          "source_id": "secretmag"
+        },
+        {
+          "url": "https://secretmag.ru/news/es-i-indiya-podpisali-masshtabnuyu-torgovuyu-sdelku-poshliny-na-evropeyskie-avtomobili-upadut-v-11-raz-23-10-2026.htm",
+          "kind": "linked_from_publisher",
+          "source_id": "secretmag"
+        }
+      ]
+    },
+    {
+      "handle": "expert_mag",
+      "name": "Эксперт",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://expert.ru/ekonomika/mikhail-mishustin-stavit-na-finansy",
+          "kind": "linked_from_publisher",
+          "source_id": "expert"
+        },
+        {
+          "url": "https://expert.ru/ekonomika/mikhail-mishustin-stavit-na-finansy",
+          "kind": "linked_from_publisher",
+          "source_id": "expert"
+        }
+      ]
+    },
+    {
+      "handle": "advgazeta",
+      "name": "Адвокатская газета",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.advgazeta.ru/novosti/vs-priznal-nedopustimym-nemotivirovannyy-otkaz-goszakazchika-ot-energoservisnogo-kontrakta/",
+          "kind": "linked_from_publisher",
+          "source_id": "advgazeta"
+        },
+        {
+          "url": "https://www.advgazeta.ru/novosti/vs-priznal-nedopustimym-nemotivirovannyy-otkaz-goszakazchika-ot-energoservisnogo-kontrakta/",
+          "kind": "linked_from_publisher",
+          "source_id": "advgazeta"
+        }
+      ]
+    },
+    {
+      "handle": "garantnews",
+      "name": "Гарант — новости",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.garant.ru/news/2280996/",
+          "kind": "linked_from_publisher",
+          "source_id": "garant"
+        },
+        {
+          "url": "https://www.garant.ru/news/2239057/",
+          "kind": "linked_from_publisher",
+          "source_id": "garant"
+        }
+      ]
+    },
+    {
+      "handle": "pravo_pravo",
+      "name": "Право.ru",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://pravo.ru/news/266438/",
+          "kind": "linked_from_publisher",
+          "source_id": "pravo"
+        },
+        {
+          "url": "https://pravo.ru/news/266438/",
+          "kind": "linked_from_publisher",
+          "source_id": "pravo"
+        }
+      ]
+    },
+    {
+      "handle": "adindex",
+      "name": "AdIndex",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://adindex.ru/news/releases/2026/10/23/350384.phtml",
+          "kind": "linked_from_publisher",
+          "source_id": "adindex"
+        },
+        {
+          "url": "https://adindex.ru/news/releases/2026/10/23/350384.phtml",
+          "kind": "linked_from_publisher",
+          "source_id": "adindex"
+        }
+      ]
+    },
+    {
+      "handle": "comnewsgroup",
+      "name": "ComNews",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.comnews.ru/content/248009/2026-10-22/2026-w43/1009/dolya-it-otrasli-vvp-rossii-udvoilas-za-shest-let",
+          "kind": "linked_from_publisher",
+          "source_id": "comnews"
+        },
+        {
+          "url": "https://www.comnews.ru/content/248009/2026-10-22/2026-w43/1009/dolya-it-otrasli-vvp-rossii-udvoilas-za-shest-let",
+          "kind": "linked_from_publisher",
+          "source_id": "comnews"
+        }
+      ]
+    },
+    {
+      "handle": "cossaru",
+      "name": "Cossa",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.cossa.ru/news/351826/",
+          "kind": "linked_from_publisher",
+          "source_id": "cossa"
+        },
+        {
+          "url": "https://www.cossa.ru/news/351826/",
+          "kind": "linked_from_publisher",
+          "source_id": "cossa"
+        }
+      ]
+    },
+    {
+      "handle": "CRERussia",
+      "name": "CRE — коммерческая недвижимость",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://cre.ru/news/106160",
+          "kind": "linked_from_publisher",
+          "source_id": "cre"
+        },
+        {
+          "url": "https://cre.ru/news/106158",
+          "kind": "linked_from_publisher",
+          "source_id": "cre"
+        }
+      ]
+    },
+    {
+      "handle": "e_pepper",
+      "name": "E-pepper",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://e-pepper.ru/blogs/news/chislo-kompaniy-po-dostavke-edy-navynos-v-rossii-vyroslo-na-21",
+          "kind": "linked_from_publisher",
+          "source_id": "e_pepper"
+        },
+        {
+          "url": "https://e-pepper.ru/blogs/news/dns-vozglavil-reyting-dostavki-internet-magazinov-elektroniki",
+          "kind": "linked_from_publisher",
+          "source_id": "e_pepper"
+        }
+      ]
+    },
+    {
+      "handle": "fishnewschannel",
+      "name": "Fishnews",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://fishnews.ru/news/56559",
+          "kind": "linked_from_publisher",
+          "source_id": "fishnews"
+        },
+        {
+          "url": "https://fishnews.ru/news/56579",
+          "kind": "linked_from_publisher",
+          "source_id": "fishnews"
+        }
+      ]
+    },
+    {
+      "handle": "ictonlineru",
+      "name": "ICT Online",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://ict-online.ru/news/Banki-i-gosudarstvo-zabota-o-kliyentakh-i-keisy-pyat-ekspertov-Diasoft-vystupili-na-VBA-2026-334633",
+          "kind": "linked_from_publisher",
+          "source_id": "ict_online"
+        },
+        {
+          "url": "https://ict-online.ru/news/Banki-i-gosudarstvo-zabota-o-kliyentakh-i-keisy-pyat-ekspertov-Diasoft-vystupili-na-VBA-2026-334633",
+          "kind": "linked_from_publisher",
+          "source_id": "ict_online"
+        }
+      ]
+    },
+    {
+      "handle": "logistan",
+      "name": "InfraNews",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.infranews.ru/novosti/71781-avstralijskaya-investitsionnaya-kompaniya-ifm-investors-pokupaet-2-3-aktsij-krupnejshego-portovogo-operatora-velikobritanii/",
+          "kind": "linked_from_publisher",
+          "source_id": "infranews"
+        },
+        {
+          "url": "https://www.infranews.ru/logistika/71803-operatsionnaya-pribyl-kuhne-nagel-v-iii-kvartale-vyrosla-v-1-5-raza/",
+          "kind": "linked_from_publisher",
+          "source_id": "infranews"
+        }
+      ]
+    },
+    {
+      "handle": "it_world_ru",
+      "name": "IT-World",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.it-world.ru/it-news/oygdszv596owokw8g0ksk8k4804oswg.html",
+          "kind": "linked_from_publisher",
+          "source_id": "it_world"
+        },
+        {
+          "url": "https://www.it-world.ru/it-news/oygdszv596owokw8g0ksk8k4804oswg.html",
+          "kind": "linked_from_publisher",
+          "source_id": "it_world"
+        }
+      ]
+    },
+    {
+      "handle": "meatinfonews",
+      "name": "Meatinfo",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://meatinfo.ru/news/rossiya-i-gruziya-usilivayut-sotrudnichestvo-v-512446",
+          "kind": "linked_from_publisher",
+          "source_id": "meatinfo"
+        },
+        {
+          "url": "https://meatinfo.ru/news/rossiya-i-gruziya-usilivayut-sotrudnichestvo-v-512446",
+          "kind": "linked_from_publisher",
+          "source_id": "meatinfo"
+        }
+      ]
+    },
+    {
+      "handle": "NewRetail",
+      "name": "New Retail",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://new-retail.ru/novosti/retail/glavnoe_za_nedelyu_v_tk_zafiksiruyut_ponyatie_stazhirovka_superdry_v_rossii_snova_bankrotitsya_atako/",
+          "kind": "linked_from_publisher",
+          "source_id": "new_retail"
+        },
+        {
+          "url": "https://new-retail.ru/novosti/retail/glavnoe_za_nedelyu_v_tk_zafiksiruyut_ponyatie_stazhirovka_superdry_v_rossii_snova_bankrotitsya_atako/",
+          "kind": "linked_from_publisher",
+          "source_id": "new_retail"
+        }
+      ]
+    },
+    {
+      "handle": "rata_ru",
+      "name": "RATA-news",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://ratanews.ru/turindustriya/fly-dubai-s-24-noiabria-povysaet-tarify-dlia-turoperatorov-vkliucaia-oplacennye-bilety",
+          "kind": "linked_from_publisher",
+          "source_id": "ratanews"
+        },
+        {
+          "url": "https://ratanews.ru/turindustriya/tailand-peredumal-vvodit-nalog-na-vyezd",
+          "kind": "linked_from_publisher",
+          "source_id": "ratanews"
+        }
+      ]
+    },
+    {
+      "handle": "retail_ru",
+      "name": "Retail.ru",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.retail.ru/news/gosduma-predlozhila-vvodit-moratoriy-na-bankrotstvo-malogo-biznesa-pri-roste-sta-18-oktyabrya-2026-283419/",
+          "kind": "linked_from_publisher",
+          "source_id": "retail"
+        },
+        {
+          "url": "https://www.retail.ru/news/gosduma-predlozhila-vvodit-moratoriy-na-bankrotstvo-malogo-biznesa-pri-roste-sta-18-oktyabrya-2026-283419/",
+          "kind": "linked_from_publisher",
+          "source_id": "retail"
+        }
+      ]
+    },
+    {
+      "handle": "Rupec",
+      "name": "RUPEC",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://rupec.ru/news/57892/",
+          "kind": "linked_from_publisher",
+          "source_id": "rupec"
+        },
+        {
+          "url": "https://rupec.ru/news/57892/",
+          "kind": "linked_from_publisher",
+          "source_id": "rupec"
+        }
+      ]
+    },
+    {
+      "handle": "rb_ru",
+      "name": "Russian Business",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://rb.ru/news/bmw-i-volkswagen-posle-uhoda-iz-rossii-prodolzhayut-poluchat-pribyl-v-strane-cherez-dochernie-kompanii/",
+          "kind": "linked_from_publisher",
+          "source_id": "rb"
+        },
+        {
+          "url": "https://rb.ru/news/bmw-i-volkswagen-posle-uhoda-iz-rossii-prodolzhayut-poluchat-pribyl-v-strane-cherez-dochernie-kompanii/",
+          "kind": "linked_from_publisher",
+          "source_id": "rb"
+        }
+      ]
+    },
+    {
+      "handle": "digital_bar",
+      "name": "SEOnews",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.seonews.ru/events/alfa-bank-vypustit-svoyu-videoplatformu-do-kontsa-2026-goda/",
+          "kind": "linked_from_publisher",
+          "source_id": "seonews"
+        },
+        {
+          "url": "https://www.seonews.ru/events/alfa-bank-vypustit-svoyu-videoplatformu-do-kontsa-2026-goda/",
+          "kind": "linked_from_publisher",
+          "source_id": "seonews"
+        }
+      ]
+    },
+    {
+      "handle": "sostav",
+      "name": "Sostav",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.sostav.ru/publication/tsentrobank-protestiruet-oflajn-platezhi-tsifrovymi-rublyami-v-2027-godu-87989.html",
+          "kind": "linked_from_publisher",
+          "source_id": "sostav"
+        },
+        {
+          "url": "https://www.sostav.ru/publication/tsentrobank-protestiruet-oflajn-platezhi-tsifrovymi-rublyami-v-2027-godu-87989.html",
+          "kind": "linked_from_publisher",
+          "source_id": "sostav"
+        }
+      ]
+    },
+    {
+      "handle": "dairynewstoday",
+      "name": "The DairyNews",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://dairynews.today/news/pdp_dairy_summit_will_examine_protein_market_opportunities_7898821.html",
+          "kind": "linked_from_publisher",
+          "source_id": "dairynews"
+        },
+        {
+          "url": "https://dairynews.today/news/pdp_dairy_summit_will_examine_protein_market_opportunities_7898821.html",
+          "kind": "linked_from_publisher",
+          "source_id": "dairynews"
+        }
+      ]
+    },
+    {
+      "handle": "vademecum_ru",
+      "name": "Vademecum",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://vademec.ru/news/2026/10/24/rossiyskie-universitety-razrabatyvayut-novye-tekhnologii-dlya-stomatologii-obzor/",
+          "kind": "linked_from_publisher",
+          "source_id": "vademec"
+        },
+        {
+          "url": "https://vademec.ru/news/2026/10/24/rossiyskie-universitety-razrabatyvayut-novye-tekhnologii-dlya-stomatologii-obzor/",
+          "kind": "linked_from_publisher",
+          "source_id": "vademec"
+        }
+      ]
+    },
+    {
+      "handle": "autostatis",
+      "name": "Автостат",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.autostat.ru/news/63343/",
+          "kind": "linked_from_publisher",
+          "source_id": "autostat"
+        },
+        {
+          "url": "https://www.autostat.ru/news/63343/",
+          "kind": "linked_from_publisher",
+          "source_id": "autostat"
+        }
+      ]
+    },
+    {
+      "handle": "oilgasinform",
+      "name": "Агентство нефтегазовой информации",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.angi.ru/news/2937145-%C2%AB%D0%A1%D0%B5%D0%B2%D0%9A%D0%BE%D0%BC%D0%9D%D0%B5%D1%84%D1%82%D0%B5%D0%B3%D0%B0%D0%B7%C2%BB%20%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BB%20%D0%B4%D0%BB%D1%8F%20%D0%B4%D0%B5%D1%82%D0%B5%D0%B9%20%D0%BF%D1%80%D0%BE%D1%81%D0%B2%D0%B5%D1%82%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D1%83%D1%8E%20%D0%B0%D0%BA%D1%86%D0%B8%D1%8E%20%D0%BE%20%D0%BD%D0%B5%D1%84%D1%82%D0%B8/",
+          "kind": "linked_from_publisher",
+          "source_id": "angi"
+        },
+        {
+          "url": "https://www.angi.ru/news/2937145-%C2%AB%D0%A1%D0%B5%D0%B2%D0%9A%D0%BE%D0%BC%D0%9D%D0%B5%D1%84%D1%82%D0%B5%D0%B3%D0%B0%D0%B7%C2%BB%20%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BB%20%D0%B4%D0%BB%D1%8F%20%D0%B4%D0%B5%D1%82%D0%B5%D0%B9%20%D0%BF%D1%80%D0%BE%D1%81%D0%B2%D0%B5%D1%82%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D1%83%D1%8E%20%D0%B0%D0%BA%D1%86%D0%B8%D1%8E%20%D0%BE%20%D0%BD%D0%B5%D1%84%D1%82%D0%B8/",
+          "kind": "linked_from_publisher",
+          "source_id": "angi"
+        }
+      ]
+    },
+    {
+      "handle": "agroxxinews",
+      "name": "АгроXXI",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.agroxxi.ru/rossiiskie-agronovosti/novyi-investicionnyi-cikl-udmurtii-i-ego-prioritety.html",
+          "kind": "linked_from_publisher",
+          "source_id": "agroxxi"
+        },
+        {
+          "url": "https://www.agroxxi.ru/rossiiskie-agronovosti/novyi-investicionnyi-cikl-udmurtii-i-ego-prioritety.html",
+          "kind": "linked_from_publisher",
+          "source_id": "agroxxi"
+        }
+      ]
+    },
+    {
+      "handle": "agroinvestor",
+      "name": "Агроинвестор",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.agroinvestor.ru/markets/news/46694-inflyatsiya-v-rossii-zamedlilas/",
+          "kind": "linked_from_publisher",
+          "source_id": "agroinvestor"
+        },
+        {
+          "url": "https://www.agroinvestor.ru/markets/news/46694-inflyatsiya-v-rossii-zamedlilas/",
+          "kind": "linked_from_publisher",
+          "source_id": "agroinvestor"
+        }
+      ]
+    },
+    {
+      "handle": "atorus",
+      "name": "АТОР",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.atorus.ru/article/kak-sekonomit-bolee-100-tysyach-rubley-na-otdykhe-v-krasnoy-polyane-70682",
+          "kind": "linked_from_publisher",
+          "source_id": "ator"
+        },
+        {
+          "url": "https://www.atorus.ru/article/kak-sekonomit-bolee-100-tysyach-rubley-na-otdykhe-v-krasnoy-polyane-70682",
+          "kind": "linked_from_publisher",
+          "source_id": "ator"
+        }
+      ]
+    },
+    {
+      "handle": "logirus",
+      "name": "Логирус",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://logirus.ru/news/infrastructure/kapital_oboshel_skladskuyu_stroyku_v_tsentralnoy_azii_vystroilas_ochered_iz_investfondov.html",
+          "kind": "linked_from_publisher",
+          "source_id": "logirus"
+        },
+        {
+          "url": "https://logirus.ru/news/infrastructure/kapital_oboshel_skladskuyu_stroyku_v_tsentralnoy_azii_vystroilas_ochered_iz_investfondov.html",
+          "kind": "linked_from_publisher",
+          "source_id": "logirus"
+        }
+      ]
+    },
+    {
+      "handle": "med_vestnik",
+      "name": "Медицинский вестник",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://medvestnik.ru/content/news/v-elce-otkryli-medicinskii-institut.html",
+          "kind": "linked_from_publisher",
+          "source_id": "medvestnik"
+        },
+        {
+          "url": "https://medvestnik.ru/content/news/priem-ingibitorov-protonnoi-pompy-vdvoe-povyshal-risk-tyajeloi-giponatriemii.html",
+          "kind": "linked_from_publisher",
+          "source_id": "medvestnik"
+        }
+      ]
+    },
+    {
+      "handle": "Ne_dvizhka",
+      "name": "Недвижимость и строительство Петербурга",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://nsp.ru/45298-v-peterburge-obsudili-novye-instrumenty-finansirovaniya-sdelok-s-nedvizimostyu",
+          "kind": "linked_from_publisher",
+          "source_id": "nsp"
+        },
+        {
+          "url": "https://nsp.ru/45298-v-peterburge-obsudili-novye-instrumenty-finansirovaniya-sdelok-s-nedvizimostyu",
+          "kind": "linked_from_publisher",
+          "source_id": "nsp"
+        }
+      ]
+    },
+    {
+      "handle": "PortNews_ru",
+      "name": "ПортНьюс",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://portnews.ru/news/398735/",
+          "kind": "linked_from_publisher",
+          "source_id": "portnews"
+        },
+        {
+          "url": "https://portnews.ru/news/398729/",
+          "kind": "linked_from_publisher",
+          "source_id": "portnews"
+        }
+      ]
+    },
+    {
+      "handle": "rzd_partner_news",
+      "name": "РЖД-Партнер",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.rzd-partner.ru/aviation/news/minpromtorg-profinansiroval-zamenu-dvigateley-sam146-na-pd-8-dlya-ssj-100/",
+          "kind": "linked_from_publisher",
+          "source_id": "rzd_partner"
+        },
+        {
+          "url": "https://www.rzd-partner.ru/aviation/news/minpromtorg-profinansiroval-zamenu-dvigateley-sam146-na-pd-8-dlya-ssj-100/",
+          "kind": "linked_from_publisher",
+          "source_id": "rzd_partner"
+        }
+      ]
+    },
+    {
+      "handle": "Sferafm",
+      "name": "Сфера — пищевая промышленность",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://sfera.fm/news/rybnaya/rossiya-i-kitai-uprostyat-dostup-rybopromyshlennykh-kompanii-na-rynki-drug-druga",
+          "kind": "linked_from_publisher",
+          "source_id": "sfera"
+        },
+        {
+          "url": "https://sfera.fm/news/rybnaya/rossiya-i-kitai-uprostyat-dostup-rybopromyshlennykh-kompanii-na-rynki-drug-druga",
+          "kind": "linked_from_publisher",
+          "source_id": "sfera"
+        }
+      ]
+    },
+    {
+      "handle": "telesputnik",
+      "name": "Телеспутник",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://telesputnik.ru/materials/hipe/news/it-otrasl-gotovitsya-k-dosrocnomu-zakrytiyu-programmy-lgotnogo-kreditovaniya",
+          "kind": "linked_from_publisher",
+          "source_id": "telesputnik"
+        },
+        {
+          "url": "https://telesputnik.ru/materials/hipe/news/it-otrasl-gotovitsya-k-dosrocnomu-zakrytiyu-programmy-lgotnogo-kreditovaniya",
+          "kind": "linked_from_publisher",
+          "source_id": "telesputnik"
+        }
+      ]
+    },
+    {
+      "handle": "tourdom",
+      "name": "ТурДом",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.tourdom.ru/news/turagenty-rasskazali-kak-sekonomit-do-200-tysyach-rubley-na-turakh-v-premialnye-oteli-antali.html",
+          "kind": "linked_from_publisher",
+          "source_id": "tourdom"
+        },
+        {
+          "url": "https://www.tourdom.ru/news/turagenty-rasskazali-kak-sekonomit-do-200-tysyach-rubley-na-turakh-v-premialnye-oteli-antali.html",
+          "kind": "linked_from_publisher",
+          "source_id": "tourdom"
+        }
+      ]
+    },
+    {
+      "handle": "pharmvestnik",
+      "name": "Фармацевтический вестник",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://pharmvestnik.ru/content/news/pravitelstvo-moskvy-i-astrazeneka-dogovorilis-o-vypuske-car-t-preparatov.html",
+          "kind": "linked_from_publisher",
+          "source_id": "pharmvestnik"
+        },
+        {
+          "url": "https://pharmvestnik.ru/content/news/roszdravnadzor-massovo-priostanavlivaet-registraciu-medizdelii.html",
+          "kind": "linked_from_publisher",
+          "source_id": "pharmvestnik"
+        }
+      ]
+    },
+    {
+      "handle": "elecru",
+      "name": "Элек.ру",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.elec.ru/news/2026/10/23/promyshlennosti-nuzhna-tsena-energii-pozvoljajusch.html",
+          "kind": "linked_from_publisher",
+          "source_id": "elec"
+        },
+        {
+          "url": "https://www.elec.ru/news/2026/10/23/promyshlennosti-nuzhna-tsena-energii-pozvoljajusch.html",
+          "kind": "linked_from_publisher",
+          "source_id": "elec"
+        }
+      ]
+    },
+    {
+      "handle": "ru3dnews",
+      "name": "3DNews",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://3dnews.ru/1150336/investori-naelis-ii-otsenka-openai-skatilas-na-11-pered-ipo-a-kompaniya-ishchet-eshchyo-30-mlrd",
+          "kind": "linked_from_publisher",
+          "source_id": "3dnews"
+        },
+        {
+          "url": "https://3dnews.ru/1150355/deepseek-za-dva-goda-ustranit-zavisimost-ot-nvidia-osnovnimi-stanut-iiuskoriteli-huawei",
+          "kind": "linked_from_publisher",
+          "source_id": "3dnews"
+        }
+      ]
+    },
+    {
+      "handle": "ixbt_official",
+      "name": "iXBT",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.ixbt.com/news/2026/10/24/ii-vozvrashhaet-v-stroi-starye-videokarty-nvidia-s-nacala-goda-arenda-nvidia-h200-i-h100-podorozala-na-143-i-54-sootvetstvenno.html",
+          "kind": "linked_from_publisher",
+          "source_id": "ixbt"
+        },
+        {
+          "url": "https://www.ixbt.com/news/2026/10/24/ii-vozvrashhaet-v-stroi-starye-videokarty-nvidia-s-nacala-goda-arenda-nvidia-h200-i-h100-podorozala-na-143-i-54-sootvetstvenno.html",
+          "kind": "linked_from_publisher",
+          "source_id": "ixbt"
+        }
+      ]
+    },
+    {
+      "handle": "lespromnews_rus",
+      "name": "Lesprom Network",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.lesprom.com/ru/news/",
+          "kind": "linked_from_publisher",
+          "source_id": "lesprom"
+        }
+      ]
+    },
+    {
+      "handle": "gxpnews",
+      "name": "GxP News",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://gxpnews.net/",
+          "kind": "linked_from_publisher",
+          "source_id": "gxpnews"
+        }
+      ]
+    },
+    {
+      "handle": "Allleasing_ru",
+      "name": "All-Leasing",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://www.all-leasing.ru/news/",
+          "kind": "linked_from_publisher",
+          "source_id": "all_leasing"
+        }
+      ]
+    },
+    {
+      "handle": "news_engineering",
+      "name": "MASHNEWS",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://mashnews.ru/",
+          "kind": "linked_from_publisher",
+          "source_id": "mashnews"
+        }
+      ]
+    },
+    {
+      "handle": "frank_media",
+      "name": "Frank Media",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://t.me/frank_media",
+          "kind": "channel_description"
+        }
+      ]
+    },
+    {
+      "handle": "forestcomplex",
+      "name": "Лесной комплекс",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://t.me/s/forestcomplex/3800",
+          "kind": "channel_description"
+        }
+      ]
+    },
+    {
+      "handle": "MSS_Info",
+      "name": "Металлоснабжение и сбыт",
+      "enabled": true,
+      "publisher_evidence": [
+        {
+          "url": "https://rspm.ru/ru/about/news/?pg=440",
+          "kind": "publisher_association"
+        }
+      ]
+    }
+  ],
+  "industries": {
+    "Автомобильная торговля": [
+      {
+        "handle": "autostatis",
+        "scope": "industry",
+        "source_id": "autostat"
+      },
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "NewRetail",
+        "scope": "industry",
+        "source_id": "new_retail"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Маркетинг и коммуникации": [
+      {
+        "handle": "adindex",
+        "scope": "industry",
+        "source_id": "adindex"
+      },
+      {
+        "handle": "sostav",
+        "scope": "industry",
+        "source_id": "sostav"
+      },
+      {
+        "handle": "cossaru",
+        "scope": "industry",
+        "source_id": "cossa"
+      },
+      {
+        "handle": "digital_bar",
+        "scope": "industry",
+        "source_id": "seonews"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      }
+    ],
+    "Корпоративные инвестиции": [
+      {
+        "handle": "incrussiamedia",
+        "scope": "industry",
+        "source_id": "inc_russia"
+      },
+      {
+        "handle": "rb_ru",
+        "scope": "industry",
+        "source_id": "rb"
+      },
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Амбулаторная медицина": [
+      {
+        "handle": "med_vestnik",
+        "scope": "industry",
+        "source_id": "medvestnik"
+      },
+      {
+        "handle": "vademecum_ru",
+        "scope": "industry",
+        "source_id": "vademec"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Аренда коммерческой недвижимости": [
+      {
+        "handle": "CRERussia",
+        "scope": "industry",
+        "source_id": "cre"
+      },
+      {
+        "handle": "Ne_dvizhka",
+        "scope": "industry",
+        "source_id": "nsp"
+      },
+      {
+        "handle": "DK_RU_news",
+        "scope": "industry",
+        "source_id": "dk"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Лизинговое финансирование": [
+      {
+        "handle": "Allleasing_ru",
+        "scope": "industry"
+      },
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "bankinform_ru",
+        "scope": "industry",
+        "source_id": "bankinform"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Минеральные стройматериалы": [
+      {
+        "handle": "Ne_dvizhka",
+        "scope": "industry",
+        "source_id": "nsp"
+      },
+      {
+        "handle": "Rupec",
+        "scope": "industry",
+        "source_id": "rupec"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Спорт и досуг": [
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "incrussiamedia",
+        "scope": "industry",
+        "source_id": "inc_russia"
+      },
+      {
+        "handle": "DK_RU_news",
+        "scope": "industry",
+        "source_id": "dk"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Аудиовизуальные медиа": [
+      {
+        "handle": "telesputnik",
+        "scope": "industry",
+        "source_id": "telesputnik"
+      },
+      {
+        "handle": "comnewsgroup",
+        "scope": "industry",
+        "source_id": "comnews"
+      },
+      {
+        "handle": "adindex",
+        "scope": "industry",
+        "source_id": "adindex"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Телекоммуникационные услуги": [
+      {
+        "handle": "comnewsgroup",
+        "scope": "industry",
+        "source_id": "comnews"
+      },
+      {
+        "handle": "telesputnik",
+        "scope": "industry",
+        "source_id": "telesputnik"
+      },
+      {
+        "handle": "ictonlineru",
+        "scope": "industry",
+        "source_id": "ict_online"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Нерудная добыча": [
+      {
+        "handle": "Ne_dvizhka",
+        "scope": "industry",
+        "source_id": "nsp"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Специальная химия": [
+      {
+        "handle": "Rupec",
+        "scope": "industry",
+        "source_id": "rupec"
+      },
+      {
+        "handle": "agroxxinews",
+        "scope": "industry",
+        "source_id": "agroxxi"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Бытовые услуги": [
+      {
+        "handle": "incrussiamedia",
+        "scope": "industry",
+        "source_id": "inc_russia"
+      },
+      {
+        "handle": "businesssecrets",
+        "scope": "industry",
+        "source_id": "secretmag"
+      },
+      {
+        "handle": "DK_RU_news",
+        "scope": "industry",
+        "source_id": "dk"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Бакалея и хлебопечение": [
+      {
+        "handle": "Sferafm",
+        "scope": "industry",
+        "source_id": "sfera"
+      },
+      {
+        "handle": "agroinvestor",
+        "scope": "industry",
+        "source_id": "agroinvestor"
+      },
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Сахар и кондитерские изделия": [
+      {
+        "handle": "Sferafm",
+        "scope": "industry",
+        "source_id": "sfera"
+      },
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "agroxxinews",
+        "scope": "industry",
+        "source_id": "agroxxi"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Пассажирский наземный транспорт": [
+      {
+        "handle": "rzd_partner_news",
+        "scope": "industry",
+        "source_id": "rzd_partner"
+      },
+      {
+        "handle": "autostatis",
+        "scope": "industry",
+        "source_id": "autostat"
+      },
+      {
+        "handle": "logirus",
+        "scope": "industry",
+        "source_id": "logirus"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Напитки": [
+      {
+        "handle": "Sferafm",
+        "scope": "industry",
+        "source_id": "sfera"
+      },
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "NewRetail",
+        "scope": "industry",
+        "source_id": "new_retail"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Текстиль и одежда": [
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "NewRetail",
+        "scope": "industry",
+        "source_id": "new_retail"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Металлоизделия": [
+      {
+        "handle": "MSS_Info",
+        "scope": "industry"
+      },
+      {
+        "handle": "news_engineering",
+        "scope": "industry",
+        "source_id": "mashnews"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Разработка программного обеспечения": [
+      {
+        "handle": "it_world_ru",
+        "scope": "industry",
+        "source_id": "it_world"
+      },
+      {
+        "handle": "ictonlineru",
+        "scope": "industry",
+        "source_id": "ict_online"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Финансовая отчетность и аудит": [
+      {
+        "handle": "audit_it",
+        "scope": "industry",
+        "source_id": "audit_it"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Гостиничные услуги": [
+      {
+        "handle": "atorus",
+        "scope": "industry",
+        "source_id": "ator"
+      },
+      {
+        "handle": "rata_ru",
+        "scope": "industry",
+        "source_id": "ratanews"
+      },
+      {
+        "handle": "tourdom",
+        "scope": "industry",
+        "source_id": "tourdom"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Электротехника и электроника": [
+      {
+        "handle": "elecru",
+        "scope": "industry",
+        "source_id": "elec"
+      },
+      {
+        "handle": "ru3dnews",
+        "scope": "industry",
+        "source_id": "3dnews"
+      },
+      {
+        "handle": "ixbt_official",
+        "scope": "industry",
+        "source_id": "ixbt"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Издательское дело": [
+      {
+        "handle": "sostav",
+        "scope": "industry",
+        "source_id": "sostav"
+      },
+      {
+        "handle": "adindex",
+        "scope": "industry",
+        "source_id": "adindex"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Животноводство": [
+      {
+        "handle": "agroinvestor",
+        "scope": "industry",
+        "source_id": "agroinvestor"
+      },
+      {
+        "handle": "agroxxinews",
+        "scope": "industry",
+        "source_id": "agroxxi"
+      },
+      {
+        "handle": "meatinfonews",
+        "scope": "industry",
+        "source_id": "meatinfo"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Деревообработка и мебель": [
+      {
+        "handle": "lespromnews_rus",
+        "scope": "industry"
+      },
+      {
+        "handle": "forestcomplex",
+        "scope": "industry"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Овощеводство и садоводство": [
+      {
+        "handle": "agroxxinews",
+        "scope": "industry",
+        "source_id": "agroxxi"
+      },
+      {
+        "handle": "agroinvestor",
+        "scope": "industry",
+        "source_id": "agroinvestor"
+      },
+      {
+        "handle": "Sferafm",
+        "scope": "industry",
+        "source_id": "sfera"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Мясопереработка": [
+      {
+        "handle": "meatinfonews",
+        "scope": "industry",
+        "source_id": "meatinfo"
+      },
+      {
+        "handle": "Sferafm",
+        "scope": "industry",
+        "source_id": "sfera"
+      },
+      {
+        "handle": "agroinvestor",
+        "scope": "industry",
+        "source_id": "agroinvestor"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Жилищное строительство": [
+      {
+        "handle": "Ne_dvizhka",
+        "scope": "industry",
+        "source_id": "nsp"
+      },
+      {
+        "handle": "CRERussia",
+        "scope": "industry",
+        "source_id": "cre"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Управление недвижимостью": [
+      {
+        "handle": "Ne_dvizhka",
+        "scope": "industry",
+        "source_id": "nsp"
+      },
+      {
+        "handle": "CRERussia",
+        "scope": "industry",
+        "source_id": "cre"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Нежилое строительство": [
+      {
+        "handle": "CRERussia",
+        "scope": "industry",
+        "source_id": "cre"
+      },
+      {
+        "handle": "Ne_dvizhka",
+        "scope": "industry",
+        "source_id": "nsp"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Общественное питание": [
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "NewRetail",
+        "scope": "industry",
+        "source_id": "new_retail"
+      },
+      {
+        "handle": "incrussiamedia",
+        "scope": "industry",
+        "source_id": "inc_russia"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Управление продажами": [
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "NewRetail",
+        "scope": "industry",
+        "source_id": "new_retail"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Искусственный интеллект": [
+      {
+        "handle": "ru3dnews",
+        "scope": "industry",
+        "source_id": "3dnews"
+      },
+      {
+        "handle": "it_world_ru",
+        "scope": "industry",
+        "source_id": "it_world"
+      },
+      {
+        "handle": "ictonlineru",
+        "scope": "industry",
+        "source_id": "ict_online"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Корпоративные информационные системы": [
+      {
+        "handle": "it_world_ru",
+        "scope": "industry",
+        "source_id": "it_world"
+      },
+      {
+        "handle": "ictonlineru",
+        "scope": "industry",
+        "source_id": "ict_online"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Юридическое сопровождение": [
+      {
+        "handle": "pravo_pravo",
+        "scope": "industry",
+        "source_id": "pravo"
+      },
+      {
+        "handle": "advgazeta",
+        "scope": "industry",
+        "source_id": "advgazeta"
+      },
+      {
+        "handle": "garantnews",
+        "scope": "industry",
+        "source_id": "garant"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Грузовые автоперевозки": [
+      {
+        "handle": "logirus",
+        "scope": "industry",
+        "source_id": "logirus"
+      },
+      {
+        "handle": "logistan",
+        "scope": "industry",
+        "source_id": "infranews"
+      },
+      {
+        "handle": "rzd_partner_news",
+        "scope": "industry",
+        "source_id": "rzd_partner"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Корпоративное управление": [
+      {
+        "handle": "kojournal",
+        "scope": "industry",
+        "source_id": "ko"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Управленческий учет": [
+      {
+        "handle": "audit_it",
+        "scope": "industry",
+        "source_id": "audit_it"
+      },
+      {
+        "handle": "klerkonline",
+        "scope": "industry",
+        "source_id": "klerk"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Нефтепереработка": [
+      {
+        "handle": "oilgasinform",
+        "scope": "industry",
+        "source_id": "angi"
+      },
+      {
+        "handle": "Rupec",
+        "scope": "industry",
+        "source_id": "rupec"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Оптовая торговля непродовольственными товарами": [
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "NewRetail",
+        "scope": "industry",
+        "source_id": "new_retail"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Складская логистика": [
+      {
+        "handle": "logirus",
+        "scope": "industry",
+        "source_id": "logirus"
+      },
+      {
+        "handle": "logistan",
+        "scope": "industry",
+        "source_id": "infranews"
+      },
+      {
+        "handle": "CRERussia",
+        "scope": "industry",
+        "source_id": "cre"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Управление данными": [
+      {
+        "handle": "it_world_ru",
+        "scope": "industry",
+        "source_id": "it_world"
+      },
+      {
+        "handle": "ictonlineru",
+        "scope": "industry",
+        "source_id": "ict_online"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Корпоративная ИТ-инфраструктура": [
+      {
+        "handle": "ictonlineru",
+        "scope": "industry",
+        "source_id": "ict_online"
+      },
+      {
+        "handle": "it_world_ru",
+        "scope": "industry",
+        "source_id": "it_world"
+      },
+      {
+        "handle": "comnewsgroup",
+        "scope": "industry",
+        "source_id": "comnews"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Фармацевтическое производство": [
+      {
+        "handle": "pharmvestnik",
+        "scope": "industry",
+        "source_id": "pharmvestnik"
+      },
+      {
+        "handle": "gxpnews",
+        "scope": "industry",
+        "source_id": "gxpnews"
+      },
+      {
+        "handle": "vademecum_ru",
+        "scope": "industry",
+        "source_id": "vademec"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Медицинская диагностика": [
+      {
+        "handle": "med_vestnik",
+        "scope": "industry",
+        "source_id": "medvestnik"
+      },
+      {
+        "handle": "vademecum_ru",
+        "scope": "industry",
+        "source_id": "vademec"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Управление рисками": [
+      {
+        "handle": "ACRAru",
+        "scope": "industry",
+        "source_id": "acra"
+      },
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Оптовая торговля продовольствием": [
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "Sferafm",
+        "scope": "industry",
+        "source_id": "sfera"
+      },
+      {
+        "handle": "agroinvestor",
+        "scope": "industry",
+        "source_id": "agroinvestor"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Рудная добыча": [
+      {
+        "handle": "MSS_Info",
+        "scope": "industry"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Чёрная металлургия": [
+      {
+        "handle": "MSS_Info",
+        "scope": "industry"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Промышленное машиностроение": [
+      {
+        "handle": "news_engineering",
+        "scope": "industry",
+        "source_id": "mashnews"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "elecru",
+        "scope": "industry",
+        "source_id": "elec"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Закупочная деятельность": [
+      {
+        "handle": "garantnews",
+        "scope": "industry",
+        "source_id": "garant"
+      },
+      {
+        "handle": "pravo_pravo",
+        "scope": "industry",
+        "source_id": "pravo"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Продуктовая розница": [
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "NewRetail",
+        "scope": "industry",
+        "source_id": "new_retail"
+      },
+      {
+        "handle": "e_pepper",
+        "scope": "industry",
+        "source_id": "e_pepper"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Основная химия": [
+      {
+        "handle": "Rupec",
+        "scope": "industry",
+        "source_id": "rupec"
+      },
+      {
+        "handle": "oilgasinform",
+        "scope": "industry",
+        "source_id": "angi"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Сельскохозяйственная и специальная техника": [
+      {
+        "handle": "news_engineering",
+        "scope": "industry",
+        "source_id": "mashnews"
+      },
+      {
+        "handle": "agroxxinews",
+        "scope": "industry",
+        "source_id": "agroxxi"
+      },
+      {
+        "handle": "agroinvestor",
+        "scope": "industry",
+        "source_id": "agroinvestor"
+      },
+      {
+        "handle": "autostatis",
+        "scope": "industry",
+        "source_id": "autostat"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      }
+    ],
+    "Полимеры и резина": [
+      {
+        "handle": "Rupec",
+        "scope": "industry",
+        "source_id": "rupec"
+      },
+      {
+        "handle": "oilgasinform",
+        "scope": "industry",
+        "source_id": "angi"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Торговля электроникой": [
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "ru3dnews",
+        "scope": "industry",
+        "source_id": "3dnews"
+      },
+      {
+        "handle": "ixbt_official",
+        "scope": "industry",
+        "source_id": "ixbt"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Растениеводство": [
+      {
+        "handle": "agroinvestor",
+        "scope": "industry",
+        "source_id": "agroinvestor"
+      },
+      {
+        "handle": "agroxxinews",
+        "scope": "industry",
+        "source_id": "agroxxi"
+      },
+      {
+        "handle": "Sferafm",
+        "scope": "industry",
+        "source_id": "sfera"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Налоговое управление": [
+      {
+        "handle": "audit_it",
+        "scope": "industry",
+        "source_id": "audit_it"
+      },
+      {
+        "handle": "klerkonline",
+        "scope": "industry",
+        "source_id": "klerk"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Туристические услуги": [
+      {
+        "handle": "atorus",
+        "scope": "industry",
+        "source_id": "ator"
+      },
+      {
+        "handle": "tourdom",
+        "scope": "industry",
+        "source_id": "tourdom"
+      },
+      {
+        "handle": "rata_ru",
+        "scope": "industry",
+        "source_id": "ratanews"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Стоматология": [
+      {
+        "handle": "med_vestnik",
+        "scope": "industry",
+        "source_id": "medvestnik"
+      },
+      {
+        "handle": "vademecum_ru",
+        "scope": "industry",
+        "source_id": "vademec"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Корпоративные сделки": [
+      {
+        "handle": "kojournal",
+        "scope": "industry",
+        "source_id": "ko"
+      },
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Инфраструктурное строительство": [
+      {
+        "handle": "Ne_dvizhka",
+        "scope": "industry",
+        "source_id": "nsp"
+      },
+      {
+        "handle": "rzd_partner_news",
+        "scope": "industry",
+        "source_id": "rzd_partner"
+      },
+      {
+        "handle": "logistan",
+        "scope": "industry",
+        "source_id": "infranews"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Розница товаров для дома": [
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "NewRetail",
+        "scope": "industry",
+        "source_id": "new_retail"
+      },
+      {
+        "handle": "e_pepper",
+        "scope": "industry",
+        "source_id": "e_pepper"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Аптечная розница": [
+      {
+        "handle": "pharmvestnik",
+        "scope": "industry",
+        "source_id": "pharmvestnik"
+      },
+      {
+        "handle": "gxpnews",
+        "scope": "industry",
+        "source_id": "gxpnews"
+      },
+      {
+        "handle": "vademecum_ru",
+        "scope": "industry",
+        "source_id": "vademec"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Удобрения": [
+      {
+        "handle": "agroxxinews",
+        "scope": "industry",
+        "source_id": "agroxxi"
+      },
+      {
+        "handle": "agroinvestor",
+        "scope": "industry",
+        "source_id": "agroinvestor"
+      },
+      {
+        "handle": "Rupec",
+        "scope": "industry",
+        "source_id": "rupec"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Рынок долгового капитала": [
+      {
+        "handle": "cbonds",
+        "scope": "industry",
+        "source_id": "cbonds"
+      },
+      {
+        "handle": "investfundsru",
+        "scope": "industry",
+        "source_id": "investfunds"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Курьерская доставка": [
+      {
+        "handle": "logirus",
+        "scope": "industry",
+        "source_id": "logirus"
+      },
+      {
+        "handle": "e_pepper",
+        "scope": "industry",
+        "source_id": "e_pepper"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Целлюлоза и бумага": [
+      {
+        "handle": "lespromnews_rus",
+        "scope": "industry"
+      },
+      {
+        "handle": "forestcomplex",
+        "scope": "industry"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Управление персоналом": [
+      {
+        "handle": "klerkonline",
+        "scope": "industry",
+        "source_id": "klerk"
+      },
+      {
+        "handle": "incrussiamedia",
+        "scope": "industry",
+        "source_id": "inc_russia"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Производство наземной техники": [
+      {
+        "handle": "news_engineering",
+        "scope": "industry",
+        "source_id": "mashnews"
+      },
+      {
+        "handle": "autostatis",
+        "scope": "industry",
+        "source_id": "autostat"
+      },
+      {
+        "handle": "rzd_partner_news",
+        "scope": "industry",
+        "source_id": "rzd_partner"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      }
+    ],
+    "Нефтегазодобыча": [
+      {
+        "handle": "oilgasinform",
+        "scope": "industry",
+        "source_id": "angi"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Розница одежды и обуви": [
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "NewRetail",
+        "scope": "industry",
+        "source_id": "new_retail"
+      },
+      {
+        "handle": "e_pepper",
+        "scope": "industry",
+        "source_id": "e_pepper"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Электрогенерация": [
+      {
+        "handle": "elecru",
+        "scope": "industry",
+        "source_id": "elec"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Рыбное хозяйство": [
+      {
+        "handle": "fishnewschannel",
+        "scope": "industry",
+        "source_id": "fishnews"
+      },
+      {
+        "handle": "Sferafm",
+        "scope": "industry",
+        "source_id": "sfera"
+      },
+      {
+        "handle": "agroinvestor",
+        "scope": "industry",
+        "source_id": "agroinvestor"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Корпоративное кредитование": [
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "bankinform_ru",
+        "scope": "industry",
+        "source_id": "bankinform"
+      },
+      {
+        "handle": "bankdelo_ru",
+        "scope": "industry",
+        "source_id": "bank_delo"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Водные грузоперевозки": [
+      {
+        "handle": "PortNews_ru",
+        "scope": "industry",
+        "source_id": "portnews"
+      },
+      {
+        "handle": "logistan",
+        "scope": "industry",
+        "source_id": "infranews"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Платежная инфраструктура": [
+      {
+        "handle": "plusjournal",
+        "scope": "industry",
+        "source_id": "plusworld"
+      },
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "bankinform_ru",
+        "scope": "industry",
+        "source_id": "bankinform"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Лесозаготовка": [
+      {
+        "handle": "lespromnews_rus",
+        "scope": "industry"
+      },
+      {
+        "handle": "forestcomplex",
+        "scope": "industry"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Детское образование": [
+      {
+        "handle": "incrussiamedia",
+        "scope": "industry",
+        "source_id": "inc_russia"
+      },
+      {
+        "handle": "businesssecrets",
+        "scope": "industry",
+        "source_id": "secretmag"
+      },
+      {
+        "handle": "DK_RU_news",
+        "scope": "industry",
+        "source_id": "dk"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Образование взрослых": [
+      {
+        "handle": "incrussiamedia",
+        "scope": "industry",
+        "source_id": "inc_russia"
+      },
+      {
+        "handle": "businesssecrets",
+        "scope": "industry",
+        "source_id": "secretmag"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Железнодорожные грузоперевозки": [
+      {
+        "handle": "rzd_partner_news",
+        "scope": "industry",
+        "source_id": "rzd_partner"
+      },
+      {
+        "handle": "logirus",
+        "scope": "industry",
+        "source_id": "logirus"
+      },
+      {
+        "handle": "logistan",
+        "scope": "industry",
+        "source_id": "infranews"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Управление страховыми операциями": [
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "bankdelo_ru",
+        "scope": "industry",
+        "source_id": "bank_delo"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Масложировая и консервная продукция": [
+      {
+        "handle": "Sferafm",
+        "scope": "industry",
+        "source_id": "sfera"
+      },
+      {
+        "handle": "agroinvestor",
+        "scope": "industry",
+        "source_id": "agroinvestor"
+      },
+      {
+        "handle": "retail_ru",
+        "scope": "industry",
+        "source_id": "retail"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Молочная промышленность": [
+      {
+        "handle": "dairynewstoday",
+        "scope": "industry",
+        "source_id": "dairynews"
+      },
+      {
+        "handle": "Sferafm",
+        "scope": "industry",
+        "source_id": "sfera"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Угольная промышленность": [
+      {
+        "handle": "oilgasinform",
+        "scope": "industry",
+        "source_id": "angi"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Судостроение и авиастроение": [
+      {
+        "handle": "news_engineering",
+        "scope": "industry",
+        "source_id": "mashnews"
+      },
+      {
+        "handle": "PortNews_ru",
+        "scope": "industry",
+        "source_id": "portnews"
+      },
+      {
+        "handle": "rzd_partner_news",
+        "scope": "industry",
+        "source_id": "rzd_partner"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      }
+    ],
+    "Расчетные банковские услуги": [
+      {
+        "handle": "bankinform_ru",
+        "scope": "industry",
+        "source_id": "bankinform"
+      },
+      {
+        "handle": "bankdelo_ru",
+        "scope": "industry",
+        "source_id": "bank_delo"
+      },
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Цветная металлургия": [
+      {
+        "handle": "MSS_Info",
+        "scope": "industry"
+      },
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Устойчивое развитие": [
+      {
+        "handle": "expert_mag",
+        "scope": "industry",
+        "source_id": "expert"
+      },
+      {
+        "handle": "kojournal",
+        "scope": "industry",
+        "source_id": "ko"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Факторинговое финансирование": [
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "bankinform_ru",
+        "scope": "industry",
+        "source_id": "bankinform"
+      },
+      {
+        "handle": "bankdelo_ru",
+        "scope": "industry",
+        "source_id": "bank_delo"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Комплаенс бизнеса": [
+      {
+        "handle": "pravo_pravo",
+        "scope": "industry",
+        "source_id": "pravo"
+      },
+      {
+        "handle": "garantnews",
+        "scope": "industry",
+        "source_id": "garant"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Макроэкономика и денежно-кредитная политика": [
+      {
+        "handle": "prime1",
+        "scope": "industry",
+        "source_id": "prime"
+      },
+      {
+        "handle": "interfaxonline",
+        "scope": "industry",
+        "source_id": "interfax"
+      },
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Корпоративное казначейство": [
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "bankdelo_ru",
+        "scope": "industry",
+        "source_id": "bank_delo"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Депозитные продукты бизнеса": [
+      {
+        "handle": "bankinform_ru",
+        "scope": "industry",
+        "source_id": "bankinform"
+      },
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "bankdelo_ru",
+        "scope": "industry",
+        "source_id": "bank_delo"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Внешнеторговые операции": [
+      {
+        "handle": "logistan",
+        "scope": "industry",
+        "source_id": "infranews"
+      },
+      {
+        "handle": "logirus",
+        "scope": "industry",
+        "source_id": "logirus"
+      },
+      {
+        "handle": "pravo_pravo",
+        "scope": "industry",
+        "source_id": "pravo"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Банковские гарантии": [
+      {
+        "handle": "bankinform_ru",
+        "scope": "industry",
+        "source_id": "bankinform"
+      },
+      {
+        "handle": "bankdelo_ru",
+        "scope": "industry",
+        "source_id": "bank_delo"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Кибербезопасность": [
+      {
+        "handle": "it_world_ru",
+        "scope": "industry",
+        "source_id": "it_world"
+      },
+      {
+        "handle": "ictonlineru",
+        "scope": "industry",
+        "source_id": "ict_online"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Страхование бизнеса": [
+      {
+        "handle": "frank_media",
+        "scope": "industry",
+        "source_id": "frankmedia"
+      },
+      {
+        "handle": "bankdelo_ru",
+        "scope": "industry",
+        "source_id": "bank_delo"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ],
+    "Пассажирская авиация": [
+      {
+        "handle": "atorus",
+        "scope": "industry",
+        "source_id": "ator"
+      },
+      {
+        "handle": "tourdom",
+        "scope": "industry",
+        "source_id": "tourdom"
+      },
+      {
+        "handle": "rata_ru",
+        "scope": "industry",
+        "source_id": "ratanews"
+      },
+      {
+        "handle": "rbc_news",
+        "scope": "general_economy_reserve",
+        "source_id": "rbc"
+      },
+      {
+        "handle": "BFMnews",
+        "scope": "general_economy_reserve",
+        "source_id": "bfm"
+      }
+    ]
+  }
+}

@@ -1,0 +1,4303 @@
+{
+  "sources": [
+    {
+      "id": "tass",
+      "name": "ТАСС",
+      "seeds": [
+        "https://tass.ru/ekonomika"
+      ],
+      "domains": [
+        "tass.ru",
+        "www.tass.ru"
+      ],
+      "article_pattern": "^/(ekonomika|mezhdunarodnaya-panorama|politika)/[0-9]+$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [
+        "//*[@itemprop='articleBody']//p"
+      ],
+      "enabled": false,
+      "topics": [
+        "business",
+        "economy",
+        "finance"
+      ],
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 8
+    },
+    {
+      "id": "cbr",
+      "name": "Банк России",
+      "seeds": [
+        "https://www.cbr.ru/"
+      ],
+      "domains": [
+        "www.cbr.ru",
+        "cbr.ru"
+      ],
+      "article_pattern": "^/press/(event|pr)/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [
+        "//div[contains(@class,'landing-text')]//p"
+      ],
+      "enabled": false,
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "listing_pages": 2,
+      "article_query_pattern": "(?:^|&)id=\\d+(?:&|$)",
+      "source_kind": "regulator",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "scmp",
+      "name": "South China Morning Post",
+      "seeds": [
+        "https://www.scmp.com/business"
+      ],
+      "domains": [
+        "www.scmp.com",
+        "scmp.com"
+      ],
+      "article_pattern": "/article/[0-9]+/",
+      "language": "en",
+      "publisher_country": "HK",
+      "body_selectors": [
+        "//*[@itemprop='articleBody']//p"
+      ],
+      "enabled": false,
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "ap",
+      "name": "Associated Press",
+      "seeds": [
+        "https://apnews.com/hub/business"
+      ],
+      "domains": [
+        "apnews.com",
+        "www.apnews.com"
+      ],
+      "article_pattern": "^/article/[^/]+$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [
+        "//div[contains(@class,\"RichTextStoryBody\")]//p"
+      ],
+      "enabled": false,
+      "topics": [
+        "business",
+        "economy",
+        "finance"
+      ],
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "kommersant",
+      "name": "Коммерсантъ",
+      "seeds": [
+        "https://www.kommersant.ru/rubric/4",
+        "https://www.kommersant.ru/rubric/3",
+        "https://www.kommersant.ru/rubric/40",
+        "https://www.kommersant.ru/rubric/5"
+      ],
+      "domains": [
+        "www.kommersant.ru",
+        "kommersant.ru"
+      ],
+      "article_pattern": "^/doc/\\d+",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [
+        "//div[contains(@class,\"article_text_wrapper\")]//p",
+        "//p[contains(@class,\"doc__text\")]"
+      ],
+      "topics": [
+        "business",
+        "technology",
+        "ai",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 8
+    },
+    {
+      "id": "vc",
+      "name": "vc.ru",
+      "seeds": [
+        "https://vc.ru/money",
+        "https://vc.ru/ai",
+        "https://vc.ru/invest"
+      ],
+      "domains": [
+        "vc.ru"
+      ],
+      "article_pattern": "^/(?:[a-z0-9_-]+|u/\\d+[^/]*)/\\d+-",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [
+        "//article//p | //article//li",
+        "//article[contains(@class,\"content__blocks\")]"
+      ],
+      "topics": [
+        "business",
+        "technology",
+        "ai"
+      ],
+      "enabled": false,
+      "listing_scrolls": 1,
+      "listing_pages": 2,
+      "source_kind": "community",
+      "collection_priority": 45,
+      "max_articles_per_cycle": 3
+    },
+    {
+      "id": "habr",
+      "name": "Хабр — новости",
+      "seeds": [
+        "https://habr.com/ru/news/"
+      ],
+      "domains": [
+        "habr.com"
+      ],
+      "article_pattern": "^/ru/(?:news|companies/[^/]+/news)/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [
+        "//div[contains(@class,\"article-formatted-body\")]//p"
+      ],
+      "topics": [
+        "business",
+        "technology",
+        "ai"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "community",
+      "collection_priority": 45,
+      "max_articles_per_cycle": 3
+    },
+    {
+      "id": "banki",
+      "name": "Банки.ру",
+      "seeds": [
+        "https://www.banki.ru/news/lenta/"
+      ],
+      "domains": [
+        "www.banki.ru",
+        "banki.ru"
+      ],
+      "article_pattern": "^/news/lenta/\\??",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "article_query_pattern": "(?:^|&)id=\\d+(?:&|$)",
+      "source_kind": "news_media",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "techcrunch",
+      "name": "TechCrunch",
+      "seeds": [
+        "https://techcrunch.com/category/artificial-intelligence/",
+        "https://techcrunch.com/category/startups/"
+      ],
+      "domains": [
+        "techcrunch.com"
+      ],
+      "article_pattern": "^/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [
+        "//div[contains(@class,\"entry-content\")]//p"
+      ],
+      "topics": [
+        "business",
+        "technology",
+        "ai"
+      ],
+      "enabled": false,
+      "listing_scrolls": 1,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "verge",
+      "name": "The Verge",
+      "seeds": [
+        "https://www.theverge.com/ai-artificial-intelligence",
+        "https://www.theverge.com/tech"
+      ],
+      "domains": [
+        "www.theverge.com",
+        "theverge.com"
+      ],
+      "article_pattern": "^/(?:\\d{4}/\\d+/\\d+/\\d+/[^/]+|(?:[a-z-]+/)?\\d+/[^/]+)/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [
+        "//div[contains(@class,\"duet--article--article-body-component\")]//p"
+      ],
+      "topics": [
+        "business",
+        "technology",
+        "ai"
+      ],
+      "enabled": false,
+      "listing_scrolls": 1,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "arstechnica",
+      "name": "Ars Technica",
+      "seeds": [
+        "https://arstechnica.com/ai/",
+        "https://arstechnica.com/information-technology/"
+      ],
+      "domains": [
+        "arstechnica.com"
+      ],
+      "article_pattern": "^/[a-z-]+/\\d{4}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [
+        "//div[contains(@class,\"article-content\")]//p"
+      ],
+      "topics": [
+        "business",
+        "technology",
+        "ai"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "venturebeat",
+      "name": "VentureBeat",
+      "seeds": [
+        "https://venturebeat.com/category/ai/",
+        "https://venturebeat.com/category/business/"
+      ],
+      "domains": [
+        "venturebeat.com"
+      ],
+      "article_pattern": "^/(ai|business|data-infrastructure|security|automation)/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "topics": [
+        "business",
+        "technology",
+        "ai"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "wired",
+      "name": "WIRED",
+      "seeds": [
+        "https://www.wired.com/tag/artificial-intelligence/",
+        "https://www.wired.com/category/business/"
+      ],
+      "domains": [
+        "www.wired.com",
+        "wired.com"
+      ],
+      "article_pattern": "^/story/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "topics": [
+        "business",
+        "technology",
+        "ai"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "reuters",
+      "name": "Reuters",
+      "seeds": [
+        "https://www.reuters.com/business/",
+        "https://www.reuters.com/technology/artificial-intelligence/"
+      ],
+      "domains": [
+        "www.reuters.com",
+        "reuters.com"
+      ],
+      "article_pattern": "^/(business|technology|markets|sustainability)/.+-\\d{4}-\\d{2}-\\d{2}/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "tech_eu",
+      "name": "Tech.eu",
+      "seeds": [
+        "https://tech.eu/"
+      ],
+      "domains": [
+        "tech.eu"
+      ],
+      "article_pattern": "^/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "BE",
+      "body_selectors": [],
+      "topics": [
+        "business",
+        "technology",
+        "ai"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 65,
+      "max_articles_per_cycle": 4
+    },
+    {
+      "id": "sifted",
+      "name": "Sifted",
+      "seeds": [
+        "https://sifted.eu/"
+      ],
+      "domains": [
+        "sifted.eu"
+      ],
+      "article_pattern": "^/articles/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "GB",
+      "body_selectors": [],
+      "topics": [
+        "business",
+        "technology",
+        "ai"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 65,
+      "max_articles_per_cycle": 4
+    },
+    {
+      "id": "siliconcanals",
+      "name": "Silicon Canals",
+      "seeds": [
+        "https://siliconcanals.com/"
+      ],
+      "domains": [
+        "siliconcanals.com"
+      ],
+      "article_pattern": "^/(?:[a-z-]+/){0,3}[a-z0-9-]{20,}/?$",
+      "language": "en",
+      "publisher_country": "NL",
+      "body_selectors": [],
+      "topics": [
+        "business",
+        "technology",
+        "ai"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 65,
+      "max_articles_per_cycle": 4
+    },
+    {
+      "id": "theregister",
+      "name": "The Register",
+      "seeds": [
+        "https://www.theregister.com/"
+      ],
+      "domains": [
+        "www.theregister.com",
+        "theregister.com"
+      ],
+      "article_pattern": "^/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "GB",
+      "body_selectors": [],
+      "topics": [
+        "business",
+        "technology",
+        "ai"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "zdnet",
+      "name": "ZDNET",
+      "seeds": [
+        "https://www.zdnet.com/topic/artificial-intelligence/",
+        "https://www.zdnet.com/topic/innovation/"
+      ],
+      "domains": [
+        "www.zdnet.com",
+        "zdnet.com"
+      ],
+      "article_pattern": "^/article/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "topics": [
+        "business",
+        "technology",
+        "ai"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI News",
+      "seeds": [
+        "https://openai.com/news/"
+      ],
+      "domains": [
+        "openai.com"
+      ],
+      "article_pattern": "^/(?:[a-z]{2}(?:-[A-Z]{2})?/)?index/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "topics": [
+        "ai",
+        "technology"
+      ],
+      "enabled": false,
+      "max_age_days": 30,
+      "listing_scrolls": 1,
+      "listing_pages": 2,
+      "source_kind": "company_blog",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic News",
+      "seeds": [
+        "https://www.anthropic.com/news"
+      ],
+      "domains": [
+        "www.anthropic.com",
+        "anthropic.com"
+      ],
+      "article_pattern": "^/news/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "topics": [
+        "ai",
+        "technology"
+      ],
+      "enabled": false,
+      "max_age_days": 30,
+      "listing_scrolls": 1,
+      "listing_pages": 2,
+      "source_kind": "company_blog",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "google_ai",
+      "name": "Google AI Blog",
+      "seeds": [
+        "https://blog.google/technology/ai/"
+      ],
+      "domains": [
+        "blog.google"
+      ],
+      "article_pattern": "^/(?:innovation-and-ai/(?:[^/]+/){2,}[^/]+|technology/ai/[^/]+)/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "topics": [
+        "ai",
+        "technology"
+      ],
+      "enabled": false,
+      "max_age_days": 30,
+      "listing_pages": 2,
+      "source_kind": "company_blog",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "nvidia",
+      "name": "NVIDIA Blog",
+      "seeds": [
+        "https://blogs.nvidia.com/"
+      ],
+      "domains": [
+        "blogs.nvidia.com"
+      ],
+      "article_pattern": "^/blog/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "topics": [
+        "ai",
+        "technology"
+      ],
+      "enabled": false,
+      "max_age_days": 30,
+      "listing_pages": 2,
+      "source_kind": "company_blog",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft Blog",
+      "seeds": [
+        "https://blogs.microsoft.com/"
+      ],
+      "domains": [
+        "blogs.microsoft.com"
+      ],
+      "article_pattern": "^/blog/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "topics": [
+        "ai",
+        "technology"
+      ],
+      "enabled": false,
+      "max_age_days": 30,
+      "listing_pages": 2,
+      "source_kind": "company_blog",
+      "collection_priority": 30,
+      "max_articles_per_cycle": 2
+    },
+    {
+      "id": "finam",
+      "name": "Финам",
+      "seeds": [
+        "https://www.finam.ru/publications/",
+        "https://www.finam.ru/"
+      ],
+      "domains": [
+        "www.finam.ru",
+        "finam.ru"
+      ],
+      "article_pattern": "^/publications/item/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "investing",
+      "name": "Investing.com",
+      "seeds": [
+        "https://www.investing.com/news/stock-market-news",
+        "https://www.investing.com/news/economic-indicators"
+      ],
+      "domains": [
+        "www.investing.com",
+        "investing.com"
+      ],
+      "article_pattern": "^/news/(?:stock-market-news|economy|economic-indicators|commodities-news|forex-news|cryptocurrency-news|company-news)/.+-\\d+$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "marketwatch",
+      "name": "MarketWatch",
+      "seeds": [
+        "https://www.marketwatch.com/markets",
+        "https://www.marketwatch.com/economy-politics"
+      ],
+      "domains": [
+        "www.marketwatch.com",
+        "marketwatch.com"
+      ],
+      "article_pattern": "^/story/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "seekingalpha",
+      "name": "Seeking Alpha",
+      "seeds": [
+        "https://seekingalpha.com/market-news"
+      ],
+      "domains": [
+        "seekingalpha.com"
+      ],
+      "article_pattern": "^/news/\\d+-[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "moneycontrol",
+      "name": "Moneycontrol",
+      "seeds": [
+        "https://www.moneycontrol.com/news/business/markets/",
+        "https://www.moneycontrol.com/news/business/economy/"
+      ],
+      "domains": [
+        "www.moneycontrol.com",
+        "moneycontrol.com"
+      ],
+      "article_pattern": "^/news/business/(?:[^/]+/)*[^/]+-\\d+\\.html$",
+      "language": "en",
+      "publisher_country": "IN",
+      "body_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "lenta_economics",
+      "name": "Лента.ру — экономика",
+      "seeds": [
+        "https://lenta.ru/rubrics/economics/"
+      ],
+      "domains": [
+        "lenta.ru"
+      ],
+      "article_pattern": "^/(?:news|articles)/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 2,
+      "source_kind": "news_media",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "realnoevremya",
+      "name": "Реальное время",
+      "seeds": [
+        "https://realnoevremya.ru/economics"
+      ],
+      "domains": [
+        "realnoevremya.ru"
+      ],
+      "article_pattern": "^/(?:news|articles)/\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "bankir",
+      "name": "Банкир.ру",
+      "seeds": [
+        "https://bankir.ru/novosti/"
+      ],
+      "domains": [
+        "bankir.ru"
+      ],
+      "article_pattern": "^/novosti/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "rusbonds",
+      "name": "Русбондс",
+      "seeds": [
+        "https://rusbonds.ru/news/"
+      ],
+      "domains": [
+        "rusbonds.ru"
+      ],
+      "article_pattern": "^/news/(?:\\d+|[^/]+-\\d+)/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30,
+      "listing_scrolls": 2
+    },
+    {
+      "id": "fingazeta",
+      "name": "Финансовая газета",
+      "seeds": [
+        "https://fingazeta.ru/"
+      ],
+      "domains": [
+        "fingazeta.ru"
+      ],
+      "article_pattern": "^/(?:news|articles|economics|finance|business)/(?:[^/]+/)*[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "bosfera",
+      "name": "Банковское обозрение",
+      "seeds": [
+        "https://bosfera.ru/"
+      ],
+      "domains": [
+        "bosfera.ru"
+      ],
+      "article_pattern": "^/(?:bo|news)/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "insur_info",
+      "name": "Страхование сегодня",
+      "seeds": [
+        "https://www.insur-info.ru/news/"
+      ],
+      "domains": [
+        "www.insur-info.ru",
+        "insur-info.ru"
+      ],
+      "article_pattern": "^/(?:news|press)/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "neftegaz",
+      "name": "Нефтегаз.РУ",
+      "seeds": [
+        "https://neftegaz.ru/news/"
+      ],
+      "domains": [
+        "neftegaz.ru"
+      ],
+      "article_pattern": "^/news/[^/]+/\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "metalinfo",
+      "name": "Металлоснабжение и сбыт",
+      "seeds": [
+        "https://www.metalinfo.ru/ru/news/"
+      ],
+      "domains": [
+        "www.metalinfo.ru",
+        "metalinfo.ru"
+      ],
+      "article_pattern": "^/ru/news/\\d+[^/]*\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "metaltorg",
+      "name": "МеталлТорг",
+      "seeds": [
+        "https://www.metaltorg.ru/n/"
+      ],
+      "domains": [
+        "www.metaltorg.ru",
+        "metaltorg.ru"
+      ],
+      "article_pattern": "^/n/[^?]+\\.php$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "metalbulletin",
+      "name": "Металлургический бюллетень",
+      "seeds": [
+        "https://www.metalbulletin.ru/news/"
+      ],
+      "domains": [
+        "www.metalbulletin.ru",
+        "metalbulletin.ru"
+      ],
+      "article_pattern": "^/news/(?:[A-Z0-9]+|\\d+)[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "gudok",
+      "name": "Гудок",
+      "seeds": [
+        "https://gudok.ru/news/"
+      ],
+      "domains": [
+        "gudok.ru"
+      ],
+      "article_pattern": "^/news/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "agroexpert",
+      "name": "Агроэксперт",
+      "seeds": [
+        "https://agroexpert.press/"
+      ],
+      "domains": [
+        "agroexpert.press"
+      ],
+      "article_pattern": "^/(?:[a-z0-9-]+/){1,3}$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "arendator",
+      "name": "Арендатор.ру",
+      "seeds": [
+        "https://www.arendator.ru/news/"
+      ],
+      "domains": [
+        "www.arendator.ru",
+        "arendator.ru"
+      ],
+      "article_pattern": "^/(?:news|articles)/\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "asninfo",
+      "name": "АСН-инфо",
+      "seeds": [
+        "https://asninfo.ru/news/"
+      ],
+      "domains": [
+        "asninfo.ru"
+      ],
+      "article_pattern": "^/news/\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "erzrf",
+      "name": "Единый ресурс застройщиков",
+      "seeds": [
+        "https://erzrf.ru/news"
+      ],
+      "domains": [
+        "erzrf.ru"
+      ],
+      "article_pattern": "^/news/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "ancb",
+      "name": "Агентство новостей Строительный бизнес",
+      "seeds": [
+        "https://ancb.ru/news/"
+      ],
+      "domains": [
+        "ancb.ru"
+      ],
+      "article_pattern": "^/(?:publication|news)/read/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "gmpnews",
+      "name": "GMP News",
+      "seeds": [
+        "https://gmpnews.ru/"
+      ],
+      "domains": [
+        "gmpnews.ru"
+      ],
+      "article_pattern": "^/\\d{4}/\\d{2}/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "upakovano",
+      "name": "Упаковано.ру",
+      "seeds": [
+        "https://www.upakovano.ru/news/"
+      ],
+      "domains": [
+        "www.upakovano.ru",
+        "upakovano.ru"
+      ],
+      "article_pattern": "^/news/(?:\\d{4}/\\d{2}/\\d{2}/)?[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "energyland",
+      "name": "Energyland",
+      "seeds": [
+        "https://www.energyland.info/"
+      ],
+      "domains": [
+        "www.energyland.info",
+        "energyland.info"
+      ],
+      "article_pattern": "^/news-show-[^/]+-\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "eprussia",
+      "name": "Энергетика и промышленность России",
+      "seeds": [
+        "https://www.eprussia.ru/news/"
+      ],
+      "domains": [
+        "www.eprussia.ru",
+        "eprussia.ru"
+      ],
+      "article_pattern": "^/news/(?:base/)?\\d+[^/]*\\.htm$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "bigpower",
+      "name": "BigpowerNews",
+      "seeds": [
+        "https://www.bigpowernews.ru/"
+      ],
+      "domains": [
+        "www.bigpowernews.ru",
+        "bigpowernews.ru"
+      ],
+      "article_pattern": "^/(?:print|news)/document\\d+\\.phtml$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "newprospect",
+      "name": "Новый проспект",
+      "seeds": [
+        "https://newprospect.ru/news/"
+      ],
+      "domains": [
+        "newprospect.ru"
+      ],
+      "article_pattern": "^/(?:news|articles)/[a-z0-9]+(?:-[a-z0-9]+){2,}/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "abireg",
+      "name": "Абирег",
+      "seeds": [
+        "https://abireg.ru/news/"
+      ],
+      "domains": [
+        "abireg.ru"
+      ],
+      "article_pattern": "^/(?:news|novosti)/(?:[^/]+/)*[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "business_vector",
+      "name": "Бизнес-вектор",
+      "seeds": [
+        "https://www.business-vector.info/"
+      ],
+      "domains": [
+        "www.business-vector.info",
+        "business-vector.info"
+      ],
+      "article_pattern": "^/(?:[a-z0-9-]+/){1,3}$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "rugrad",
+      "name": "Rugrad",
+      "seeds": [
+        "https://rugrad.eu/news/"
+      ],
+      "domains": [
+        "rugrad.eu"
+      ],
+      "article_pattern": "^/news/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "ura_economy",
+      "name": "URA.RU — экономика",
+      "seeds": [
+        "https://ura.news/rubrics/economics"
+      ],
+      "domains": [
+        "ura.news"
+      ],
+      "article_pattern": "^/(?:news|articles)/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "profi_travel",
+      "name": "Profi.Travel",
+      "seeds": [
+        "https://profi.travel/news"
+      ],
+      "domains": [
+        "profi.travel"
+      ],
+      "article_pattern": "^/(?:news|articles)/\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "restoranoff",
+      "name": "Ресторанные ведомости",
+      "seeds": [
+        "https://restoranoff.ru/news/"
+      ],
+      "domains": [
+        "restoranoff.ru"
+      ],
+      "article_pattern": "^/(?:news|business)/(?:[^/]+/)*[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "buybrand",
+      "name": "Buybrand",
+      "seeds": [
+        "https://buybrand.ru/news/"
+      ],
+      "domains": [
+        "buybrand.ru"
+      ],
+      "article_pattern": "^/news/(?:[^/]+/)*[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 80,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "raexpert",
+      "name": "Эксперт РА",
+      "seeds": [
+        "https://raexpert.ru/releases/"
+      ],
+      "domains": [
+        "raexpert.ru"
+      ],
+      "article_pattern": "^/(?:releases|researches)/(?:[^/]+/)*[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "company_blog",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "forbes_us",
+      "name": "Forbes",
+      "seeds": [
+        "https://www.forbes.com/money/",
+        "https://www.forbes.com/business/"
+      ],
+      "domains": [
+        "www.forbes.com",
+        "forbes.com"
+      ],
+      "article_pattern": "^/sites/[^/]+/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "barrons",
+      "name": "Barrons",
+      "seeds": [
+        "https://www.barrons.com/market-data"
+      ],
+      "domains": [
+        "www.barrons.com",
+        "barrons.com"
+      ],
+      "article_pattern": "^/articles/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "kiplinger",
+      "name": "Kiplinger",
+      "seeds": [
+        "https://www.kiplinger.com/investing"
+      ],
+      "domains": [
+        "www.kiplinger.com",
+        "kiplinger.com"
+      ],
+      "article_pattern": "^/(?:investing|personal-finance|economic-forecasts)/(?:[^/]+/)+[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "thestreet",
+      "name": "TheStreet",
+      "seeds": [
+        "https://www.thestreet.com/markets",
+        "https://www.thestreet.com/investing"
+      ],
+      "domains": [
+        "www.thestreet.com",
+        "thestreet.com"
+      ],
+      "article_pattern": "^/(?:markets|investing|economy|personal-finance)/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "euractiv_economy",
+      "name": "Euractiv — economy",
+      "seeds": [
+        "https://www.euractiv.com/sections/economy-jobs/"
+      ],
+      "domains": [
+        "www.euractiv.com",
+        "euractiv.com"
+      ],
+      "article_pattern": "^/(?:section/[^/]+/(?:news|opinion)/[^/]+|news/[^/]+)/?$",
+      "language": "en",
+      "publisher_country": "BE",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "businesslive",
+      "name": "BusinessLIVE",
+      "seeds": [
+        "https://www.businesslive.co.za/bd/economy/"
+      ],
+      "domains": [
+        "www.businesslive.co.za",
+        "businesslive.co.za"
+      ],
+      "article_pattern": "^/(?:bd|fm)/(?:[^/]+/)*\\d{4}-\\d{2}-\\d{2}-[^/]+/?$",
+      "language": "en",
+      "publisher_country": "ZA",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "financialexpress",
+      "name": "Financial Express",
+      "seeds": [
+        "https://www.financialexpress.com/business/"
+      ],
+      "domains": [
+        "www.financialexpress.com",
+        "financialexpress.com"
+      ],
+      "article_pattern": "^/(?:business|market|economy)/(?:[^/]+/)*\\d+/?$",
+      "language": "en",
+      "publisher_country": "IN",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "business"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "politnavigator",
+      "name": "ПолитНавигатор",
+      "seeds": [
+        "https://www.politnavigator.net/"
+      ],
+      "domains": [
+        "www.politnavigator.net",
+        "politnavigator.net"
+      ],
+      "article_pattern": "^/[a-z0-9][a-z0-9-]+\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "politexpert",
+      "name": "ПолитЭксперт",
+      "seeds": [
+        "https://politexpert.net/"
+      ],
+      "domains": [
+        "politexpert.net"
+      ],
+      "article_pattern": "^/\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "politros",
+      "name": "ПолитРоссия",
+      "seeds": [
+        "https://politros.com/"
+      ],
+      "domains": [
+        "politros.com"
+      ],
+      "article_pattern": "^/\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "argumenti",
+      "name": "Аргументы недели",
+      "seeds": [
+        "https://argumenti.ru/politics/",
+        "https://argumenti.ru/economics/"
+      ],
+      "domains": [
+        "argumenti.ru"
+      ],
+      "article_pattern": "^/(?:politics|economics|world|society)/(?:\\d{4}/\\d{2}/\\d+|[^/]+-\\d+)/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "sobesednik",
+      "name": "Собеседник",
+      "seeds": [
+        "https://sobesednik.ru/"
+      ],
+      "domains": [
+        "sobesednik.ru"
+      ],
+      "article_pattern": "^/(?:politika|ekonomika|obshchestvo)/\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "riddle",
+      "name": "Riddle Russia",
+      "seeds": [
+        "https://ridl.io/ru/"
+      ],
+      "domains": [
+        "ridl.io"
+      ],
+      "article_pattern": "^/ru/[a-z0-9]+(?:-[a-z0-9]+){2,}/?$",
+      "language": "ru",
+      "publisher_country": "NL",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "republic",
+      "name": "Republic",
+      "seeds": [
+        "https://republic.ru/"
+      ],
+      "domains": [
+        "republic.ru"
+      ],
+      "article_pattern": "^/posts/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "davydov",
+      "name": "Давыдов.Индекс",
+      "seeds": [
+        "https://davydov.in/"
+      ],
+      "domains": [
+        "davydov.in"
+      ],
+      "article_pattern": "^/\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "sibkray",
+      "name": "Сибкрай",
+      "seeds": [
+        "https://sibkray.ru/news/"
+      ],
+      "domains": [
+        "sibkray.ru"
+      ],
+      "article_pattern": "^/news/\\d+/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "sibreal",
+      "name": "Сибирь.Реалии",
+      "seeds": [
+        "https://www.sibreal.org/"
+      ],
+      "domains": [
+        "www.sibreal.org",
+        "sibreal.org"
+      ],
+      "article_pattern": "^/a/(?:[^/]+/)?\\d+\\.html$",
+      "language": "ru",
+      "publisher_country": "CZ",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "vologdaregion",
+      "name": "Вологда Регион",
+      "seeds": [
+        "https://vologdaregion.ru/"
+      ],
+      "domains": [
+        "vologdaregion.ru"
+      ],
+      "article_pattern": "^/news/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "vop",
+      "name": "Вестник Поволжья",
+      "seeds": [
+        "https://vestipb.ru/"
+      ],
+      "domains": [
+        "vestipb.ru"
+      ],
+      "article_pattern": "^/news/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "penzanews",
+      "name": "ПензаНьюс",
+      "seeds": [
+        "https://penzanews.ru/"
+      ],
+      "domains": [
+        "penzanews.ru"
+      ],
+      "article_pattern": "^/(?:politics|economy|business|society)/\\d+-\\d{4}$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "ryazannews",
+      "name": "Рязанские новости",
+      "seeds": [
+        "https://ryazannews.ru/"
+      ],
+      "domains": [
+        "ryazannews.ru"
+      ],
+      "article_pattern": "^/fn_\\d+\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "tulanews",
+      "name": "Тульские новости",
+      "seeds": [
+        "https://newstula.ru/"
+      ],
+      "domains": [
+        "newstula.ru"
+      ],
+      "article_pattern": "^/fn_\\d+\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "kaluganews",
+      "name": "Калужские новости",
+      "seeds": [
+        "https://kaluganews.ru/"
+      ],
+      "domains": [
+        "kaluganews.ru"
+      ],
+      "article_pattern": "^/fn_\\d+\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "vladimirnews",
+      "name": "Владимирские новости",
+      "seeds": [
+        "https://newsvladimir.ru/"
+      ],
+      "domains": [
+        "newsvladimir.ru"
+      ],
+      "article_pattern": "^/fn_\\d+\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "orelnews",
+      "name": "Орловские новости",
+      "seeds": [
+        "https://newsorel.ru/"
+      ],
+      "domains": [
+        "newsorel.ru"
+      ],
+      "article_pattern": "^/fn_\\d+\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "bryansknews",
+      "name": "Новости Брянска",
+      "seeds": [
+        "https://newsbryansk.ru/"
+      ],
+      "domains": [
+        "newsbryansk.ru"
+      ],
+      "article_pattern": "^/fn_\\d+\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "ivnews",
+      "name": "Ивановские новости",
+      "seeds": [
+        "https://newsivanovo.ru/"
+      ],
+      "domains": [
+        "newsivanovo.ru"
+      ],
+      "article_pattern": "^/fn_\\d+\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "lipetsknews",
+      "name": "Новости Липецка",
+      "seeds": [
+        "https://newslipetsk.ru/"
+      ],
+      "domains": [
+        "newslipetsk.ru"
+      ],
+      "article_pattern": "^/fn_\\d+\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "voronezhnews",
+      "name": "Воронежские новости",
+      "seeds": [
+        "https://voronezhnews.ru/"
+      ],
+      "domains": [
+        "voronezhnews.ru"
+      ],
+      "article_pattern": "^/fn_\\d+\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "orenburg_business",
+      "name": "Оренбургский бизнес",
+      "seeds": [
+        "https://orenburg-business.ru/"
+      ],
+      "domains": [
+        "orenburg-business.ru"
+      ],
+      "article_pattern": "^/(?:news|articles)/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "kazanfirst",
+      "name": "KazanFirst",
+      "seeds": [
+        "https://kazanfirst.ru/"
+      ],
+      "domains": [
+        "kazanfirst.ru"
+      ],
+      "article_pattern": "^/(?:news|articles)/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "politics",
+        "economy",
+        "finance"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 95,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "politico_us",
+      "name": "Politico US",
+      "seeds": [
+        "https://www.politico.com/"
+      ],
+      "domains": [
+        "www.politico.com",
+        "politico.com"
+      ],
+      "article_pattern": "^/news/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "allsides",
+      "name": "AllSides — analysis",
+      "seeds": [
+        "https://www.allsides.com/blog"
+      ],
+      "domains": [
+        "www.allsides.com",
+        "allsides.com"
+      ],
+      "article_pattern": "^/blog/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "US",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "skynews",
+      "name": "Sky News",
+      "seeds": [
+        "https://news.sky.com/business",
+        "https://news.sky.com/politics"
+      ],
+      "domains": [
+        "news.sky.com"
+      ],
+      "article_pattern": "^/story/[^/]+-\\d+/?$",
+      "language": "en",
+      "publisher_country": "GB",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "arabnews",
+      "name": "Arab News",
+      "seeds": [
+        "https://www.arabnews.com/economy"
+      ],
+      "domains": [
+        "www.arabnews.com",
+        "arabnews.com"
+      ],
+      "article_pattern": "^/node/\\d+/(?:business-economy|world|middle-east|saudi-arabia)/?$",
+      "language": "en",
+      "publisher_country": "SA",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "arabianbusiness",
+      "name": "Arabian Business",
+      "seeds": [
+        "https://www.arabianbusiness.com/"
+      ],
+      "domains": [
+        "www.arabianbusiness.com",
+        "arabianbusiness.com"
+      ],
+      "article_pattern": "^/(?:industries|politics-economics|markets|latest-news)/(?:[^/]+/)*[^/]+/?$",
+      "language": "en",
+      "publisher_country": "AE",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "zawya",
+      "name": "Zawya",
+      "seeds": [
+        "https://www.zawya.com/en/business"
+      ],
+      "domains": [
+        "www.zawya.com",
+        "zawya.com"
+      ],
+      "article_pattern": "^/en/(?:business|economy|markets|world)/(?:[^/]+/)+[^/]+-[a-z0-9]+/?$",
+      "language": "en",
+      "publisher_country": "AE",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "gulf_times",
+      "name": "Gulf Times",
+      "seeds": [
+        "https://www.gulf-times.com/section/4/business"
+      ],
+      "domains": [
+        "www.gulf-times.com",
+        "gulf-times.com"
+      ],
+      "article_pattern": "^/article/\\d+/(?:[^/]+/)*[^/]+/?$",
+      "language": "en",
+      "publisher_country": "QA",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "edge_sg",
+      "name": "The Edge Singapore",
+      "seeds": [
+        "https://www.theedgesingapore.com/"
+      ],
+      "domains": [
+        "www.theedgesingapore.com",
+        "theedgesingapore.com"
+      ],
+      "article_pattern": "^/(?:news|capital|views)/(?:[^/]+/)*[^/]+/?$",
+      "language": "en",
+      "publisher_country": "SG",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "bernama",
+      "name": "Bernama",
+      "seeds": [
+        "https://www.bernama.com/en/business.php"
+      ],
+      "domains": [
+        "www.bernama.com",
+        "bernama.com"
+      ],
+      "article_pattern": "^/en/(?:news|business)/?\\.php$",
+      "language": "en",
+      "publisher_country": "MY",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10,
+      "article_query_pattern": "(?:^|&)id=\\d+(?:&|$)"
+    },
+    {
+      "id": "bangkokpost",
+      "name": "Bangkok Post",
+      "seeds": [
+        "https://www.bangkokpost.com/business"
+      ],
+      "domains": [
+        "www.bangkokpost.com",
+        "bangkokpost.com"
+      ],
+      "article_pattern": "^/(?:business|world|thailand)/(?:[^/]+/)*\\d+/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "TH",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "bworld",
+      "name": "BusinessWorld",
+      "seeds": [
+        "https://www.bworldonline.com/"
+      ],
+      "domains": [
+        "www.bworldonline.com",
+        "bworldonline.com"
+      ],
+      "article_pattern": "^/(?:economy|banking-finance|corporate|stock-market|world|top-stories)/\\d{4}/\\d{2}/\\d{2}/\\d+/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "PH",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "businessmirror",
+      "name": "BusinessMirror",
+      "seeds": [
+        "https://businessmirror.com.ph/"
+      ],
+      "domains": [
+        "businessmirror.com.ph"
+      ],
+      "article_pattern": "^/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "PH",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "inquirer_business",
+      "name": "Inquirer Business",
+      "seeds": [
+        "https://business.inquirer.net/"
+      ],
+      "domains": [
+        "business.inquirer.net"
+      ],
+      "article_pattern": "^/\\d+/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "PH",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "dhakatribune",
+      "name": "Dhaka Tribune",
+      "seeds": [
+        "https://www.dhakatribune.com/business",
+        "https://www.dhakatribune.com/world"
+      ],
+      "domains": [
+        "www.dhakatribune.com",
+        "dhakatribune.com"
+      ],
+      "article_pattern": "^/(?:business|world|bangladesh)/(?:[^/]+/)*\\d+/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "BD",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "brecorder",
+      "name": "Business Recorder",
+      "seeds": [
+        "https://www.brecorder.com/"
+      ],
+      "domains": [
+        "www.brecorder.com",
+        "brecorder.com"
+      ],
+      "article_pattern": "^/news/\\d+/?$",
+      "language": "en",
+      "publisher_country": "PK",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "kursiv",
+      "name": "Курсив",
+      "seeds": [
+        "https://kz.kursiv.media/"
+      ],
+      "domains": [
+        "kz.kursiv.media"
+      ],
+      "article_pattern": "^/\\d{4}-\\d{2}-\\d{2}/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "KZ",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "kapital_kz",
+      "name": "Капитал Казахстан",
+      "seeds": [
+        "https://kapital.kz/"
+      ],
+      "domains": [
+        "kapital.kz"
+      ],
+      "article_pattern": "^/(?:finance|economics|business|world|gosudarstvo)/\\d+/[^/]+\\.html$",
+      "language": "ru",
+      "publisher_country": "KZ",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "finanz_ru",
+      "name": "Финанс.Ru",
+      "seeds": [
+        "https://www.finanz.ru/novosti"
+      ],
+      "domains": [
+        "www.finanz.ru",
+        "finanz.ru"
+      ],
+      "article_pattern": "^/novosti/(?:[^/]+/)*[^/]+-\\d+/?$",
+      "language": "ru",
+      "publisher_country": "DE",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "interfax_kz",
+      "name": "Интерфакс Казахстан",
+      "seeds": [
+        "https://www.interfax.kz/"
+      ],
+      "domains": [
+        "www.interfax.kz",
+        "interfax.kz"
+      ],
+      "article_pattern": "^/$",
+      "language": "ru",
+      "publisher_country": "KZ",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10,
+      "article_query_pattern": "(?:^|&)int_id=\\d+(?:&|$)"
+    },
+    {
+      "id": "businessdaily_africa",
+      "name": "Business Daily Africa",
+      "seeds": [
+        "https://www.businessdailyafrica.com/bd"
+      ],
+      "domains": [
+        "www.businessdailyafrica.com",
+        "businessdailyafrica.com"
+      ],
+      "article_pattern": "^/bd/(?:economy|markets|corporate|opinion-analysis|news)/(?:[^/]+/)*[^/]+-\\d+/?$",
+      "language": "en",
+      "publisher_country": "KE",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "moneyweb",
+      "name": "Moneyweb",
+      "seeds": [
+        "https://www.moneyweb.co.za/"
+      ],
+      "domains": [
+        "www.moneyweb.co.za",
+        "moneyweb.co.za"
+      ],
+      "article_pattern": "^/(?:news|moneyweb-opinion|investing|moneyweb-podcasts)/(?:[^/]+/)*[^/]+/?$",
+      "language": "en",
+      "publisher_country": "ZA",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "engineeringnews",
+      "name": "Engineering News",
+      "seeds": [
+        "https://www.engineeringnews.co.za/"
+      ],
+      "domains": [
+        "www.engineeringnews.co.za",
+        "engineeringnews.co.za"
+      ],
+      "article_pattern": "^/article/[^/]+-\\d{4}-\\d{2}-\\d{2}/?$",
+      "language": "en",
+      "publisher_country": "ZA",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "miningweekly",
+      "name": "Mining Weekly",
+      "seeds": [
+        "https://www.miningweekly.com/"
+      ],
+      "domains": [
+        "www.miningweekly.com",
+        "miningweekly.com"
+      ],
+      "article_pattern": "^/article/[^/]+-\\d{4}-\\d{2}-\\d{2}/?$",
+      "language": "en",
+      "publisher_country": "ZA",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "splash247",
+      "name": "Splash247",
+      "seeds": [
+        "https://splash247.com/"
+      ],
+      "domains": [
+        "splash247.com"
+      ],
+      "article_pattern": "^/[a-z0-9]+(?:-[a-z0-9]+){3,}/?$",
+      "language": "en",
+      "publisher_country": "SG",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "stockhead",
+      "name": "Stockhead",
+      "seeds": [
+        "https://stockhead.com.au/"
+      ],
+      "domains": [
+        "stockhead.com.au"
+      ],
+      "article_pattern": "^/(?:news|resources|energy|tech|health-and-biotech|the-market-open)/(?:[^/]+/)*[^/]+/?$",
+      "language": "en",
+      "publisher_country": "AU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "cincodias",
+      "name": "Cinco Dias",
+      "seeds": [
+        "https://cincodias.elpais.com/"
+      ],
+      "domains": [
+        "cincodias.elpais.com"
+      ],
+      "article_pattern": "^/(?:companias|mercados-financieros|economia|fondos-y-planes|opinion)/\\d{4}-\\d{2}-\\d{2}/[^/]+\\.html$",
+      "language": "es",
+      "publisher_country": "ES",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "glavbukh",
+      "name": "Главбух",
+      "seeds": [
+        "https://www.glavbukh.ru/news"
+      ],
+      "domains": [
+        "www.glavbukh.ru",
+        "glavbukh.ru"
+      ],
+      "article_pattern": "^/(?:news|art)/\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 100,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "vesti",
+      "name": "Вести",
+      "seeds": [
+        "https://www.vesti.ru/"
+      ],
+      "domains": [
+        "www.vesti.ru",
+        "vesti.ru"
+      ],
+      "article_pattern": "^/article/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "smotrim",
+      "name": "Смотрим",
+      "seeds": [
+        "https://smotrim.ru/"
+      ],
+      "domains": [
+        "smotrim.ru"
+      ],
+      "article_pattern": "^/article/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "tvc",
+      "name": "ТВ Центр",
+      "seeds": [
+        "https://www.tvc.ru/news"
+      ],
+      "domains": [
+        "www.tvc.ru",
+        "tvc.ru"
+      ],
+      "article_pattern": "^/news/show/id/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "news_ru",
+      "name": "NEWS.ru",
+      "seeds": [
+        "https://news.ru/economics/",
+        "https://news.ru/politics/"
+      ],
+      "domains": [
+        "news.ru"
+      ],
+      "article_pattern": "^/(?:economics|politics|world|vlast|russia)/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "otr",
+      "name": "ОТР",
+      "seeds": [
+        "https://otr-online.ru/news/"
+      ],
+      "domains": [
+        "otr-online.ru"
+      ],
+      "article_pattern": "^/news/[^/]+-\\d+\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "politanalitika",
+      "name": "Политаналитика",
+      "seeds": [
+        "https://politanalitika.ru/"
+      ],
+      "domains": [
+        "politanalitika.ru"
+      ],
+      "article_pattern": "^/(?:news|articles|politics)/(?:[^/]+/)*[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "polit_ru",
+      "name": "Полит.ру",
+      "seeds": [
+        "https://polit.ru/"
+      ],
+      "domains": [
+        "polit.ru"
+      ],
+      "article_pattern": "^/(?:news|article)/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "ruseconomics",
+      "name": "Экономика сегодня",
+      "seeds": [
+        "https://rueconomics.ru/"
+      ],
+      "domains": [
+        "rueconomics.ru"
+      ],
+      "article_pattern": "^/\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "bk55",
+      "name": "БК55",
+      "seeds": [
+        "https://bk55.ru/"
+      ],
+      "domains": [
+        "bk55.ru"
+      ],
+      "article_pattern": "^/news/article/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "altapress",
+      "name": "Алтапресс",
+      "seeds": [
+        "https://altapress.ru/"
+      ],
+      "domains": [
+        "altapress.ru"
+      ],
+      "article_pattern": "^/(?:ekonomika|politika|zhizn|story)/(?:[^/]+/)*[^/]+-\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "amic",
+      "name": "Амител",
+      "seeds": [
+        "https://www.amic.ru/news"
+      ],
+      "domains": [
+        "www.amic.ru",
+        "amic.ru"
+      ],
+      "article_pattern": "^/news/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "bankfax",
+      "name": "Банкфакс",
+      "seeds": [
+        "https://www.bankfax.ru/"
+      ],
+      "domains": [
+        "www.bankfax.ru",
+        "bankfax.ru"
+      ],
+      "article_pattern": "^/(?:news|doc)/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "amur_info",
+      "name": "Амур.инфо",
+      "seeds": [
+        "https://amur.info/"
+      ],
+      "domains": [
+        "amur.info"
+      ],
+      "article_pattern": "^/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "ysia",
+      "name": "ЯСИА",
+      "seeds": [
+        "https://ysia.ru/"
+      ],
+      "domains": [
+        "ysia.ru"
+      ],
+      "article_pattern": "^/[a-z0-9]+(?:-[a-z0-9]+){3,}/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "yugopolis",
+      "name": "Югополис",
+      "seeds": [
+        "https://www.yugopolis.ru/"
+      ],
+      "domains": [
+        "www.yugopolis.ru",
+        "yugopolis.ru"
+      ],
+      "article_pattern": "^/news/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "kavkazpost",
+      "name": "Кавказ Пост",
+      "seeds": [
+        "https://capost.media/"
+      ],
+      "domains": [
+        "capost.media"
+      ],
+      "article_pattern": "^/(?:news|views|special)/(?:[^/]+/)*[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "dagpravda",
+      "name": "Дагестанская правда",
+      "seeds": [
+        "https://dagpravda.ru/"
+      ],
+      "domains": [
+        "dagpravda.ru"
+      ],
+      "article_pattern": "^/(?:politika|ekonomika|novosti|obshestvo)/(?:[^/]+/)*[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "kavkaz_uzel",
+      "name": "Кавказский узел",
+      "seeds": [
+        "https://www.kavkaz-uzel.eu/"
+      ],
+      "domains": [
+        "www.kavkaz-uzel.eu",
+        "kavkaz-uzel.eu"
+      ],
+      "article_pattern": "^/articles/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "kavkaz_today",
+      "name": "Кавказ сегодня",
+      "seeds": [
+        "https://kavtoday.ru/"
+      ],
+      "domains": [
+        "kavtoday.ru"
+      ],
+      "article_pattern": "^/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "mosmonitor",
+      "name": "Московский монитор",
+      "seeds": [
+        "https://mosmonitor.ru/"
+      ],
+      "domains": [
+        "mosmonitor.ru"
+      ],
+      "article_pattern": "^/(?:news|articles)/(?:[^/]+/)*[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "regions",
+      "name": "Regions.ru",
+      "seeds": [
+        "https://regions.ru/"
+      ],
+      "domains": [
+        "regions.ru"
+      ],
+      "article_pattern": "^/(?:[^/]+/)*\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "lenoblinform",
+      "name": "Леноблинформ",
+      "seeds": [
+        "https://lenoblinform.ru/"
+      ],
+      "domains": [
+        "lenoblinform.ru"
+      ],
+      "article_pattern": "^/(?:news|news1|news2)/\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "nevnov",
+      "name": "Невские новости",
+      "seeds": [
+        "https://nevnov.ru/"
+      ],
+      "domains": [
+        "nevnov.ru"
+      ],
+      "article_pattern": "^/\\d+[^/]*/*$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "spbdnevnik",
+      "name": "Петербургский дневник",
+      "seeds": [
+        "https://spbdnevnik.ru/"
+      ],
+      "domains": [
+        "spbdnevnik.ru"
+      ],
+      "article_pattern": "^/news/\\d{4}-\\d{2}-\\d{2}/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "nnov",
+      "name": "НТА-Приволжье",
+      "seeds": [
+        "https://nta-pfo.ru/"
+      ],
+      "domains": [
+        "nta-pfo.ru"
+      ],
+      "article_pattern": "^/news/(?:[^/]+/)*\\d+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "vremya_n",
+      "name": "Время Н",
+      "seeds": [
+        "https://www.vremyan.ru/"
+      ],
+      "domains": [
+        "www.vremyan.ru",
+        "vremyan.ru"
+      ],
+      "article_pattern": "^/news/[^/]+\\.html$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "saratov24",
+      "name": "Саратов24",
+      "seeds": [
+        "https://saratov24.tv/"
+      ],
+      "domains": [
+        "saratov24.tv"
+      ],
+      "article_pattern": "^/news/[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "ulpravda",
+      "name": "Улправда",
+      "seeds": [
+        "https://ulpravda.ru/"
+      ],
+      "domains": [
+        "ulpravda.ru"
+      ],
+      "article_pattern": "^/(?:rubrics|news)/(?:[^/]+/)*[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "tatarstan24",
+      "name": "Татарстан24",
+      "seeds": [
+        "https://tatarstan24.tv/"
+      ],
+      "domains": [
+        "tatarstan24.tv"
+      ],
+      "article_pattern": "^/news/(?:[^/]+/)*[^/]+/?$",
+      "language": "ru",
+      "publisher_country": "RU",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 30
+    },
+    {
+      "id": "intellinews",
+      "name": "bne IntelliNews",
+      "seeds": [
+        "https://www.intellinews.com/"
+      ],
+      "domains": [
+        "www.intellinews.com",
+        "intellinews.com"
+      ],
+      "article_pattern": "^/[a-z0-9]+(?:-[a-z0-9]+){2,}-\\d+/?$",
+      "language": "en",
+      "publisher_country": "DE",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "emerging_europe",
+      "name": "Emerging Europe",
+      "seeds": [
+        "https://emerging-europe.com/"
+      ],
+      "domains": [
+        "emerging-europe.com"
+      ],
+      "article_pattern": "^/(?:analysis|news|business|opinion|voices)/(?:[^/]+/)*[^/]+/?$",
+      "language": "en",
+      "publisher_country": "GB",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "balkaninsight",
+      "name": "Balkan Insight",
+      "seeds": [
+        "https://balkaninsight.com/"
+      ],
+      "domains": [
+        "balkaninsight.com"
+      ],
+      "article_pattern": "^/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "BA",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "neweasterneurope",
+      "name": "New Eastern Europe",
+      "seeds": [
+        "https://neweasterneurope.eu/"
+      ],
+      "domains": [
+        "neweasterneurope.eu"
+      ],
+      "article_pattern": "^/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "PL",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "brusselstimes",
+      "name": "The Brussels Times",
+      "seeds": [
+        "https://www.brusselstimes.com/"
+      ],
+      "domains": [
+        "www.brusselstimes.com",
+        "brusselstimes.com"
+      ],
+      "article_pattern": "^/\\d+/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "BE",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "cgtn",
+      "name": "CGTN",
+      "seeds": [
+        "https://www.cgtn.com/business"
+      ],
+      "domains": [
+        "www.cgtn.com",
+        "cgtn.com",
+        "news.cgtn.com"
+      ],
+      "article_pattern": "^/news/\\d{4}-\\d{2}-\\d{2}/[^/]+/index\\.html$",
+      "language": "en",
+      "publisher_country": "CN",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "kyodo",
+      "name": "Kyodo News",
+      "seeds": [
+        "https://english.kyodonews.net/"
+      ],
+      "domains": [
+        "english.kyodonews.net"
+      ],
+      "article_pattern": "^/news/\\d{4}/\\d{2}/[^/]+\\.html$",
+      "language": "en",
+      "publisher_country": "JP",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "japantimes",
+      "name": "The Japan Times",
+      "seeds": [
+        "https://www.japantimes.co.jp/business/"
+      ],
+      "domains": [
+        "www.japantimes.co.jp",
+        "japantimes.co.jp"
+      ],
+      "article_pattern": "^/\\d{4}/\\d{2}/\\d{2}/(?:business|news)/(?:[^/]+/)*[^/]+/?$",
+      "language": "en",
+      "publisher_country": "JP",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "koreajoongang",
+      "name": "Korea JoongAng Daily",
+      "seeds": [
+        "https://koreajoongangdaily.joins.com/section/business"
+      ],
+      "domains": [
+        "koreajoongangdaily.joins.com"
+      ],
+      "article_pattern": "^/news/\\d{4}-\\d{2}-\\d{2}/(?:business|national|opinion)/(?:[^/]+/)*[^/]+/\\d+/?$",
+      "language": "en",
+      "publisher_country": "KR",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "globaltimes",
+      "name": "Global Times",
+      "seeds": [
+        "https://www.globaltimes.cn/"
+      ],
+      "domains": [
+        "www.globaltimes.cn",
+        "globaltimes.cn"
+      ],
+      "article_pattern": "^/page/\\d{6}/\\d+\\.shtml$",
+      "language": "en",
+      "publisher_country": "CN",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "nation_thailand",
+      "name": "The Nation Thailand",
+      "seeds": [
+        "https://www.nationthailand.com/business"
+      ],
+      "domains": [
+        "www.nationthailand.com",
+        "nationthailand.com"
+      ],
+      "article_pattern": "^/(?:business|news)/(?:[^/]+/)*\\d+/?$",
+      "language": "en",
+      "publisher_country": "TH",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "jakartapost",
+      "name": "The Jakarta Post",
+      "seeds": [
+        "https://www.thejakartapost.com/business"
+      ],
+      "domains": [
+        "www.thejakartapost.com",
+        "thejakartapost.com"
+      ],
+      "article_pattern": "^/(?:business|world|indonesia)/\\d{4}/\\d{2}/\\d{2}/[^/]+\\.html$",
+      "language": "en",
+      "publisher_country": "ID",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "indianexpress",
+      "name": "The Indian Express",
+      "seeds": [
+        "https://indianexpress.com/section/business/"
+      ],
+      "domains": [
+        "indianexpress.com"
+      ],
+      "article_pattern": "^/article/(?:business|india|world)/(?:[^/]+/)*[^/]+-\\d+/?$",
+      "language": "en",
+      "publisher_country": "IN",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "nepalitimes",
+      "name": "Nepali Times",
+      "seeds": [
+        "https://nepalitimes.com/"
+      ],
+      "domains": [
+        "nepalitimes.com"
+      ],
+      "article_pattern": "^/(?:news|latest|editorial|opinion|business|here-now)/(?:[^/]+/)*[^/]+/?$",
+      "language": "en",
+      "publisher_country": "NP",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "economynext",
+      "name": "EconomyNext",
+      "seeds": [
+        "https://economynext.com/"
+      ],
+      "domains": [
+        "economynext.com"
+      ],
+      "article_pattern": "^/[a-z0-9]+(?:-[a-z0-9]+){2,}-\\d+/?$",
+      "language": "en",
+      "publisher_country": "LK",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "newsfirst_lk",
+      "name": "News First Sri Lanka",
+      "seeds": [
+        "https://www.newsfirst.lk/"
+      ],
+      "domains": [
+        "www.newsfirst.lk",
+        "newsfirst.lk"
+      ],
+      "article_pattern": "^/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "LK",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "err",
+      "name": "ERR News",
+      "seeds": [
+        "https://news.err.ee/"
+      ],
+      "domains": [
+        "news.err.ee"
+      ],
+      "article_pattern": "^/\\d+/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "EE",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "baltictimes",
+      "name": "The Baltic Times",
+      "seeds": [
+        "https://www.baltictimes.com/"
+      ],
+      "domains": [
+        "www.baltictimes.com",
+        "baltictimes.com"
+      ],
+      "article_pattern": "^/[a-z0-9]+(?:_[a-z0-9]+){3,}/?$",
+      "language": "en",
+      "publisher_country": "LV",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "yle",
+      "name": "Yle News English",
+      "seeds": [
+        "https://yle.fi/news"
+      ],
+      "domains": [
+        "yle.fi"
+      ],
+      "article_pattern": "^/a/\\d+-\\d+/?$",
+      "language": "en",
+      "publisher_country": "FI",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "eureporter",
+      "name": "EU Reporter",
+      "seeds": [
+        "https://www.eureporter.co/"
+      ],
+      "domains": [
+        "www.eureporter.co",
+        "eureporter.co"
+      ],
+      "article_pattern": "^/(?:[^/]+/)*\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "BE",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    },
+    {
+      "id": "eunews",
+      "name": "Eunews English",
+      "seeds": [
+        "https://www.eunews.it/en/"
+      ],
+      "domains": [
+        "www.eunews.it",
+        "eunews.it"
+      ],
+      "article_pattern": "^/en/\\d{4}/\\d{2}/\\d{2}/[^/]+/?$",
+      "language": "en",
+      "publisher_country": "IT",
+      "body_selectors": [],
+      "listing_link_selectors": [],
+      "topics": [
+        "finance",
+        "economy",
+        "politics"
+      ],
+      "enabled": false,
+      "listing_pages": 1,
+      "source_kind": "news_media",
+      "collection_priority": 90,
+      "max_articles_per_cycle": 10
+    }
+  ]
+}

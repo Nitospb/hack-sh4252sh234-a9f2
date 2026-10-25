@@ -1,0 +1,38 @@
+# Installed software and generated build caches; reinstall from lockfiles.
+**/node_modules/
+**/.venv/
+**/.venv-mps/
+**/vendor/
+**/.next/
+**/.next-*/
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/*.tsbuildinfo
+**/.DS_Store
+# Secrets and personal browser state are never distributed.
+**/.env
+**/.env.*
+!**/.env.example
+**/profiles/
+**/cookies*
+**/*credentials*
+.codex/
+.agents/
+# Complete data/model snapshots are attached to the GitHub release.
+data/
+imports/
+**/runtime/
+**/output/
+Alfa-Hackaton/news_matching/input/
+Alfa-Hackaton/news_matching/models/
+**/*.sqlite
+**/*.sqlite3
+**/*.sqlite-wal
+**/*.sqlite-shm
+**/*.sqlite3-wal
+**/*.sqlite3-shm
+**/*.onnx
+**/*.safetensors
+.release-downloads/
+distribution/

@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alfa-news-collector"
+version = "0.1.0"
+description = "Persistent Selenium and Chrome news collector"
+requires-python = ">=3.11"
+dependencies = ["selenium==4.51.0", "trafilatura==2.3.1", "Pillow==13.0.0"]
+
+[project.scripts]
+alfa-news = "news_collector.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["news_collector*"]

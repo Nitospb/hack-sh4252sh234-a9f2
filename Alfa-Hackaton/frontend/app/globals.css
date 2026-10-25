@@ -1,0 +1,148 @@
+:root {
+  --red: #ef3124;
+  --red-soft: #fdecea;
+  --ink: #0b1f35;
+  --ink-2: #4a5868;
+  --ink-3: #8a96a3;
+  --bg: #f3f4f5;
+  --card: #ffffff;
+  --line: #e6e8eb;
+  --violet: #7b2ff7;
+  --violet-soft: #f1e9fe;
+  --lime: #a6e500;
+  --lime-soft: #f2fbd9;
+  --green: #0c9b5a;
+  --green-soft: #e3f6ec;
+  --amber: #c77a00;
+  --amber-soft: #fff3dc;
+  --r: 16px;
+  --motion-fast: 160ms;
+  --motion-normal: 240ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font:
+    14px/1.45 -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Text",
+    "Inter",
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+a {
+  color: inherit;
+}
+h1 {
+  font-size: 26px;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+sup a {
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 700;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ink-3);
+  font-size: 12px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+tr:last-child td {
+  border: 0;
+}
+code {
+  font-family: "SF Mono", ui-monospace, Menlo, monospace;
+  font-size: 12px;
+}
+pre {
+  background: #0b1f35;
+  color: #d6e2f0;
+  border-radius: 12px;
+  padding: 14px 16px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--red);
+}
+details summary {
+  cursor: pointer;
+  color: var(--ink-2);
+  font-weight: 600;
+  padding: 10px 0;
+}
+svg text {
+  font:
+    12px -apple-system,
+    Inter,
+    sans-serif;
+}
+input,
+textarea {
+  min-width: 0;
+  color: inherit;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 3px;
+}
+button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+a,
+button,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+html {
+  scroll-behavior: smooth;
+}
+p {
+  overflow-wrap: anywhere;
+}
+svg {
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-normal: 0ms;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

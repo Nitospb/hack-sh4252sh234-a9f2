@@ -1,0 +1,1522 @@
+{
+  "01": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_05",
+      "aspect_03",
+      "aspect_10"
+    ],
+    "incoming_payment": [
+      "aspect_09",
+      "aspect_02",
+      "aspect_12",
+      "aspect_05"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_05",
+      "aspect_08",
+      "aspect_12"
+    ]
+  },
+  "02": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_08",
+      "aspect_10"
+    ],
+    "incoming_payment": [
+      "aspect_11",
+      "aspect_06",
+      "aspect_02",
+      "aspect_10"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_09",
+      "aspect_10",
+      "aspect_11"
+    ]
+  },
+  "03": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_04",
+      "aspect_07",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_08",
+      "aspect_05",
+      "aspect_09",
+      "aspect_03"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_04",
+      "aspect_08",
+      "aspect_10"
+    ]
+  },
+  "06": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_04",
+      "aspect_08",
+      "aspect_11"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_10",
+      "aspect_11",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_06",
+      "aspect_08",
+      "aspect_11"
+    ]
+  },
+  "07": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_09",
+      "aspect_10",
+      "aspect_06"
+    ],
+    "incoming_payment": [
+      "aspect_11",
+      "aspect_01",
+      "aspect_03",
+      "aspect_04"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_04",
+      "aspect_09",
+      "aspect_11"
+    ]
+  },
+  "08": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_09",
+      "aspect_11",
+      "aspect_10"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_10",
+      "aspect_03",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_10",
+      "aspect_11"
+    ]
+  },
+  "09": {
+    "outgoing_payment": [
+      "aspect_04",
+      "aspect_06",
+      "aspect_08",
+      "aspect_10"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_07"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_09",
+      "aspect_10"
+    ]
+  },
+  "10": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_09",
+      "aspect_01",
+      "aspect_11",
+      "aspect_07"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_09",
+      "aspect_10"
+    ]
+  },
+  "11": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_05",
+      "aspect_11"
+    ],
+    "incoming_payment": [
+      "aspect_09",
+      "aspect_10",
+      "aspect_02",
+      "aspect_06"
+    ],
+    "related_company": [
+      "aspect_04",
+      "aspect_07",
+      "aspect_09",
+      "aspect_10"
+    ]
+  },
+  "13": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "14": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "15": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "16": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "17": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "18": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "20": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "21": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "22": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "23": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "24": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "25": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "26": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "27": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "28": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "29": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "30": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "31": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "32": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_01",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_06"
+    ]
+  },
+  "33": {
+    "outgoing_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_10",
+      "aspect_11"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_06",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_06",
+      "aspect_11",
+      "aspect_12"
+    ]
+  },
+  "35": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_06",
+      "aspect_10"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_08",
+      "aspect_11",
+      "aspect_07"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_07",
+      "aspect_10"
+    ]
+  },
+  "36": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_09",
+      "aspect_12",
+      "aspect_01"
+    ],
+    "incoming_payment": [
+      "aspect_08",
+      "aspect_11",
+      "aspect_12",
+      "aspect_04"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_09",
+      "aspect_12"
+    ]
+  },
+  "37": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_05"
+    ],
+    "incoming_payment": [
+      "aspect_06",
+      "aspect_10",
+      "aspect_11",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_05",
+      "aspect_12"
+    ]
+  },
+  "38": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_06",
+      "aspect_07",
+      "aspect_09"
+    ],
+    "incoming_payment": [
+      "aspect_02",
+      "aspect_05",
+      "aspect_06",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_07",
+      "aspect_12"
+    ]
+  },
+  "41": {
+    "outgoing_payment": [
+      "aspect_03",
+      "aspect_04",
+      "aspect_06",
+      "aspect_09"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_10",
+      "aspect_12",
+      "aspect_06"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_05",
+      "aspect_10",
+      "aspect_12"
+    ]
+  },
+  "42": {
+    "outgoing_payment": [
+      "aspect_03",
+      "aspect_04",
+      "aspect_05",
+      "aspect_09"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_10",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_07",
+      "aspect_10"
+    ]
+  },
+  "43": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_03",
+      "aspect_10",
+      "aspect_11"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_12",
+      "aspect_07",
+      "aspect_02"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_06",
+      "aspect_12"
+    ]
+  },
+  "45": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_03",
+      "aspect_04",
+      "aspect_06"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_09",
+      "aspect_10",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_05"
+    ]
+  },
+  "46": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_05"
+    ],
+    "incoming_payment": [
+      "aspect_04",
+      "aspect_06",
+      "aspect_07",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_06"
+    ]
+  },
+  "47": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_12",
+      "aspect_07"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_05",
+      "aspect_10"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_08"
+    ]
+  },
+  "49": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_06",
+      "aspect_11"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_09",
+      "aspect_02"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_06",
+      "aspect_09"
+    ]
+  },
+  "50": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_06",
+      "aspect_07"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_12",
+      "aspect_10"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_06",
+      "aspect_10"
+    ]
+  },
+  "52": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_09",
+      "aspect_11"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_12",
+      "aspect_02"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_04",
+      "aspect_12"
+    ]
+  },
+  "53": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_07",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_09",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ]
+  },
+  "55": {
+    "outgoing_payment": [
+      "aspect_03",
+      "aspect_05",
+      "aspect_07",
+      "aspect_11"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_06",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_05"
+    ]
+  },
+  "56": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_03",
+      "aspect_04",
+      "aspect_05"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_07",
+      "aspect_08",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_08"
+    ]
+  },
+  "58": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_09",
+      "aspect_10",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_06",
+      "aspect_07",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_05",
+      "aspect_06"
+    ]
+  },
+  "59": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_03",
+      "aspect_08",
+      "aspect_10"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_05",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_11"
+    ]
+  },
+  "60": {
+    "outgoing_payment": [
+      "aspect_03",
+      "aspect_05",
+      "aspect_06",
+      "aspect_09"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_07"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_05",
+      "aspect_07"
+    ]
+  },
+  "61": {
+    "outgoing_payment": [
+      "aspect_01",
+      "aspect_04",
+      "aspect_06",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_02",
+      "aspect_08",
+      "aspect_03",
+      "aspect_05"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_09"
+    ]
+  },
+  "62": {
+    "outgoing_payment": [
+      "aspect_03",
+      "aspect_04",
+      "aspect_06",
+      "aspect_10"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_09",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_07",
+      "aspect_09"
+    ]
+  },
+  "63": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_03",
+      "aspect_06",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_07",
+      "aspect_09",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_04",
+      "aspect_07",
+      "aspect_09"
+    ]
+  },
+  "64": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_10",
+      "aspect_11"
+    ],
+    "incoming_payment": [
+      "aspect_03",
+      "aspect_04",
+      "aspect_07",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_04",
+      "aspect_06",
+      "aspect_08",
+      "aspect_11"
+    ]
+  },
+  "66": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_03",
+      "aspect_05",
+      "aspect_09"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_10",
+      "aspect_11",
+      "aspect_08"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_10"
+    ]
+  },
+  "68": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_03",
+      "aspect_04",
+      "aspect_07"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_07",
+      "aspect_08",
+      "aspect_10"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_06",
+      "aspect_07"
+    ]
+  },
+  "69": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_07",
+      "aspect_08"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_06",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_04"
+    ]
+  },
+  "70": {
+    "outgoing_payment": [
+      "aspect_04",
+      "aspect_07",
+      "aspect_09",
+      "aspect_11"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_07",
+      "aspect_10"
+    ],
+    "related_company": [
+      "aspect_02",
+      "aspect_03",
+      "aspect_07",
+      "aspect_09"
+    ]
+  },
+  "71": {
+    "outgoing_payment": [
+      "aspect_05",
+      "aspect_06",
+      "aspect_07",
+      "aspect_08"
+    ],
+    "incoming_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_08",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_08",
+      "aspect_11"
+    ]
+  },
+  "72": {
+    "outgoing_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_07",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_09",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_06",
+      "aspect_09"
+    ]
+  },
+  "73": {
+    "outgoing_payment": [
+      "aspect_03",
+      "aspect_05",
+      "aspect_06",
+      "aspect_10"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_09",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_05",
+      "aspect_09"
+    ]
+  },
+  "74": {
+    "outgoing_payment": [
+      "aspect_04",
+      "aspect_05",
+      "aspect_09",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_06",
+      "aspect_10",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_10",
+      "aspect_11"
+    ]
+  },
+  "75": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_03",
+      "aspect_05",
+      "aspect_06"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_12",
+      "aspect_02",
+      "aspect_06"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_12"
+    ]
+  },
+  "77": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_05",
+      "aspect_11"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_08",
+      "aspect_03",
+      "aspect_09"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_08"
+    ]
+  },
+  "78": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_07",
+      "aspect_10"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_08",
+      "aspect_09",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_04"
+    ]
+  },
+  "79": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_05",
+      "aspect_06",
+      "aspect_11"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_04",
+      "aspect_07",
+      "aspect_09"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_04"
+    ]
+  },
+  "80": {
+    "outgoing_payment": [
+      "aspect_05",
+      "aspect_09",
+      "aspect_10",
+      "aspect_11"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_08",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_08",
+      "aspect_10"
+    ]
+  },
+  "81": {
+    "outgoing_payment": [
+      "aspect_04",
+      "aspect_08",
+      "aspect_09",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_11",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_12"
+    ]
+  },
+  "82": {
+    "outgoing_payment": [
+      "aspect_03",
+      "aspect_05",
+      "aspect_07",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_08",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_07",
+      "aspect_12"
+    ]
+  },
+  "85": {
+    "outgoing_payment": [
+      "aspect_05",
+      "aspect_07",
+      "aspect_08",
+      "aspect_09"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_07",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_05",
+      "aspect_11"
+    ]
+  },
+  "86": {
+    "outgoing_payment": [
+      "aspect_04",
+      "aspect_05",
+      "aspect_08",
+      "aspect_10"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_05",
+      "aspect_06"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_06"
+    ]
+  },
+  "87": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_07",
+      "aspect_08"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_11",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_07",
+      "aspect_11"
+    ]
+  },
+  "88": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_04",
+      "aspect_05",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_04",
+      "aspect_11",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_04",
+      "aspect_11"
+    ]
+  },
+  "90": {
+    "outgoing_payment": [
+      "aspect_07",
+      "aspect_09",
+      "aspect_10",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_05",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_05"
+    ]
+  },
+  "93": {
+    "outgoing_payment": [
+      "aspect_03",
+      "aspect_06",
+      "aspect_07",
+      "aspect_12"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_09",
+      "aspect_10"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_06",
+      "aspect_10"
+    ]
+  },
+  "94": {
+    "outgoing_payment": [
+      "aspect_05",
+      "aspect_06",
+      "aspect_07",
+      "aspect_08"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_03",
+      "aspect_11"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_03",
+      "aspect_04",
+      "aspect_11"
+    ]
+  },
+  "95": {
+    "outgoing_payment": [
+      "aspect_02",
+      "aspect_05",
+      "aspect_07",
+      "aspect_09"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_09",
+      "aspect_11",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_09",
+      "aspect_11"
+    ]
+  },
+  "96": {
+    "outgoing_payment": [
+      "aspect_04",
+      "aspect_05",
+      "aspect_06",
+      "aspect_10"
+    ],
+    "incoming_payment": [
+      "aspect_01",
+      "aspect_07",
+      "aspect_11",
+      "aspect_12"
+    ],
+    "related_company": [
+      "aspect_01",
+      "aspect_02",
+      "aspect_05",
+      "aspect_11"
+    ]
+  }
+}

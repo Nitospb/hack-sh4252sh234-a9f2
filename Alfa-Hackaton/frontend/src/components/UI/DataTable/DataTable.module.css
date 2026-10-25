@@ -1,0 +1,11 @@
+.scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+.caption {
+  text-align: left;
+  font-size: 12px;
+  color: var(--ink-3);
+  padding: 8px 10px;
+  caption-side: bottom;
+}
