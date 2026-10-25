@@ -1,4 +1,4 @@
-"""Download and safely restore all data/models attached to the private GitHub release."""
+"""Download and safely restore all data/models attached to the GitHub release."""
 import argparse
 import hashlib
 import io
