@@ -1,0 +1,10 @@
+# Full-data deployment. Use together with compose.yaml; secrets stay in .env.
+services:
+  api:
+    environment:
+      ALFA_REQUIRE_FULL: "1"
+      ALFA_API_KEY: ${ALFA_API_KEY:?Set ALFA_API_KEY in the server .env}
+      ALFA_INTERNAL_TOKEN: ${ALFA_INTERNAL_TOKEN:?Set a random ALFA_INTERNAL_TOKEN in the server .env}
+  web:
+    environment:
+      ALFA_INTERNAL_TOKEN: ${ALFA_INTERNAL_TOKEN:?Set a random ALFA_INTERNAL_TOKEN in the server .env}

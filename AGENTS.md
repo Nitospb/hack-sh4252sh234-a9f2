@@ -122,3 +122,11 @@ NEXT_AGENT_HANDOFF.md и runtime/collection-stopped-2026-10-26.json.
 Политика и ограничения: Alfa-Hackaton/service/SOURCE_COMPARISON.md. Новые
 числовые сравнения не меняют ранжирование и не доказывают применимость к клиенту.
 OCR-числа не становятся проверенными. Независимая приёмка W04 остаётся открытой.
+
+## Финальная подготовка к деплою
+
+Новая точка входа: DEPLOYMENT.md и compose.deploy.yaml. Последний serving bundle
+в distribution/online-serving-final-2026-10-26-v15 (вне Git). После уборки локальные
+frontend/node_modules/.next отсутствуют: для локальной разработки сначала npm ci,
+для Docker зависимости устанавливаются внутри image. Review-venv сохранён для
+проверок. Не считать текущую остановку сбора временным разрешением его возобновить.
