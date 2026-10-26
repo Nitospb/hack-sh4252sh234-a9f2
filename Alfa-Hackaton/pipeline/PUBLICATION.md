@@ -31,7 +31,9 @@ Feedback, jobs, заметки и bank assets не копируются и не 
 Для Docker каталог releases должен быть смонтирован read-only **целиком**,
 например `/catalog/releases`, и ALFA_CATALOG_RELEASES выставлен в тот же путь
 внутри API-контейнера. Монтирование только current.json не позволяет видеть его
-атомарные замены. Параметр opt-in: действующий Docker не переключается сам собой.
+атомарные замены. В текущем Compose ALFA_CATALOG_RELEASES уже задана на /catalog/releases.
+При наличии current.json API переключается на проверенное поколение в следующем
+запросе; запуск worker остаётся отдельной командой.
 
 Очистка: live-worker сохраняет три последние версии; прочие удаляются только
 после проверки reader-leases и установки .deleting. Каждый активный Feed держит FileLease,

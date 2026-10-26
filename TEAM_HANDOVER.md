@@ -150,3 +150,11 @@ Workflow `.github/workflows/service.yml` запускает синтетичес
 Контрольные тесты:66service+28recommendations+16insight+28pipeline+10evaluation+8tools.
 Последний smoke14 проверок, без платных вызовов. Исторические числа выше относятся
 к предыдущей передаче. Изменения/ограничения зафиксированы в журнале отчёта.
+
+Полный текущий ZIP: `distribution/alfa-team-handover-2026-10-26-v14.1.zip`
+(около919МБ), SHA рядом в `.zip.sha256`. Источник внутри — e5662f7; последние
+уточнения документации доступны в Git. Начать со START_HERE.md внутри ZIP.
+Для e5662f7 **оба GitHub CI прошли**, включая clean Ubuntu Docker smoke:
+[новый репозиторий](https://github.com/holodnayazvezda/Alpha-Hackathon-97a673c845283079/actions/runs/40307914474),
+[командный](https://github.com/Nitospb/hack-sh4252sh234-a9f2/actions/runs/40307928416).
+Полный корпус проверен локально на Mac, Linux CI использует synthetic seed.
