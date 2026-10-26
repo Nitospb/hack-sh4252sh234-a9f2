@@ -1894,6 +1894,11 @@ Smoke создаёт отдельный smoke-user, проверяет CRUD/из
   узкого build context. `frontend/.dockerignore` теперь исключает её;
   повторная сборка API и web на Linux завершилась успешно. Исправлен также
   несовместимый флаг `rsync --chmod` в workflow.
+- Ветка `feature/ssh-deploy` отправлена в origin, GitHub Actions run
+  `40341082186`: checks completed/success, deploy закономерно skipped вне
+  `main`. У исходного пользователя `abramovich` членство в группе Docker,
+  добавленное для начальной проверки, удалено; `alfadeploy` сохранил нужный
+  доступ без sudo.
 - Серверная приёмка full-mode и HTTPS остаётся открытой: актуального serving
   bundle с `catalog.sqlite`/`service-assets.sqlite` на этом Mac и сервере
   нет. Сборщики и обучение не запускались; synthetic fallback для production
