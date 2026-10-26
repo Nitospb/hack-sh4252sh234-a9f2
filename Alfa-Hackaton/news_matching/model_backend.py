@@ -78,31 +78,45 @@ class OnnxTextModel:
 
 class TorchE5Model(OnnxTextModel):
     """Original checkpoint, local Apple GPU. CPU ONNX remains a reproducible fallback."""
-    def __init__(self):
+    def __init__(self, model_dir=None, device='mps'):
         import torch
         from transformers import AutoModel
-        if not torch.backends.mps.is_available():raise RuntimeError('MPS unavailable: run with authorized local Metal access or use CPU backend.')
-        self.kind='embedding';self.torch=torch;self.path=ROOT/'models/e5-torch/model.safetensors'
-        self.tokenizer=Tokenizer.from_file(str(ROOT/'models/e5-tokenizer/tokenizer.json'))
-        self.raw_tokenizer=Tokenizer.from_file(str(ROOT/'models/e5-tokenizer/tokenizer.json'))
-        self.model=AutoModel.from_pretrained(str(ROOT/'models/e5-torch'),local_files_only=True,trust_remote_code=False,torch_dtype=torch.float16,attn_implementation='sdpa').to('mps').eval()
+        if device=='mps' and not torch.backends.mps.is_available():raise RuntimeError('MPS unavailable: use a CPU backend.')
+        if device=='cuda' and not torch.cuda.is_available():raise RuntimeError('CUDA unavailable')
+        self.device=device
+        checkpoint=Path(model_dir) if model_dir else ROOT/'models/e5-torch'
+        tokenizer_dir=checkpoint if (checkpoint/'tokenizer.json').exists() else ROOT/'models/e5-tokenizer'
+        self.kind='embedding';self.torch=torch;self.path=checkpoint/'model.safetensors'
+        # Leave unified memory for macOS and the browser. Never disable MPS limits.
+        if device=='mps':torch.mps.set_per_process_memory_fraction(.65)
+        self.tokenizer=Tokenizer.from_file(str(tokenizer_dir/'tokenizer.json'))
+        self.raw_tokenizer=Tokenizer.from_file(str(tokenizer_dir/'tokenizer.json'))
+        self.model=AutoModel.from_pretrained(str(checkpoint),local_files_only=True,trust_remote_code=False,torch_dtype=torch.float32 if device=='cpu' else torch.float16,attn_implementation='sdpa').to(device).eval()
         torch.set_num_threads(2)
 
     def _run_encoded(self,enc,order,batch_size,progress):
         torch=self.torch
         result=np.empty((len(enc),384),np.float32);start=time.time();last_log=start
+        if not enc:return result
+        # Fixed padded shape bounds MPS graph/allocator caches on long runs.
+        # Attention masks keep padding out of attention and mean pooling.
+        length=max(len(e.ids) for e in enc)
+        batch_size=min(batch_size,8)
         with torch.inference_mode():
             for offset in range(0,len(order),batch_size):
-                idx=order[offset:offset+batch_size];length=max(len(enc[i].ids) for i in idx)
+                idx=order[offset:offset+batch_size]
                 ids=np.ones((len(idx),length),np.int64);mask=np.zeros_like(ids);types=np.zeros_like(ids)
                 for j,i in enumerate(idx):
                     n=len(enc[i].ids);ids[j,:n]=enc[i].ids;mask[j,:n]=enc[i].attention_mask;types[j,:n]=enc[i].type_ids
-                feed={'input_ids':torch.from_numpy(ids).to('mps'),'attention_mask':torch.from_numpy(mask).to('mps'),'token_type_ids':torch.from_numpy(types).to('mps')}
+                feed={'input_ids':torch.from_numpy(ids).to(self.device),'attention_mask':torch.from_numpy(mask).to(self.device),'token_type_ids':torch.from_numpy(types).to(self.device)}
                 hidden=self.model(**feed).last_hidden_state.float();weights=feed['attention_mask'].unsqueeze(-1)
                 vectors=(hidden*weights).sum(1)/weights.sum(1).clamp(min=1)
                 vectors=torch.nn.functional.normalize(vectors,p=2,dim=1)
                 result[idx]=vectors.cpu().numpy()
+                del feed, hidden, weights, vectors
+                if self.device=='mps' and torch.mps.driver_allocated_memory()>3*1024**3:
+                    torch.mps.empty_cache()
                 now=time.time()
                 if progress and (now-last_log>=20 or offset+batch_size>=len(order)):
-                    print(f'{progress} MPS: {min(offset+batch_size,len(order))}/{len(order)}; {now-start:.1f}s',flush=True);last_log=now
+                    print(f'{progress} {self.device.upper()}: {min(offset+batch_size,len(order))}/{len(order)}; {now-start:.1f}s',flush=True);last_log=now
         return result

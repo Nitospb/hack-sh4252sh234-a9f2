@@ -30,8 +30,12 @@ def industry_anchors(title, lead):
     return matched
 
 def enrich(db, source, articles, features, out):
-    families = json.loads((out.parents[1]/'news_matching/output/object_families.json').read_text())
-    family_vectors = np.load(out.parents[1]/'news_matching/output/object_family_embeddings.npy')
+    families = json.loads((Path(__file__).resolve().parents[1]/'news_matching/output/object_families.json').read_text())
+    # Use the encoder paired with these article chunks (including CPU rebuilds).
+    family_path = out/'object_family_embeddings.npy'
+    if not family_path.exists():
+        family_path = Path(__file__).resolve().parents[1]/'news_matching/output/object_family_embeddings.npy'
+    family_vectors = np.load(family_path)
     sectors=sorted({f['sector_id'] for f in families})
     centroids=np.asarray([family_vectors[[i for i,f in enumerate(families) if f['sector_id']==sector]].mean(0) for sector in sectors])
     centroids/=np.linalg.norm(centroids,axis=1,keepdims=True)

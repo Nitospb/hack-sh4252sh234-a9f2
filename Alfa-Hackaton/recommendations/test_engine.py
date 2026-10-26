@@ -1,11 +1,15 @@
 import sqlite3
 import tempfile
 import unittest
+from unittest.mock import patch
+from datetime import datetime, timezone
 from pathlib import Path
 from engine import Feed
 
 class FeedTests(unittest.TestCase):
     def setUp(self):
+        clock=patch('engine.time.time',return_value=datetime(2026,10,26,tzinfo=timezone.utc).timestamp())
+        clock.start();self.addCleanup(clock.stop)
         self.temp = tempfile.TemporaryDirectory()
         root = Path(self.temp.name)
         catalog = root/'catalog.sqlite'

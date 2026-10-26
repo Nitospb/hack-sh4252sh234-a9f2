@@ -20,10 +20,11 @@
 .codex/
 .agents/
 # Complete data/model snapshots are attached to the GitHub release.
-data/
+/data/
 imports/
 **/runtime/
 **/output/
+Alfa-Hackaton/pipeline/output-updated/
 Alfa-Hackaton/news_matching/input/
 Alfa-Hackaton/news_matching/models/
 **/*.sqlite
@@ -36,3 +37,6 @@ Alfa-Hackaton/news_matching/models/
 **/*.safetensors
 .release-downloads/
 distribution/
+Alfa-Hackaton/training/data/
+Alfa-Hackaton/pipeline/output-candidate/
+Alfa-Hackaton/training/labels/

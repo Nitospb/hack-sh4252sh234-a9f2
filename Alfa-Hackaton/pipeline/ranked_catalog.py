@@ -125,7 +125,7 @@ def build(catalog=OUT/'catalog.sqlite', output=OUT/'ranking.sqlite'):
     CREATE TABLE company_coverage(source_record_id TEXT PRIMARY KEY,matched_articles INTEGER,direct_articles INTEGER,role_articles INTEGER,general_articles INTEGER);
     CREATE TABLE metadata(key TEXT PRIMARY KEY,value TEXT);
     ''')
-    industry_by_code, industry_report = enrich(db,source,articles,features,OUT)
+    industry_by_code, industry_report = enrich(db,source,articles,features,output.parent)
     db.executemany('INSERT INTO article_features VALUES(?,?,?,?,?)', [(aid,f[0],f[1],json.dumps(f[2]),f[3]) for aid,f in features.items()])
     db.executemany('INSERT INTO article_objects VALUES(?,?,?,?,?)', objects)
     db.executemany('INSERT INTO operating_defaults VALUES(?,?,?)',[(f,'operating_exposure','Общий операционный контекст бизнеса: финансы, налоги, персонал, закупки и данные. Предполагаемый интерес, не подтвержденная специализация компании.') for f in operating])

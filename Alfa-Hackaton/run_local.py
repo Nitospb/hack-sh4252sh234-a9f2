@@ -17,7 +17,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--web-port',type=int,default=3000)
     parser.add_argument('--api-port',type=int,default=8091)
+    parser.add_argument('--production',action='store_true',help='Use a completed frontend production build')
+    parser.add_argument('--python',default=None,help='Python with service/requirements.lock installed')
     args = parser.parse_args()
+    env_path=ROOT/'.env'
+    if env_path.exists():
+        for line in env_path.read_text().splitlines():
+            if '=' in line and not line.lstrip().startswith('#'):
+                key,value=line.split('=',1)
+                if key.strip().startswith('ALFA_'):os.environ.setdefault(key.strip(),value.strip().strip(chr(34)).strip(chr(39)))
     for port in (args.api_port,args.web_port):
         with socket.socket() as probe:
             if probe.connect_ex(('127.0.0.1',port))==0:
@@ -25,7 +33,7 @@ def main():
     catalog = ROOT / 'pipeline/output/catalog.sqlite'
     if not catalog.exists():
         raise SystemExit('First build the catalog: news_matching/.venv-mps/bin/python pipeline/build.py')
-    python = next((path for path in [ROOT/'news_matching/.venv-mps/bin/python',ROOT/'news_matching/.venv/bin/python'] if path.exists()),None)
+    python = next((path for path in ([Path(args.python).resolve()] if args.python else [ROOT/'news_matching/.venv-mps/bin/python',ROOT/'news_matching/.venv/bin/python',Path(sys.executable)]) if path.exists()),None)
     if python is None:
         raise SystemExit('Install dependencies first: python3 tools/bootstrap.py (from repository root)')
     logs = ROOT / 'pipeline/output/logs';logs.mkdir(parents=True,exist_ok=True)
@@ -43,13 +51,15 @@ def main():
         for _ in range(60):
             if api.poll() is not None: raise RuntimeError('API stopped; inspect pipeline/output/logs/api.log')
             try:
-                with urlopen(f'http://127.0.0.1:{args.api_port}/health',timeout=1) as response:
+                from urllib.request import Request
+                probe=Request(f'http://127.0.0.1:{args.api_port}/health',headers={'X-Alfa-Internal':os.getenv('ALFA_INTERNAL_TOKEN','')})
+                with urlopen(probe,timeout=1) as response:
                     if json.load(response).get('ok'):break
             except OSError: time.sleep(.5)
         else: raise RuntimeError('API did not become ready')
         web_log=(logs/'web.log').open('a');handles.append(web_log)
         env={**os.environ,'ALFA_API_PORT':str(args.api_port)}
-        web_command=[shutil.which('node'),str(ROOT/'frontend/node_modules/next/dist/bin/next'),'dev','--hostname','127.0.0.1','--port',str(args.web_port)]
+        web_command=[shutil.which('node'),str(ROOT/'frontend/node_modules/next/dist/bin/next'),'start' if args.production else 'dev','--hostname','127.0.0.1','--port',str(args.web_port)]
         if apple_silicon:web_command=['/usr/bin/arch','-arm64',*web_command]
         web=subprocess.Popen(web_command,cwd=ROOT/'frontend',stdout=web_log,stderr=subprocess.STDOUT,env=env,start_new_session=True)
         children.append(web)

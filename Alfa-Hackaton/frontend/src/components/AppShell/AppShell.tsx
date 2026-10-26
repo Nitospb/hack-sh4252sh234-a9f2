@@ -5,9 +5,11 @@ import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar/Sidebar";
 import Topbar from "./Topbar/Topbar";
 import Drawer from "@/src/components/UI/Drawer/Drawer";
+import { useLive } from "@/src/providers/LiveProvider";
 import styles from "@/src/styles/Design.module.css";
 
 const AppShell = ({ children }: { children: ReactNode }) => {
+  const {health}=useLive();
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const closeMenu = () => setMenuOpen(false);
@@ -43,7 +45,7 @@ const AppShell = ({ children }: { children: ReactNode }) => {
           menuOpen={menuOpen}
         />
         <div className={styles.pageContent} key={pathname}>
-          {pathname !== "/feed" && <p style={{padding:"10px 16px",background:"#fff7e8",borderRadius:8,fontSize:13}}>Этот раздел содержит демонстрационные данные. <a href="/feed">Открыть рабочую новостную ленту →</a></p>}
+          {health?.dataset_kind === "synthetic" && <p role="status" style={{padding:16,background:"#fff6dd",borderRadius:12}}>Техническая демонстрация на синтетических данных. Эти новости и компании не описывают реальные события.</p>}
           {children}
         </div>
       </main>

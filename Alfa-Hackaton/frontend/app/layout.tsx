@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
-import ClientProvider from "@/src/providers/ClientProvider";
+import LiveProvider from "@/src/providers/LiveProvider";
 import AppShell from "@/src/components/AppShell/AppShell";
 import "./globals.css";
 
@@ -19,9 +19,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ru">
       <body>
         <Suspense fallback={<p>Загрузка…</p>}>
-          <ClientProvider>
+          <LiveProvider>
             <AppShell>{children}</AppShell>
-          </ClientProvider>
+          </LiveProvider>
         </Suspense>
       </body>
     </html>

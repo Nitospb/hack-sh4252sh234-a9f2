@@ -6,7 +6,10 @@ export type Interest = { family_key: string; object: string; relation: string; r
 export type Context = Company & { interests: Interest[]; interest_counts: Record<string, number> };
 export type Match = { family_key: string; name: string; relation: string; company_reason: string; evidence: string };
 export type IndustryMatch = { sector_id: string; score: number; evidence: string; reason: string; relation: string };
-export type Article = {
+export type Story = { story_id:string;member_count:number;visible_evidence_count:number;distinct_hosts:number;dedup_safe:boolean;
+ items:{article_id:string;title:string;source:string;url:string;published_at:string;text?:string}[];
+ numeric_variants:{unit:string;values:{value:string;evidence:{article_id:string;quote:string}[]}[]}[];limitations:string[] };
+export type Article = { story?:Story|null;story_id?:string;story_publications?:number;
   article_id: string; title: string; source: string; url: string; published_at: string | null; kind: string;
   status?: string; text?: string; excerpt?: string; matched_objects?: Match[]; matched_industries?: IndustryMatch[];
   review_required?: boolean; match_level?: string; recommended_lane?: string; reading_minutes?: number;
@@ -14,9 +17,10 @@ export type Article = {
 };
 export type ArticleState = { liked?: boolean; saved?: boolean; hidden?: boolean; disliked?: boolean; viewed?: boolean };
 export type Profile = { role: string; topic_ids: string[]; article_states: Record<string, ArticleState>; stats: { viewed: number; saved: number; liked: number } };
-export type Health = { counts: { news: number; telegram_post: number; companies: number }; catalog_updated_at: string; llm_available: boolean; ranking_version?: string };
+export type CollectionStatus = { phase?: string; running?: boolean; stale?: boolean; cooldown_sources?: number; last_attempt?: string; last_publish_success?: string; collected_articles?: number; eligible_articles?: number; error_type?: string | null; source_health?: {source_id:string;cooldown_until:number;last_error?:string|null}[] };
+export type Health = { bank_retrieval?:{mode:string;semantic_passages:number;encoder_compatible:boolean;quality_measured:boolean}; catalog_publication?: { enabled: boolean; serving_version?: string|null; reload_error?: string|null; publication_lag_seconds?: number|null; pending_serving_reload?: boolean; collection?: CollectionStatus }; dataset_kind?: "synthetic" | "collected"; counts: { news: number; telegram_post: number; companies: number }; catalog_updated_at: string; llm_available: boolean; ranking_version?: string };
 export type FeedResult = { request_id: string; items: Article[]; shortfall: number; eligible_catalog: number; company_topic_count: number; mode: string };
-export type Explanation = { mode: string; title: string; event: string; why_for_company: string[]; questions: string[]; limitations: string[]; ai_generated: boolean; source: { id: string; url: string; published_at: string }; llm_available: boolean };
+export type Explanation = { company_id?: string; source_record_id?: string; role?: string; mode: string; title: string; event: string; why_for_company: string[]; questions: string[]; limitations: string[]; ai_generated: boolean; source: { id: string; url: string; published_at: string }; llm_available: boolean };
 export const ROLES = [
   { id: "general", label: "Общие интересы", detail: "Главное о бизнесе и вашей отрасли" },
   { id: "director", label: "Руководитель", detail: "Рынки, стратегия и развитие бизнеса" },
@@ -33,6 +37,7 @@ export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   if (!response.ok) throw new Error(result.error || "Не удалось получить данные");
   return result;
 }
+
 export function post<T>(path: string, payload: unknown) {
   return api<T>(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
 }

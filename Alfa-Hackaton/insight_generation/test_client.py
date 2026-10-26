@@ -93,6 +93,20 @@ class ClientTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "ограничения"):
             validate_result(self.result, self.payload)
 
+    def test_related_source_ids_are_allowed_only_with_current_date(self):
+        self.payload['related_news']=[{'id':'r1','published_at':'2026-10-24'}]
+        self.result['actions']=[{'text':'Проверить срок','company_fact_ids':['f1'],'source_ids':['r1'],'conditional':True}]
+        validate_result(self.result,self.payload)
+        self.payload['related_news'][0]['published_at']='2026-10-26'
+        with self.assertRaises(ValueError):validate_result(self.result,self.payload)
+
+
+    def test_supported_assessment_can_be_ready_without_a_separate_why_block(self):
+        self.result['ai_application']=self.result['why_for_company']
+        self.result['why_for_company']=[]
+        validate_result(self.result,self.payload)
+        self.payload['company_facts'][0]['evidence_level']='candidate'
+        with self.assertRaises(ValueError):validate_result(self.result,self.payload)
 
 if __name__ == "__main__":
     unittest.main()

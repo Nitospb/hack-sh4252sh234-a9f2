@@ -13,7 +13,7 @@ RELATION_RANK = {'declared_activity':3,'activity_scope_candidate':2,'operating_e
 def health(feed):
     with feed.source() as db:
         kinds = {r[0]:r[1] for r in db.execute('SELECT kind,count(*) FROM articles GROUP BY kind')}
-        counts = dict(articles=sum(kinds.values()), **kinds)
+        counts = dict(articles=sum(kinds.values()), **{'news':0,'telegram_post':0,**kinds})
         counts['companies'] = db.execute('SELECT count(DISTINCT company_id) FROM companies').fetchone()[0]
         counts['accepted_articles'] = db.execute('SELECT count(DISTINCT article_id) FROM family_assignments WHERE status=\'accepted\'').fetchone()[0]
         counts['review_articles'] = db.execute('SELECT count(DISTINCT article_id) FROM family_assignments WHERE status=\'review\'').fetchone()[0]
@@ -21,9 +21,11 @@ def health(feed):
     report = json.loads(report_path.read_text()) if report_path.exists() else {}
     ranking_path=feed.catalog.parent/'ranking_report.json'
     ranking_report=json.loads(ranking_path.read_text()) if ranking_path.exists() else {}
-    return {'ok':True,'counts':counts,'catalog_updated_at':report.get('created_at'),'llm_available':bool(os.getenv('ALFA_API_KEY')),
+    story_path=feed.catalog.parent/'stories_report.json'
+    story_report=json.loads(story_path.read_text()) if story_path.exists() else {}
+    return {'story_groups':story_report.get('multi_publication_stories',0),'multi_host_story_groups':story_report.get('multi_host_stories',0),'ok':True,'counts':counts,'catalog_updated_at':report.get('created_at'),'llm_available':bool(os.getenv('ALFA_API_KEY')),
             'ranking_version':ranking_report.get('built_at','original'),'business_candidates':ranking_report.get('business_eligible_articles',0),
-            'measured_precision':None,'mode':'local_prototype','semantic_model':'multilingual-e5-small + mMiniLM reranker'}
+            'measured_precision':None,'dataset_kind':'synthetic' if report.get('synthetic') else 'collected','mode':'local_prototype','semantic_model':'multilingual-e5-small + mMiniLM reranker'}
 
 def companies(feed, query='', limit=25):
     limit = max(1,min(int(limit),100))
@@ -124,6 +126,8 @@ def article(feed, aid):
         if not a: raise ValueError('article not found')
         result = dict(a); result['images'] = json.loads(result.get('images') or '[]')
         result['object_matches'] = [dict(r) for r in db.execute('SELECT a.*,f.object,f.sector_name FROM family_assignments a JOIN object_families f USING(family_key) WHERE article_id=? ORDER BY reranker_logit DESC',(aid,))]
+    from recommendations.stories import context
+    result["story"]=context(feed,result)
     return result
 
 def news(feed, query='', kind='all', offset=0, limit=30):

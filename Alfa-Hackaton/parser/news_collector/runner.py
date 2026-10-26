@@ -24,7 +24,8 @@ LOG = logging.getLogger(__name__)
 
 
 class Collector:
-    def __init__(self, runtime: Path, headless=False, binary=None, driver_path=None, stop=None):
+    def __init__(self, runtime: Path, headless=False, binary=None, driver_path=None, stop=None, defer_images=False):
+        self.defer_images = defer_images
         self.runtime = runtime
         self.headless,self.binary,self.driver_path = headless,binary,driver_path
         self.stop = stop or threading.Event()
@@ -186,6 +187,8 @@ class Collector:
                     result["saved"] += 1
                     result["new"] += int(created)
                     LOG.info("saved source=%s title=%s",source.id,article.title[:100])
+                    if self.defer_images:
+                        continue
                     try:
                         article.images,article.main_image_path = download_images(browser,self.runtime,article.canonical_url,article.title,article.images,old_images,self.stop)
                     except Exception as exc:

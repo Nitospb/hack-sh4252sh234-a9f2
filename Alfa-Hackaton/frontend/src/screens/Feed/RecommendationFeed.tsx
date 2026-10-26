@@ -4,6 +4,9 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 import { useSearchParams } from "next/navigation";
 import { api, post, ROLES, RELATIONS, displayDate, companyLabel, articleHeadline, type Article, type ArticleState, type Company, type Context, type Explanation, type FeedResult, type Health, type Profile } from "./recommendation-api";
 import s from "./RecommendationFeed.module.css";
+import Link from "next/link";
+import { StoryEvidence } from "@/src/components/StoryEvidence/StoryEvidence";
+import { useLive } from "@/src/providers/LiveProvider";
 
 type IconName = "switch" | "arrow" | "search" | "close" | "bookmark" | "like" | "hide" | "spark" | "settings" | "refresh" | "building" | "user" | "check" | "external" | "info";
 function Icon({ name, size = 17 }: { name: IconName; size?: number }) {
@@ -75,14 +78,14 @@ function ArticleReader({ article, company, role, open, onClose }: { article: Art
     if (!open || !article) return;
     const abort = new AbortController();
     api<Article>(`article?article_id=${article.article_id}`, { signal: abort.signal }).then(setBody).catch(e => { if (!abort.signal.aborted) setError(String(e)); });
-    if (company) api<Explanation>(`insight?${new URLSearchParams({ company_id: company.company_id, source_record_id: company.source_record_id, article_id: article.article_id, role })}`, { signal: abort.signal }).then(setExplanation).catch(e => { if (!abort.signal.aborted) setError(String(e)); });
+    if (company) api<Explanation>(`insight?${new URLSearchParams({ company_id: company.company_id, source_record_id: company.source_record_id, article_id: article.article_id, role })}`, { signal: abort.signal }).then(r => setExplanation({...r, company_id: company.company_id, source_record_id: company.source_record_id, role})).catch(e => { if (!abort.signal.aborted) setError(String(e)); });
     return () => abort.abort();
   }, [open, article, company, role]);
   const currentBody = body?.article_id === article?.article_id ? body : null;
-  const currentExplanation = explanation?.source?.id === article?.article_id ? explanation : null;
+  const currentExplanation = explanation?.source?.id === article?.article_id && explanation?.company_id === company?.company_id && explanation?.source_record_id === company?.source_record_id && explanation?.role === role ? explanation : null;
   return <Dialog open={open} onClose={onClose} title="Новость и контекст" article subtitle={article ? `${article.source} · ${displayDate(article.published_at, true)} МСК` : ""}>
-    {article && <><h2 className={s.articleTitle}>{articleHeadline(article)}</h2><a className={s.originLink} href={/^https?:\/\//.test(article.url) ? article.url : undefined} target="_blank" rel="noopener noreferrer">Перейти к первоисточнику <Icon name="external" size={13} /></a>
-      <div className={s.drawerTabs}><button className={`${s.tab} ${tab === "brief" ? s.selected : ""}`} onClick={() => setTab("brief")}>Кратко и по делу</button><button className={`${s.tab} ${tab === "text" ? s.selected : ""}`} onClick={() => setTab("text")}>Полный текст</button></div>
+    {article && <><StoryEvidence story={currentBody?.story}/><h2 className={s.articleTitle}>{articleHeadline(article)}</h2><a className={s.originLink} href={/^https?:\/\//.test(article.url) ? article.url : undefined} target="_blank" rel="noopener noreferrer">Перейти к первоисточнику <Icon name="external" size={13} /></a>
+      <p><Link className={s.primary} href={`/event?article_id=${encodeURIComponent(article.article_id)}`}>Персональный разбор и диалог с аналитиком →</Link></p><div className={s.drawerTabs}><button className={`${s.tab} ${tab === "brief" ? s.selected : ""}`} onClick={() => setTab("brief")}>Кратко и по делу</button><button className={`${s.tab} ${tab === "text" ? s.selected : ""}`} onClick={() => setTab("text")}>Полный текст</button></div>
       {tab === "text" ? currentBody ? <div className={s.articleText}>{currentBody.text}</div> : <p className={s.micro}>Загружаем текст…</p> : <>
         <section className={s.analysisSection}><h3>Что произошло</h3><p>{currentExplanation?.event || article.excerpt || "Загружаем контекст…"}</p></section>
         <section className={s.analysisSection}><h3>Почему вам показано</h3>{(currentExplanation?.why_for_company?.length ? currentExplanation.why_for_company : article.recommendation_reasons?.map(r => r.text) || ["Общая деловая повестка"]).slice(0, 2).map((t, i) => <p key={i}>{t}</p>)}</section>
@@ -130,6 +133,7 @@ function NewsCard({ article: a, state, user, company, requestId, onEvent, onRead
 
 const EMPTY_PROFILE: Profile = { role: "general", topic_ids: [], article_states: {}, stats: { viewed: 0, liked: 0, saved: 0 } };
 export default function RecommendationFeed() {
+  const live = useLive();
   const urlQuery = useSearchParams().get("q") || "";
   const [health, setHealth] = useState<Health | null>(null); const [featured, setFeatured] = useState<Company[]>([]); const [company, setCompany] = useState<Company | null>(null); const [context, setContext] = useState<Context | null>(null); const [profile, setProfile] = useState<Profile>(EMPTY_PROFILE); const [user, setUser] = useState("");
   const [view, setView] = useState("personal"); const [kind, setKind] = useState("all"); const [strict, setStrict] = useState(false); const [search, setSearch] = useState(""); const [searchOpen, setSearchOpen] = useState(false);
@@ -146,16 +150,17 @@ export default function RecommendationFeed() {
       const q = new URLSearchParams({ company_id: c.company_id, source_record_id: c.source_record_id, user_id: uid });
       const [details, personal] = await Promise.all([api<Context>(`company?${q}`), api<Profile>(`profile?${q}`)]);
       if (revision !== contextGeneration.current) return;
-      setContext({ ...details, display_label: c.display_label, available_count: c.available_count, industry_count: c.industry_count }); setProfile(personal); localStorage.setItem("alfa-active-company-v2", c.source_record_id);
+      setContext({ ...details, display_label: c.display_label, available_count: c.available_count, industry_count: c.industry_count }); setProfile(personal); localStorage.setItem("alfa-active-company-v2", c.source_record_id); window.dispatchEvent(new CustomEvent("alfa:company", { detail: c }));
     } catch (e) { if (revision === contextGeneration.current) { setError(String(e)); setLoading(false); } }
   }, []);
 
   useEffect(() => {
     let cancelled = false;
     const uid = localStorage.getItem("alfa-live-user") || crypto.randomUUID(); localStorage.setItem("alfa-live-user", uid);
-    Promise.all([api<Health>("health"), api<{ items: Company[] }>("companies?limit=8")]).then(([h, c]) => {
+    Promise.all([api<Health>("health"), api<{ items: Company[] }>("companies?limit=8")]).then(async ([h, c]) => {
       if (cancelled) return; setHealth(h); setUser(uid); setFeatured(c.items);
-      const selected = c.items.find(item => item.source_record_id === localStorage.getItem("alfa-active-company-v2")) || c.items[0];
+      const saved = localStorage.getItem("alfa-active-company-v2");
+      const selected = c.items.find(item => item.source_record_id === saved) || (saved ? await api<Company>(`company?${new URLSearchParams({ company_id: saved.split(":line:")[0], source_record_id: saved })}`) : c.items[0]);
       if (selected) chooseCompany(selected, uid); else { setLoading(false); setError("Профили компаний пока недоступны"); }
     }).catch(e => { if (!cancelled) { setError(String(e)); setLoading(false); } });
     return () => { cancelled = true; };
@@ -207,9 +212,9 @@ export default function RecommendationFeed() {
   async function savePreferences(role: string, topicIds: string[]) {
     if (!company) return;
     await post("profile", { company_id: company.company_id, user_id: user, role, topic_ids: topicIds });
-    invalidate(); setProfile(previous => ({ ...previous, role, topic_ids: topicIds })); setToast({ text: "Настройки сохранены. Обновляем рекомендации." });
+    live.refresh(); invalidate(); setProfile(previous => ({ ...previous, role, topic_ids: topicIds })); setToast({ text: "Настройки сохранены. Обновляем рекомендации." });
   }
-  function openArticle(a: Article) { setArticle(a); if (company) recordEvent(a, "open").catch(() => {}); }
+  function openArticle(a: Article) { localStorage.setItem("alfa-active-article-v1", a.article_id);  setArticle(a); if (company) recordEvent(a, "open").catch(() => {}); }
   const displayed = items.filter(a => (view !== "personal" || !profile.article_states[a.article_id]?.hidden) && (kind === "all" || a.kind === kind) && (!search || view === "all" || `${a.title} ${a.source} ${a.matched_objects?.map(m => m.name).join(" ")}`.toLowerCase().includes(search.toLowerCase())));
   const currentRole = ROLES.find(r => r.id === profile.role) || ROLES[0]; const sources = new Set(displayed.map(a => a.source)).size;
   const mainInterests = context?.interests.filter(i => i.relation !== "operating_exposure") || [];

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useClient } from "@/src/providers/ClientProvider";
 import NavigationItem from "../NavigationItem/NavigationItem";
 import styles from "@/src/styles/Design.module.css";
 
@@ -31,7 +30,6 @@ interface SidebarProps {
 
 const Sidebar = ({ mobile = false, onNavigate }: SidebarProps) => {
   const pathname = usePathname();
-  const { events } = useClient();
   const inAnalytics = ANALYTICS_ROUTES.includes(pathname);
 
   return (
@@ -56,25 +54,12 @@ const Sidebar = ({ mobile = false, onNavigate }: SidebarProps) => {
           icon="home"
           active={pathname === "/"}
         />
-        <NavigationItem href="/#accounts" label="Счета" icon="account" />
-        <NavigationItem href="/#accounts" label="Платежи" icon="payment" />
-        <NavigationItem
-          href="/#accounts"
-          label="Кредиты и гарантии"
-          icon="chart"
-        />
-        <NavigationItem
-          href="/#accounts"
-          label="Зарплатный проект"
-          icon="user"
-        />
         <NavigationItem
           href="/feed"
           label="Новостная аналитика"
           icon="news"
           accent
           active={inAnalytics}
-          badge={pathname === "/feed" ? undefined : events.length}
         />
         {inAnalytics &&
           SUB_ITEMS.map(([href, label]) => (
@@ -90,7 +75,7 @@ const Sidebar = ({ mobile = false, onNavigate }: SidebarProps) => {
         <div className={styles.grp}>Для команды банка</div>
         <NavigationItem
           href="/clients"
-          label="Выбор клиента · демо"
+          label="Выбор компании"
           icon="user"
           active={pathname === "/clients"}
         />
@@ -109,12 +94,7 @@ const Sidebar = ({ mobile = false, onNavigate }: SidebarProps) => {
       </nav>
       <div className={styles.sp} />
       <div className={styles.help}>
-        {pathname === "/feed" ? <>Рабочая лента<br />Реальные обезличенные данные</> : <>
-        Персональный менеджер
-        <br />
-        <b style={{ color: "var(--ink)" }}>Ирина С.</b> ·{" "}
-        <a href="tel:88001007733">8 800 100-77-33</a>
-        </>}
+        Локальный прототип<br />Обезличенные данные
       </div>
     </aside>
   );

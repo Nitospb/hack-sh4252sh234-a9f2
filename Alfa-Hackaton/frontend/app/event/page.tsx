@@ -1,13 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import Event from "@/src/screens/Event/Event";
-
+import Workspace from "@/src/screens/Workspace/Workspace";
 export const metadata: Metadata = { title: "Разбор события" };
-
-export default function Page() {
-  return (
-    <Suspense fallback={<p>Загрузка…</p>}>
-      <Event />
-    </Suspense>
-  );
-}
+export default function Page() { return <Workspace kind="event" />; }

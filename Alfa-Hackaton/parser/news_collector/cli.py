@@ -44,6 +44,7 @@ def main(argv=None):
     sub.add_parser("sources",help="List configured sources")
     for name in ("collect","run"):
         cmd = sub.add_parser(name)
+        cmd.add_argument("--defer-images",action="store_true",help="Keep image URLs without downloading bytes")
         cmd.add_argument("--sources",nargs="*",default=[])
         cmd.add_argument("--workers",type=int,choices=range(1,5),default=2)
         cmd.add_argument("--max-articles",type=int,default=30,help="Maximum article attempts per source per cycle, additionally capped by source budget")
@@ -227,7 +228,7 @@ def main(argv=None):
             stop = threading.Event()
             signal.signal(signal.SIGINT,lambda *_:stop.set())
             signal.signal(signal.SIGTERM,lambda *_:stop.set())
-            collector = Collector(args.runtime,args.headless,args.chrome_binary,args.chromedriver,stop)
+            collector = Collector(args.runtime,args.headless,args.chrome_binary,args.chromedriver,stop,defer_images=args.defer_images)
             with runtime_lock(args.runtime):
                 # Bootstrap schema before worker connections run DDL concurrently.
                 Store(args.runtime/"news.sqlite3").close()

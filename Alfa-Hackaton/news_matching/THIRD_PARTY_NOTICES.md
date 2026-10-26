@@ -12,3 +12,5 @@
 - Topic dictionary and OKVED mappings: project-authored data from `taxonomy/`; original `bt_` IDs used without additions.
 
 Model inference is local. The only external downloads during preparation were public model weights/tokenizers and software packages; news and company data were not sent to those services. No custom remote model code is executed.
+
+Online analysis is implemented separately in `service/`: selected news, bank passages and anonymized company facts are sent to the approved organizer LLM gateway. The local-model preparation statement above does not imply that the generative web scenario is fully offline. Server-side keys are excluded from Git and images.

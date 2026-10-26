@@ -1,13 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import Trace from "@/src/screens/Trace/Trace";
-
+import Workspace from "@/src/screens/Workspace/Workspace";
 export const metadata: Metadata = { title: "Журнал агента" };
-
-export default function Page() {
-  return (
-    <Suspense fallback={<p>Загрузка…</p>}>
-      <Trace />
-    </Suspense>
-  );
-}
+export default function Page() { return <Workspace kind="trace" />; }

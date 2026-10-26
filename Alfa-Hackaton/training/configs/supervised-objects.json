@@ -1,0 +1,20 @@
+{
+  "mode": "supervised_objects",
+  "data_dir": "../data/news-v1",
+  "model_dir": "../../news_matching/models/e5-torch",
+  "tokenizer_dir": "../../news_matching/models/e5-tokenizer",
+  "output_dir": "../output/e5-supervised-objects",
+  "device": "auto",
+  "epochs": 3,
+  "logical_batch_size": 16,
+  "micro_batch_size": 2,
+  "max_length": 384,
+  "learning_rate": 0.00001,
+  "weight_decay": 0.01,
+  "temperature": 0.05,
+  "warmup_fraction": 0.1,
+  "max_grad_norm": 1.0,
+  "checkpoint_every_updates": 100,
+  "seed": 42,
+  "mps_memory_fraction": 0.65
+}

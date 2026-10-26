@@ -1,13 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import Architecture from "@/src/screens/Architecture/Architecture";
-
-export const metadata: Metadata = { title: "Архитектура решения" };
-
-export default function Page() {
-  return (
-    <Suspense fallback={<p>Загрузка…</p>}>
-      <Architecture />
-    </Suspense>
-  );
-}
+import Workspace from "@/src/screens/Workspace/Workspace";
+export const metadata: Metadata = { title: "Архитектура" };
+export default function Page() { return <Workspace kind="architecture" />; }

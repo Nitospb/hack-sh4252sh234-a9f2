@@ -3,6 +3,7 @@ import argparse
 import json
 import os
 import sys
+from http.client import HTTPException
 from datetime import datetime, timezone
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -39,7 +40,8 @@ def validate_result(result, payload):
     facts = {f["id"] for f in payload["company_facts"]}
     passages = {p["id"] for p in payload["bank_passages"]}
     news_id = payload["news"]["id"]
-    sources = passages | {news_id}
+    related={p["id"] for p in payload.get("related_news",[])}
+    sources = passages | {news_id} | related
 
     def walk(value):
         if isinstance(value, dict):
@@ -62,6 +64,9 @@ def validate_result(result, payload):
         raise ValueError("Новость опубликована после даты анализа")
     if result["event"]["source_ids"] != [news_id]:
         raise ValueError("Факт события должен ссылаться на исходную новость")
+    for item in payload.get('related_news',[]):
+        if not item.get('published_at') or _date(item['published_at'])>as_of:
+            raise ValueError('Связанная публикация без известной даты или из будущего')
     bank = result["bank_view"]
     if bank:
         if not set(bank["source_ids"]) <= passages:
@@ -76,13 +81,13 @@ def validate_result(result, payload):
                 raise ValueError("Материал банка опубликован после даты анализа")
         if bank["relation"] == "analogous" and not bank["limitations"].strip():
             raise ValueError("Для аналогичной ситуации нужны ограничения переноса")
-    if result["status"] == "ready" and not result["why_for_company"]:
+    if result["status"] == "ready" and not any(result[field] for field in ("why_for_company","ai_application","risks","opportunities","actions")):
         raise ValueError("Готовый инсайт должен объяснять связь с компанией")
     confirmed = {f["id"] for f in payload["company_facts"]
                  if f.get("evidence_level") == "confirmed"}
     if result["status"] == "ready" and not any(
         set(claim["company_fact_ids"]) & confirmed
-        for claim in result["why_for_company"]
+        for field in ("why_for_company","ai_application","risks","opportunities","actions") for claim in result[field]
     ):
         raise ValueError("Связь только по гипотезам требует needs_context")
     uncertain = {f["id"] for f in payload["company_facts"]
@@ -91,13 +96,21 @@ def validate_result(result, payload):
         for claim in result[field]:
             if set(claim["company_fact_ids"]) & uncertain and not claim["conditional"]:
                 raise ValueError("Вывод по неподтверждённому признаку должен быть условным")
-    if result["status"] == "needs_context" and not result["missing_context"]:
-        raise ValueError("Укажите, каких данных не хватает для персонального вывода")
+    if result["status"] == "needs_context" and not result["missing_context"] and not result["limitations"]:
+        raise ValueError("Укажите необходимое уточнение или объясните ограничение оценки")
     if result["status"] == "not_relevant" and any(result[k] for k in (
         "why_for_company", "ai_application", "risks", "opportunities", "actions"
     )):
         raise ValueError("Нерелевантная новость не должна содержать персональных выводов")
     return result
+
+
+def generation_options(model):
+    # Qwen defaults to thinking. The gateway supports the OpenRouter reasoning knob;
+    # source-grounding is performed in a separate bounded verification call.
+    options={"response_format":{"type":"json_object"}}
+    if model=="qwen/qwen3.6-35b-a3b":options["reasoning"]={"effort":"none"}
+    return options
 
 
 def generate(payload, *, transport=None):
@@ -115,10 +128,11 @@ def generate(payload, *, transport=None):
     if len(ids) != len(set(ids)):
         raise ValueError("ID входных материалов должны быть уникальны")
     messages = prepared["messages"]
+    messages[0]["content"] += "\nТочное значение event.source_ids: " + json.dumps([payload["news"]["id"]]) + ". Только первичная новость, без bank_passages. Каждый ID копируй полностью из входа."
     # Put the schema in the prompt to avoid assuming gateway support for
     # response_format/json_schema. Always validate the returned JSON locally.
     messages[0]["content"] += "\nJSON Schema:\n" + json.dumps(OUTPUT_SCHEMA, ensure_ascii=False)
-    body = {"model": model, "messages": messages, "max_tokens": 4096}
+    body = {"model": model, "messages": messages, "max_tokens": 8192, **generation_options(model)}
     request = Request(base + "/chat/completions",
                       data=json.dumps(body).encode(),
                       headers={"Authorization": "Bearer " + key,
@@ -132,12 +146,15 @@ def generate(payload, *, transport=None):
         if "budget has been exceeded" in message:
             raise RuntimeError("Бюджет исчерпан; сброс в 03:00 МСК. Повторов не было.") from None
         raise RuntimeError(f"Ошибка шлюза HTTP {exc.code}. Повторов не было.") from None
-    except (URLError, TimeoutError):
+    except (URLError, TimeoutError, OSError, HTTPException):
         raise RuntimeError("Шлюз недоступен или истёк таймаут. Повторов не было.") from None
     try:
+        if not isinstance(raw,dict):raise TypeError("gateway response is not an object")
         choice = raw["choices"][0]
         if choice.get("finish_reason") != "stop":
-            raise ValueError("Модель не завершила ответ; результат не опубликован")
+            exc=ValueError("Модель не завершила ответ; результат не опубликован")
+            exc.usage=raw.get("usage", {})
+            raise exc
         content = choice["message"]["content"].strip()
         # Some compatible endpoints wrap JSON in a Markdown code block.
         # Accept a single complete block, never extract a fragment from prose.
@@ -146,10 +163,16 @@ def generate(payload, *, transport=None):
         elif content.startswith("```\n") and content.endswith("\n```"):
             content = content[4:-4]
         result = json.loads(content)
-    except (KeyError, IndexError, TypeError, json.JSONDecodeError):
-        raise ValueError("Шлюз не вернул ожидаемый JSON; результат не опубликован") from None
-    return {"insight": validate_result(result, payload),
-            "model": model, "usage": raw.get("usage", {})}
+    except (KeyError, IndexError, TypeError, AttributeError, json.JSONDecodeError):
+        exc=ValueError("Шлюз не вернул ожидаемый JSON; результат не опубликован")
+        exc.usage=raw.get("usage",{}) if isinstance(raw,dict) else {}
+        raise exc from None
+    try:
+        validated=validate_result(result,payload)
+    except Exception as exc:
+        exc.usage=raw.get("usage",{})
+        raise
+    return {"insight": validated, "model": model, "usage": raw.get("usage", {})}
 
 
 if __name__ == "__main__":
