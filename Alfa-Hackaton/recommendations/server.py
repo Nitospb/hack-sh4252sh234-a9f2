@@ -69,7 +69,12 @@ def handler(engine, runtime=None, snapshots=None):
                     elif url.path=='/run':result=runtime.get_run(q['run_id'],c['company_id'],user,c['source_record_id'])
                     elif url.path=='/scenarios':result=runtime.scenarios(c,user)
                     else:result=runtime.metrics(c['company_id'],user,c['source_record_id'])
-                elif url.path=='/bank-sources':result={'items':bank.documents(runtime.assets),'passages':bank.search(runtime.assets,q.get('q',''),q.get('as_of') or __import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat()) if q.get('q') else []}
+                elif url.path=='/bank-sources':
+                    as_of=q.get('as_of') or __import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat()
+                    passages=bank.search(runtime.assets,q.get('q',''),as_of) if q.get('q') else []
+                    comparison=bank.compare_forecasts(runtime.assets,passages,as_of)
+                    result={'items':bank.documents(runtime.assets),'passages':passages,'forecast_evidence':comparison}
+
                 elif url.path=='/bank-file':
                     import sqlite3
                     with sqlite3.connect(runtime.assets) as db:r=db.execute('SELECT title,sha256 FROM bank_documents WHERE id=?',(q['document_id'],)).fetchone()

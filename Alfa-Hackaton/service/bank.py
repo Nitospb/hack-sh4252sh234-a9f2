@@ -149,3 +149,43 @@ def documents(assets):
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--output',required=True);p.add_argument('--reports');p.add_argument('--tessdata');a=p.parse_args()
     build(a.output,a.reports,a.tessdata)
+
+
+def compare_forecasts(assets,passages,as_of,max_extra=2):
+    """Find exact-context later forecasts, without changing retrieval scores/order."""
+    from pipeline.facts import compare,extract
+    # The full dated pool is small; preserve all normal as_of and OCR text gates.
+    max_extra=max(0,min(int(max_extra),2))
+    if not passages:return {'report':compare([]),'additional_passages':[],'policy':'explicit-matching-forecast-companions-v1','retrieval_order_unchanged':True}
+    start=(datetime.fromisoformat(as_of.replace('Z','+00:00'))-timedelta(days=180)).date().isoformat()
+    def source(row):
+        return {**row,'title':row.get('document_title',''),'owner':'alfa_bank'}
+    with sqlite3.connect(Path(assets).resolve().as_uri()+'?mode=ro',uri=True) as db:
+        db.row_factory=sqlite3.Row
+        rows=[dict(r) for r in db.execute('''SELECT p.id,d.id AS document_id,d.title AS document_title,d.published_at,p.page,p.text,p.method
+            FROM bank_passages p JOIN bank_documents d ON d.id=p.document_id
+            WHERE d.published_at IS NOT NULL AND d.published_at BETWEEN ? AND ? ORDER BY d.published_at DESC,p.id LIMIT 500''',(start,as_of[:10]))]
+    rows=[r for r in rows if sum(c.isalpha() for c in r['text'])/max(1,len(r['text']))>=.50]
+    selected={p['id'] for p in passages}
+    original=[source(p) for p in passages]
+    # Restrict candidates to explicit matching context before pair comparisons.
+    def key(f):
+        return (f['metric'],f['subject']['id'],f['period']['key'],f['unit'],f['measure'],f['aggregation'],f['frequency'],f['accounting'],f['valuation'],f['scenario'])
+    original_facts=[f for s in original for f in extract(s) if f['comparable']]
+    keys={key(f) for f in original_facts}
+    candidates=[source(r) for r in rows if r['id'] not in selected and any(f['comparable'] and key(f) in keys for f in extract(source(r)))] if keys else []
+    # Compare each candidate against retrieved context; other candidate pairs cannot
+    # introduce unrelated sources or push a retrieved passage out of the result.
+    updates=[]
+    for candidate in candidates if max_extra else []:
+        report=compare([*original,candidate])
+        facts={f['id']:f for f in report['facts']}
+        preferred=[facts[c['preferred_fact_id']] for c in report['comparisons'] if c['preferred_fact_id'] and c['status'] in ('forecast_revision','later_forecast') and candidate['id'] in c['source_ids']]
+        if any(f['source_id']==candidate['id'] for f in preferred):updates.append(candidate)
+        if len(updates)>=max_extra:break
+    for p in updates:
+        p.update(url=f"/api/live/bank-file?document_id={p['document_id']}#page={p['page']}",
+                 locator=f"{p['document_title']}, с. {p['page']}",retrieval_methods=['forecast_context_companion'],
+                 relation='analogous',limitations='Дополнение к найденному прогнозу с совпавшим показателем и горизонтом; не самостоятельная оценка применимости к компании.')
+    return {'report':compare([*original,*updates]),'additional_passages':updates,
+            'policy':'explicit-matching-forecast-companions-v1','retrieval_order_unchanged':True}

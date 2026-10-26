@@ -1,3 +1,4 @@
+import type { ComparisonReport } from "@/src/components/EvidenceComparison/EvidenceComparison";
 export type Company = {
   company_id: string; source_record_id: string; okved: string; activity: string;
   region: string; display_label?: string; available_count: number; industry_count: number; topic_count: number;
@@ -6,7 +7,7 @@ export type Interest = { family_key: string; object: string; relation: string; r
 export type Context = Company & { interests: Interest[]; interest_counts: Record<string, number> };
 export type Match = { family_key: string; name: string; relation: string; company_reason: string; evidence: string };
 export type IndustryMatch = { sector_id: string; score: number; evidence: string; reason: string; relation: string };
-export type Story = { story_id:string;member_count:number;visible_evidence_count:number;distinct_hosts:number;dedup_safe:boolean;
+export type Story = { fact_comparison?:ComparisonReport; story_id:string;member_count:number;visible_evidence_count:number;distinct_hosts:number;dedup_safe:boolean;
  items:{article_id:string;title:string;source:string;url:string;published_at:string;text?:string}[];
  numeric_variants:{unit:string;values:{value:string;evidence:{article_id:string;quote:string}[]}[]}[];limitations:string[] };
 export type Article = { story?:Story|null;story_id?:string;story_publications?:number;

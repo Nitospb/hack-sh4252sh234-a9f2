@@ -3,7 +3,7 @@ WORKDIR /app
 COPY service/requirements.lock /tmp/requirements.lock
 RUN pip install --no-cache-dir -r /tmp/requirements.lock && useradd --uid 10001 --create-home app
 COPY recommendations ./recommendations
-COPY pipeline/publication.py ./pipeline/publication.py
+COPY pipeline/publication.py pipeline/facts.py ./pipeline/
 COPY insight_generation ./insight_generation
 COPY service ./service
 RUN mkdir -p /state /catalog /data/reports && chown -R app:app /state

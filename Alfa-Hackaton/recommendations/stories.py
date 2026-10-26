@@ -4,6 +4,7 @@ from datetime import datetime,timezone,timedelta
 import json
 import sqlite3
 from urllib.parse import urlsplit
+from pipeline.facts import compare
 
 
 def context(feed,article,as_of=None):
@@ -52,6 +53,7 @@ def context(feed,article,as_of=None):
         'visible_evidence_count':len(items),'distinct_hosts':len({urlsplit(x['url']).hostname for x in items}),
         'dedup_safe':bool(story['dedup_safe']),'items':items,
         'numeric_variants':differences,
+        'fact_comparison':compare([{'id':i['article_id'],'title':i['title'],'text':i['text'],'published_at':i['published_at']} for i in items]),
         'limitations':['Автоматическая группа похожих публикаций, не ручное подтверждение общего события.',
             'Разные домены не доказывают независимость редакций или первичных источников.']}
 
