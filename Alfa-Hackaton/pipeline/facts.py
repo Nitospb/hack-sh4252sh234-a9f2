@@ -146,11 +146,10 @@ def extract(source,max_facts=40):
         for clause in re.finditer(r'[^;]+',sentence):
             fragment=clause.group();base=sentence_start+clause.start()
             metrics=[(key,label,m) for key,label,pattern in METRICS for m in re.finditer(pattern,fragment,re.I)]
-            title_metrics=[(key,label,m) for key,label,pattern in METRICS for m in re.finditer(pattern,title,re.I)]
             numbers=list(NUMBER.finditer(fragment))
             for number_index,number in enumerate(numbers):
                 nearby=sorted((x for x in metrics if abs(x[2].end()-number.start())<=140),key=lambda x:(x[2].start()>number.start(),abs(x[2].end()-number.start())))
-                chosen=nearby[0] if nearby else title_metrics[0] if sentence_start==0 and clause.start()==0 and number_index==0 and number.start()<400 and len({x[0] for x in title_metrics})==1 and title_metrics else None
+                chosen=nearby[0] if nearby else None
                 if chosen:
                     metric_end=chosen[2].end()
                     if number_index and metric_end<numbers[number_index-1].start():

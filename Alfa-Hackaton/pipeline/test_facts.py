@@ -5,6 +5,12 @@ from pipeline.facts import extract,compare,period
 def source(id,text,date='2026-10-26T12:00:00Z',**kw):return {'id':id,'text':text,'title':'','published_at':date,**kw}
 
 class FactTests(unittest.TestCase):
+    def test_headline_metric_does_not_relabel_even_first_lead_quantity(self):
+        row=source('a','Индекс МосБиржи вырос на 6% после заседания Банка России.',title='Банк России сохранил ключевую ставку 14%')
+        fact=extract(row)[0]
+        self.assertIsNone(fact['metric'])
+        self.assertFalse(fact['comparable'])
+
     def test_equal_forecast_and_result_remain_different_statement_kinds(self):
         rows=[source('a','Прогноз инфляции России на 2025 год: 6%.','2024-12-01'),
               source('b','Инфляция России за 2025 год составила 6%.')]
