@@ -1879,6 +1879,26 @@ Smoke создаёт отдельный smoke-user, проверяет CRUD/из
   авторизация, независимая оценка качества и живая LLM-приёмка не заявлены готовыми.
   Свидетельства: .release-downloads/deploy-*.log/json, вне Git.
 
+### 26.10.2026 — W06.7: подготовка SSH-хоста для CI/CD
+
+- Пользователь предоставил SSH-машину `vpn.aezakmi.org`, env-файл и поручил
+  push/деплой; по отдельному уточнению создан пользователь `alfadeploy`.
+- На сервере подготовлен `/opt/alfahack`, отдельный SSH-ключ пользователя
+  проверен, доступ к Docker и внешней attachable-сети
+  `traefik_traefik_proxy` работает. GitHub Actions secrets `DEPLOY_HOST`,
+  `DEPLOY_USER`, `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS`, `DEPLOY_ENV_FILE`
+  установлены без вывода значений. `.env` записан с правами 600, исходники
+  перенесены из чистого Git-снимка. Предоставленный `ALFA_API_KEY` пустой;
+  отдельный `ALFA_INTERNAL_TOKEN` сгенерирован для межсервисного доступа.
+- Первый Linux Docker build обнаружил битую ссылку `frontend/AGENTS.md` внутри
+  узкого build context. `frontend/.dockerignore` теперь исключает её;
+  повторная сборка API и web на Linux завершилась успешно. Исправлен также
+  несовместимый флаг `rsync --chmod` в workflow.
+- Серверная приёмка full-mode и HTTPS остаётся открытой: актуального serving
+  bundle с `catalog.sqlite`/`service-assets.sqlite` на этом Mac и сервере
+  нет. Сборщики и обучение не запускались; synthetic fallback для production
+  запрещён. Изменения не означают приёмку качества LLM.
+
 ### Шаблон следующей записи — копировать для каждого завершённого изменения
 
 ```text

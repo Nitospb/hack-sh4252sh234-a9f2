@@ -140,7 +140,7 @@ jobs:
           env_file="$(mktemp "$RUNNER_TEMP/alfa-env.XXXXXXXX")"
           trap 'rm -f "$env_file"' EXIT
           printf '%s\n' "$DEPLOY_ENV_FILE" > "$env_file"
-          rsync -a --chmod=F600 \
+          rsync -a \
             -e "ssh -p $DEPLOY_PORT -o BatchMode=yes -o StrictHostKeyChecking=yes" \
             "$env_file" "$DEPLOY_USER@$DEPLOY_HOST:/opt/alfahack/.env.deploy"
           ssh -p "$DEPLOY_PORT" -o BatchMode=yes -o StrictHostKeyChecking=yes \
