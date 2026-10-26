@@ -61,11 +61,12 @@ def handler(engine, runtime=None, snapshots=None):
                 elif url.path=='/article':result=catalog.article(engine,q['article_id'])
                 elif url.path=='/news':result=catalog.news(engine,q.get('q',''),q.get('kind','all'),q.get('offset',0),q.get('limit',30))
                 elif url.path=='/insight':result=catalog.insight(engine,q['company_id'],q['article_id'],q.get('source_record_id'),role=q.get('role','general'))
-                elif url.path in ('/context','/runs','/run','/metrics'):
+                elif url.path in ('/context','/runs','/run','/metrics','/scenarios'):
                     c,user=self.identity(q)
                     if url.path=='/context':result={**c,**runtime.context(c,user)}
                     elif url.path=='/runs':result=runtime.list_runs(c['company_id'],user,c['source_record_id'])
                     elif url.path=='/run':result=runtime.get_run(q['run_id'],c['company_id'],user,c['source_record_id'])
+                    elif url.path=='/scenarios':result=runtime.scenarios(c,user)
                     else:result=runtime.metrics(c['company_id'],user,c['source_record_id'])
                 elif url.path=='/bank-sources':result={'items':bank.documents(runtime.assets),'passages':bank.search(runtime.assets,q.get('q',''),q.get('as_of') or __import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat()) if q.get('q') else []}
                 elif url.path=='/bank-file':
@@ -100,6 +101,7 @@ def handler(engine, runtime=None, snapshots=None):
                     if self.path=='/chat' and not p.get('parent_run_id'):raise ValueError('Выберите завершённый разбор для диалога')
                     vector=engine.vectors.get(a['article_id'])
                     result=runtime.submit(c,a,user,p.get('role','general'),p.get('question',''),p.get('parent_run_id'),retrieval={'vector':vector.tolist(),'encoder_sha':engine.encoder_sha} if vector is not None else None)
+                elif self.path=='/scenario':result=runtime.scenario(c,user,p.get('parameters'))
                 elif self.path=='/context':
                     result=runtime.delete_note(c,user,p['delete_id']) if p.get('delete_id') else runtime.add_note(c,user,p.get('text',''))
                 elif self.path=='/insight':

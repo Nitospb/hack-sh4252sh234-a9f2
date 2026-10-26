@@ -18,6 +18,9 @@ jobs:
       - run: python -m unittest discover -s recommendations -p 'test_*.py'
       - run: python -m unittest discover -s insight_generation -p 'test_*.py'
       - run: python -m unittest discover -s evaluation -p 'test_*.py'
+      - run: python -m unittest discover -s pipeline -p 'test_*.py'
+      - run: PYTHONPATH=Alfa-Hackaton python -m unittest discover -s tools -p 'test_*.py'
+        working-directory: .
       - uses: actions/setup-node@v4
         with:
           node-version: '22.16.0'
@@ -25,3 +28,29 @@ jobs:
           cache-dependency-path: Alfa-Hackaton/frontend/package-lock.json
       - run: npm ci && npm run lint && npm run build -- --webpack
         working-directory: Alfa-Hackaton/frontend
+      - name: Clean synthetic Docker installation
+        env:
+          COMPOSE_PROJECT_NAME: alfa-ci-${{ github.run_id }}
+          ALFA_WEB_PORT: 33000
+          ALFA_API_KEY: ''
+        run: docker compose up --build -d --wait --wait-timeout 180
+      - name: Wait for web startup
+        run: |
+          python - <<'PYCODE'
+          import time, urllib.request
+          for attempt in range(30):
+              try:
+                  urllib.request.urlopen('http://127.0.0.1:33000/api/live/health', timeout=3).close()
+                  break
+              except OSError:
+                  time.sleep(1)
+          else:
+              raise SystemExit('Web did not become ready')
+          PYCODE
+      - name: Smoke clean installation without paid calls
+        run: python -m service.smoke --base http://127.0.0.1:33000/api/live
+      - name: Dispose isolated CI containers
+        if: always()
+        env:
+          COMPOSE_PROJECT_NAME: alfa-ci-${{ github.run_id }}
+        run: docker compose down --volumes

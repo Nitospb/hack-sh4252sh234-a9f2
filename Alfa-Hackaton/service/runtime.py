@@ -19,11 +19,14 @@ from jsonschema.exceptions import ValidationError
 from insight_generation.client import ALLOWED_URLS, BASE_URL, MODELS, generate, validate_result, generation_options
 from insight_generation.prompt import obj, TEXT
 from . import bank
+from .scenarios import calculate
+from .quality import status as quality_status
 from .context import get_context
 from .planning import plan
+from .dialogue import remember,changes,analysis_changes
 from .verification import VERIFICATION_SCHEMA,claim_items,apply as apply_verification
 
-VERSION='grounded-agent-v13.2'
+VERSION='grounded-agent-v14.1'
 
 
 def now_iso():return datetime.now(timezone.utc).isoformat()
@@ -46,10 +49,15 @@ class Runtime:
             CREATE TABLE IF NOT EXISTS steps(run_id TEXT,seq INTEGER,tool TEXT,created_at TEXT,duration_ms REAL,input TEXT,output TEXT,PRIMARY KEY(run_id,seq));
             CREATE TABLE IF NOT EXISTS clarifications(id TEXT PRIMARY KEY,company TEXT,record_id TEXT,user TEXT,text TEXT,created_at TEXT);
             CREATE TABLE IF NOT EXISTS calls(id TEXT PRIMARY KEY,run_id TEXT,day TEXT,status TEXT,usage TEXT,created_at TEXT);
+            CREATE TABLE IF NOT EXISTS scenarios(id TEXT PRIMARY KEY,company TEXT,record_id TEXT,user TEXT,created_at TEXT,result TEXT);
             CREATE TABLE IF NOT EXISTS runtime_meta(key TEXT PRIMARY KEY,value TEXT);
             CREATE TABLE IF NOT EXISTS reviews(run_id TEXT,user TEXT,rating TEXT,note TEXT,created_at TEXT,PRIMARY KEY(run_id,user));
             CREATE INDEX IF NOT EXISTS run_scope ON runs(company,user,created_at);
             ''')
+            columns={r[1] for r in db.execute('PRAGMA table_info(clarifications)')}
+            for name,kind in [('field','TEXT'),('kind','TEXT'),('parent_run_id','TEXT'),('quote_offset','INTEGER'),('message_id','TEXT')]:
+                if name not in columns:db.execute(f'ALTER TABLE clarifications ADD COLUMN {name} {kind}')
+            db.execute('CREATE TABLE IF NOT EXISTS dialogue_messages(id TEXT PRIMARY KEY,company TEXT,record_id TEXT,user TEXT,parent_run_id TEXT,text TEXT,created_at TEXT)')
             # Queued work from a terminated process cannot silently look healthy forever.
             db.execute("UPDATE calls SET status='interrupted' WHERE status='reserved'")
             db.execute("UPDATE runs SET status='interrupted',error='Сервис перезапущен. Повторите запуск явно.',updated_at=? WHERE status IN ('queued','running')",(now_iso(),))
@@ -67,12 +75,25 @@ class Runtime:
             count=db.execute('SELECT count(*) FROM clarifications WHERE company=? AND record_id=? AND user=?',(company['company_id'],company['source_record_id'],user)).fetchone()[0]
             if count>=20:raise ValueError('Максимум 20 уточнений на профиль; удалите неактуальные')
             nid=uuid.uuid4().hex
-            db.execute('INSERT INTO clarifications VALUES(?,?,?,?,?,?)',(nid,company['company_id'],company['source_record_id'],user,text.strip(),now_iso()))
+            db.execute('INSERT INTO clarifications(id,company,record_id,user,text,created_at) VALUES(?,?,?,?,?,?)',(nid,company['company_id'],company['source_record_id'],user,text.strip(),now_iso()))
         return {'saved':True,'id':nid}
 
     def delete_note(self, company, user, nid):
         with self.db() as db:db.execute('DELETE FROM clarifications WHERE id=? AND company=? AND record_id=? AND user=?',(nid,company['company_id'],company['source_record_id'],user))
         return {'deleted':True}
+
+    def scenario(self,company,user,parameters):
+        result=calculate(parameters);rid=uuid.uuid4().hex
+        with self.db() as db:
+            count=db.execute('SELECT count(*) FROM scenarios WHERE company=? AND record_id=? AND user=?',(company['company_id'],company['source_record_id'],user)).fetchone()[0]
+            if count>=100:raise ValueError('Максимум100 сценариев на профиль')
+            db.execute('INSERT INTO scenarios VALUES(?,?,?,?,?,?)',(rid,company['company_id'],company['source_record_id'],user,now_iso(),compact(result)))
+        return {'id':rid,**result}
+
+    def scenarios(self,company,user):
+        with self.db() as db:
+            rows=db.execute('SELECT id,created_at,result FROM scenarios WHERE company=? AND record_id=? AND user=? ORDER BY created_at DESC LIMIT 20',(company['company_id'],company['source_record_id'],user)).fetchall()
+        return {'items':[{'id':r['id'],'created_at':r['created_at'],**json.loads(r['result'])} for r in rows]}
 
     def error_detail(self, exc):
         # Types and stack locations diagnose failures without dumping payloads/secrets.
@@ -128,7 +149,14 @@ class Runtime:
         if parent_run_id:
             parent=self.scoped(parent_run_id,company['company_id'],user,company['source_record_id'])
             if parent['article']!=article['article_id'] or parent['status']!='complete':raise ValueError('Нужен завершённый разбор той же новости')
+        memory={'saved_ids':[],'not_saved_reasons':[]}
+        previous_result=json.loads(parent['output']) if parent else None
+        if parent and question.strip():
+            with self.db() as db:memory=remember(db,company,user,parent_run_id,question,now_iso())
+            context=self.context(company,user)
+        context_change=changes(previous_result.get('facts',[]),context['facts']) if previous_result else {'added':[],'removed':[]}
         payload={'company':company,'article':article,'context':context,'question':question,'parent_run_id':parent_run_id,
+                 'context_change':context_change,'dialogue_memory':memory,
                  'retrieval':retrieval or {},'previous':json.loads(parent['output'])['insight'] if parent else None,'role':role,'user':user,'as_of':now_iso()}
         asset_stamp=f'{self.assets.stat().st_mtime_ns}:{self.assets.stat().st_size}'
         asset_stamp+=str(self.semantic_index.stat().st_mtime_ns) if self.semantic_index.is_file() else 'no-semantic-index'
@@ -247,7 +275,7 @@ class Runtime:
             if clean.startswith(article['title']) and len(clean)>len(article['title'])+100:clean=clean[len(article['title']):].lstrip(' .:—–-')
             event_text=' '.join(re.split(r'(?<=[.!?])\s+',clean)[:2])[:900]
             self.trace_step(rid,'extract_event',{'article_id':article['article_id']},lambda:{'text':event_text,'method':'verbatim_lead','source_id':article['article_id']})
-            payload={'as_of':p['as_of'],'company_facts':[{k:f[k] for k in ('id','field','value','evidence_level')} for f in context['facts']],
+            payload={'as_of':p['as_of'],'company_facts':[{k:f[k] for k in ('id','field','value','evidence_level','provenance')} for f in context['facts']],
              'news':{'id':article['article_id'],'title':article['title'],'text':article['text'][:20000],'published_at':article['published_at'],'url':article['url']},
              'bank_passages':passages,'viewer_role':p['role'],'question':p['question'], 'previous_analysis':p['previous'],
              'context_limitations':list(context['limitations']),'confirmed_event':event_text,
@@ -276,7 +304,21 @@ class Runtime:
                         evidence['article_id']=source_to_alias.get(evidence['article_id'],evidence['article_id'])
             for n, passage in enumerate(payload['bank_passages'],1):
                 alias=f'bank_{n}';alias_to_source[alias]=passage['id'];passage['id']=alias
+            alias_to_fact={}
+            for n,fact in enumerate(payload['company_facts'],1):
+                if fact['field']=='user_context':
+                    alias=f'user_context_{n}';alias_to_fact[alias]=fact['id'];fact['id']=alias
+            fact_to_alias={value:key for key,value in alias_to_fact.items()}
+            source_to_alias={value:key for key,value in alias_to_source.items()}
+            def alias_history(value):
+                if isinstance(value,dict):
+                    return {k:([source_to_alias[x] for x in v if x in source_to_alias] if k=='source_ids' else
+                               [fact_to_alias.get(x,x) for x in v] if k=='company_fact_ids' else alias_history(v)) for k,v in value.items()}
+                if isinstance(value,list):return [alias_history(v) for v in value]
+                return value
+            if payload.get('previous_analysis'):payload['previous_analysis']=alias_history(payload['previous_analysis'])
             self.trace_step(rid,'source_aliases',{},lambda:alias_to_source)
+
             drafts=1
             try:
                 generated=self.trace_step(rid,'draft',{'model':os.getenv('ALFA_MODEL','z-ai/glm-5.3-flash'),'prompt_version':VERSION},lambda:self.paid(rid,lambda:self.generator(payload)))
@@ -307,14 +349,16 @@ class Runtime:
                       'exact_quotes_checked':len(quotes),'claim_publication':publication,'independent_business_accuracy_measured':False})
             def canonicalize(value):
                 if isinstance(value,dict):
-                    return {k:([alias_to_source.get(x,x) for x in v] if k=='source_ids' else alias_to_source.get(v,v) if k=='source_id' else canonicalize(v)) for k,v in value.items()}
+                    return {k:([alias_to_source.get(x,x) for x in v] if k=='source_ids' else [alias_to_fact.get(x,x) for x in v] if k=='company_fact_ids' else alias_to_source.get(v,v) if k=='source_id' else canonicalize(v)) for k,v in value.items()}
                 if isinstance(value,list):return [canonicalize(v) for v in value]
                 return value
             result=canonicalize(result);quotes=canonicalize(quotes);check=canonicalize(check)
             validate_result(result,canonical_payload)
             output={**generated,'insight':result,'sources':canonical_payload['bank_passages'],'news':canonical_payload['news'],'related_news':canonical_payload['related_news'],
                     'story':article.get('story'),'facts':context['facts'],
-                    'verification':check,'quotes':quotes,'context_version':context['context_version'],'agent_version':VERSION,'ai_generated':True}
+                    'verification':check,'quotes':quotes,'context_version':context['context_version'],'agent_version':VERSION,'ai_generated':True,
+                    'context_change':p.get('context_change'), 'dialogue_memory':p.get('dialogue_memory'),
+                    'analysis_change':analysis_changes(p['previous'],result) if p.get('previous') else None}
             with self.db() as db:db.execute("UPDATE runs SET status='complete',output=?,updated_at=? WHERE id=?",(compact(output),now_iso(),rid))
         except Exception as exc:
             # Do not persist provider payloads, credentials or schema validation source dumps in errors.
@@ -336,7 +380,7 @@ class Runtime:
             calls=[dict(r) for rid in ids for r in db.execute('SELECT status,usage FROM calls WHERE run_id=?',(rid,))]
             reviews=[dict(r) for rid in ids for r in db.execute('SELECT rating FROM reviews WHERE run_id=? AND user=?',(rid,user))]
             durations=[r[0] for rid in ids for r in db.execute('SELECT sum(duration_ms) FROM steps WHERE run_id=?',(rid,)) if r[0] is not None]
-        return {'runs':len(runs),'statuses':{s:sum(r['status']==s for r in runs) for s in sorted({r['status'] for r in runs})},
+        return {'evaluation':quality_status(self.assets.parent),'runs':len(runs),'statuses':{s:sum(r['status']==s for r in runs) for s in sorted({r['status'] for r in runs})},
            'tokens':sum(int(json.loads(c['usage']).get('total_tokens') or 0) for c in calls if c['usage']),
            'human_reviews':{s:sum(r['rating']==s for r in reviews) for s in ('useful','incorrect','needs_review')},'llm_calls':len(calls),'mean_tool_latency_ms':sum(durations)/len(durations) if durations else None,
            'measured_precision':None,'grounding_accuracy':None,'note':'Показатели только текущего пользователя/компании; качество требует ручной оценки.'}

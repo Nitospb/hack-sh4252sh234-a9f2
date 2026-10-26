@@ -38,10 +38,15 @@ def check(base):
     if bank['items']:
         with urlopen(base+'bank-file?'+urlencode({'document_id':bank['items'][0]['id']}),timeout=30) as f:
             assert f.headers['Content-Type']=='application/pdf';assert f.read(5)==b'%PDF-'
+    scenario=request('scenario',body={**scope,'parameters':{'kind':'loan','currency':'RUB','principal':'1000000','days':'365','basis':365,'rate_type':'floating','benchmark_base':'14','benchmark_scenario':'12','spread':'2','acknowledge_assumptions':True}})
+    assert scenario['delta']=='-20000.00'
+    assert request('scenarios',scope)['items'][0]['id']==scenario['id']
+    assert not request('scenarios',{**scope,'user_id':scope['user_id']+'-other'})['items']
+    assert request('metrics',scope)['evaluation']['status'] in ('not_measured','partially_measured','invalid_report')
     assert request('metrics',scope)['runs']==0
     return {'ok':True,'dataset_kind':health.get('dataset_kind'),'news':health['counts']['news'],
       'company':c['company_id'],'feed_items':article_count,'bank_documents':len(bank['items']),
-      'llm_called':False,'verified':['health','companies','role','feed_idempotency','user_isolation','context_notes','bank_search','metrics']+(['article','save'] if article_count else [])+(['pdf'] if bank['items'] else []),'skipped':[] if bank['items'] else ['pdf:no_bank_documents']}
+      'llm_called':False,'verified':['health','companies','role','feed_idempotency','user_isolation','context_notes','bank_search','metrics','scenario_calculation','scenario_history','scenario_isolation']+(['article','save'] if article_count else [])+(['pdf'] if bank['items'] else []),'skipped':[] if bank['items'] else ['pdf:no_bank_documents']}
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--base',default='http://127.0.0.1:3000/api/live');a=p.parse_args()

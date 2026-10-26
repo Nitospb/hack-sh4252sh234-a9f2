@@ -90,3 +90,13 @@ TLS ingress с банковским scope пользователя; localStorage
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 [Отчёт следующему агенту и обновляемый журнал доработок](NEXT_AGENT_HANDOFF.md).
+
+## Последние дополнения
+
+- [Память явных уточнений и сравнение ответов](Alfa-Hackaton/service/DIALOGUE.md).
+- [Калькулятор процентных и валютных сценариев](Alfa-Hackaton/service/SCENARIOS.md).
+- [Слепая экспертная разметка и сравнение ранжирования](Alfa-Hackaton/evaluation/README.md).
+- [Новые переносимые serving/training комплекты](tools/SERVING_BUNDLE.md).
+
+Независимых экспертных меток пока0; наличие этих инструментов не является
+измеренной точностью продукта. Данные и модели передаются отдельно от Git.

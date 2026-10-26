@@ -30,6 +30,11 @@ class HttpTests(unittest.TestCase):
                 with self.assertRaises(HTTPError) as caught:
                     urlopen(Request(base+'/analysis',data=json.dumps(scope).encode(),headers={'Content-Type':'application/json'}))
                 self.assertEqual(caught.exception.code,400)
+                parameters={'kind':'loan','currency':'RUB','principal':'1000','days':'365','basis':365,'rate_type':'fixed','fixed_rate':'10','acknowledge_assumptions':True}
+                with urlopen(Request(base+'/scenario',data=json.dumps({**scope,'parameters':parameters}).encode(),headers={'Content-Type':'application/json'})) as response:
+                    self.assertEqual(json.load(response)['delta'],'0.00')
+                with urlopen(base+'/scenarios?company_id=SEED_1&source_record_id=SEED_1:line:2&user_id=another') as response:
+                    self.assertEqual(json.load(response)['items'],[])
                 with patch.dict(os.environ,{'ALFA_INTERNAL_TOKEN':'test-internal-only'}):
                     with self.assertRaises(HTTPError) as caught:urlopen(base+'/health')
                     self.assertEqual(caught.exception.code,403)

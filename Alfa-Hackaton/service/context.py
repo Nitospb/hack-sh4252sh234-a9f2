@@ -74,11 +74,14 @@ def get_context(assets, state, company, user):
         facts=[{'id':'fact_okved','field':'okved','label':'ОКВЭД','value':company['okved'],'evidence_level':'confirmed',
                 'provenance':{'source_record_id':company['source_record_id'],'file':'catalog.sqlite'}}]
     with sqlite3.connect(state) as db:
-        notes=db.execute('SELECT id,text,created_at FROM clarifications WHERE company=? AND record_id=? AND user=? ORDER BY created_at',
+        columns={r[1] for r in db.execute('PRAGMA table_info(clarifications)')}
+        extra=',field,kind,parent_run_id,quote_offset,message_id' if 'quote_offset' in columns else ''
+        notes=db.execute('SELECT id,text,created_at'+extra+' FROM clarifications WHERE company=? AND record_id=? AND user=? ORDER BY created_at',
                          (company['company_id'],company['source_record_id'],user)).fetchall()
     # User claims are visible but require conditional treatment, not bank-verified facts.
     facts += [{'id':'user_'+r[0],'field':'user_context','label':'Уточнение пользователя','value':r[1],
-      'evidence_level':'candidate','provenance':{'kind':'user_declaration','created_at':r[2]}} for r in notes]
+      'evidence_level':'candidate','provenance':{'kind':'user_declaration','created_at':r[2],
+       **({'field':r[3],'entry_kind':r[4],'parent_run_id':r[5],'quote_offset':r[6],'message_id':r[7]} if len(r)>3 else {})}} for r in notes]
     for i,r in enumerate(relations):
         facts.append({'id':f'rel_{i}','field':'observed_relationship','label':r.get('observed_label','Наблюдаемая связь'),
           'value':{k:r.get(k) for k in ('related_company_id','kind','amount','payment_count','direction_amount_share','direction_count_share','role_caveat')},

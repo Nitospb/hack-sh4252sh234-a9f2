@@ -70,3 +70,37 @@ python -m evaluation.split --input /absolute/grouped-news.json --output /absolut
 
 Даты выше — пример команды, не выбранные по качеству пороги. Сохраняйте manifest
 рядом с frozen evaluation и проверяйте его до формирования экспертного пула.
+
+## Пилот и слепой интерфейс оценщика
+
+Реализован evaluation.workbench: воспроизводимый validation-пул, сравнение
+lexical title / original E5 assigned candidates / personalized pipeline,
+объединение кандидатов, замороженные профили и полные тексты, reviewer.html без
+названий систем. E5 baseline ограничен заранее сохранёнными кандидатами, это не
+полный dense retrieval по всему корпусу. Контекст роли сейчас director.
+
+```bash
+python -m evaluation.workbench freeze --catalog /frozen/catalog.sqlite --assets /frozen/service-assets.sqlite --output /new/pilot --queries 20 --k 5
+# Два разных оценщика открывают reviewer.html и независимо экспортируют human-ratings.json.
+python -m evaluation.workbench adjudicate --pool /new/pilot/pool.json --ratings /reviewer-a.json /reviewer-b.json --reviewer adjudicator-name --output /new/adjudicated.json
+python -m evaluation.score --input /new/adjudicated.json --output pipeline/output/evaluation-report.json --k 5
+```
+
+Сохраняйте исходные файлы оценщиков. Совпадение двух разных имён с одинаковой
+оценкой допускается в gold только после явной команды adjudicator; расхождения
+остаются pending. Это контроль файлов, не удостоверение личности эксперта:
+команда отвечает за реальность независимой разметки. Дубли оценщика, неверный
+hash пула, пустое обоснование или неизвестное задание отклоняются.
+
+Реальный пилот26.10: pipeline/output/evaluation-pilot-2026-10-26, 20компаний,
+257заданий, **0 одобренных оценок**. Нет автоматических human-меток. Пул содержит
+новости и профиль, без сгенерированного анализа: factual/action dimensions
+остаются null. Для оценки качества анализа нужны отдельные outputs/эксперты.
+Все задания этого пилота validation; test требует отдельного снимка с аудитом
+временных/event пересечений. Не объявлять pilot независимым test.
+
+metrics.evaluation и экран quality показывают прогресс пилота и ограниченную
+сводку operator-installed evaluation-report.json. Отчёт содержит input SHA и
+версии; отсутствие разметки не даёт численной точности. Метрики относятся к
+зафиксированной версии, не автоматически к текущему live-каталогу. Сырые профили,
+задания и имена оценщиков через этот endpoint не раздаются.

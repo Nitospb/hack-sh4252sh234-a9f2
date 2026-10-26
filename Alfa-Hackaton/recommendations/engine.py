@@ -5,6 +5,8 @@ import os
 import re
 import sqlite3
 import time
+import threading
+from types import MappingProxyType
 import uuid
 from collections import Counter
 from datetime import datetime, timezone
@@ -32,6 +34,7 @@ class Feed:
         self.assets = Path(os.getenv('ALFA_ASSETS') or self.catalog.parent/'service-assets.sqlite')
         self.state = Path(state or ROOT / 'recommendations/state.sqlite')
         self.state.parent.mkdir(parents=True, exist_ok=True)
+        self._article_cache={};self._article_cache_lock=threading.Lock()
         with self.connect() as db:
             db.executescript('''PRAGMA journal_mode=WAL;
             CREATE TABLE IF NOT EXISTS events(event_id TEXT PRIMARY KEY, company TEXT, user TEXT,
@@ -111,6 +114,28 @@ class Feed:
             return max(0., float(self.vectors[a['article_id']] @ self.vectors[b['article_id']]))
         return max(jaccard(a['_tokens'],b['_tokens']), jaccard(a['_topics'],b['_topics']))
 
+    def article_rows(self,db,wide=False):
+        condition='eligible_delivery=1 OR object_eligible_delivery=1' if wide else 'eligible_delivery=1'
+        immutable=bool(re.fullmatch('[0-9a-f]{64}',self.catalog.parent.name)) and (self.catalog.parent/'manifest.json').is_file()
+        def read(prepared):
+            rows=[]
+            for row in db.execute('SELECT * FROM articles WHERE '+condition):
+                item=dict(row)
+                if prepared:
+                    text=re.sub(r'\s+',' ',re.sub(r'<[^>]+>',' ',item.pop('text','') or '')).strip()
+                    item['reading_minutes']=max(1,math.ceil(len(text.split())/200))
+                    item['excerpt']=' '.join(re.split(r'(?<=[.!?])\s+',text)[:2])[:420]
+                    item['_feed_prepared']=True
+                    item.pop('images',None)
+                rows.append(MappingProxyType(item) if prepared else item)
+            return tuple(rows)
+        if not immutable:return {r['article_id']:dict(r) for r in read(False)}
+        with self._article_cache_lock:
+            if wide not in self._article_cache:self._article_cache[wide]=read(True)
+            rows=self._article_cache[wide]
+        # Scores, roles, reactions and exclusions always belong to this request.
+        return {r['article_id']:dict(r) for r in rows}
+
     def recommend(self, company, user, limit=20, source_record_id=None, request_id=None, now=None,
                   scope='activity', include_review=False, kind='all', mode='strict', role=None):
         scopes = {'strict': {'declared_activity'}, 'activity': {'declared_activity','activity_scope_candidate'},
@@ -178,7 +203,8 @@ class Feed:
                 if r['relation'] in scopes[scope] and priority[r['relation']] > priority.get(interests.get(r['topic_id']),0):
                     interests[r['topic_id']] = r['relation']
             topic_names = {r[0]:r[1] for r in db.execute('SELECT topic_id,name FROM topics')}
-            articles = {r['article_id']:dict(r) for r in db.execute('SELECT * FROM articles WHERE eligible_delivery=1')}
+            tables = {r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+            articles = self.article_rows(db,wide='company_family_mapping' in tables)
             assignments = {}
             for r in db.execute('SELECT * FROM assignments'):
                 assignments.setdefault(r['article_id'],set()).add(r['topic_id'])
@@ -200,7 +226,7 @@ class Feed:
                         continue
                     family_matches.setdefault(r['article_id'],[]).append(r)
                 # New catalogs keep date/text eligibility independent of topic acceptance.
-                articles = {r['article_id']:dict(r) for r in db.execute('SELECT * FROM articles WHERE eligible_delivery=1 OR object_eligible_delivery=1')}
+                # Article rows already include independent date/text eligibility above.
         observed = {}
         observed_relationships=[]
         context_path = self.assets
@@ -367,10 +393,11 @@ class Feed:
                 a['recommendation_reasons'].append({'kind':'industry_context','text':'Отраслевая связь: ' + industries[0]['reason']})
             a['match_level'] = 'thematic_candidate' if a['review_required'] else ('verified_object' if matched_objects else ('industry_context' if industries else 'business_context'))
             a['recommended_lane'] = max(components,key=lambda key: WEIGHTS[key]*max(0.,components[key]))
-            clean_text = re.sub(r'<[^>]+>', ' ', a.get('text') or '')
-            clean_text = re.sub(r'\s+', ' ', clean_text).strip()
-            a['reading_minutes'] = max(1, math.ceil(len(clean_text.split())/200))
-            a['excerpt'] = ' '.join(re.split(r'(?<=[.!?])\s+',clean_text)[:2])[:420]
+            if not a.pop('_feed_prepared',False):
+                clean_text = re.sub(r'<[^>]+>', ' ', a.get('text') or '')
+                clean_text = re.sub(r'\s+', ' ', clean_text).strip()
+                a['reading_minutes'] = max(1, math.ceil(len(clean_text.split())/200))
+                a['excerpt'] = ' '.join(re.split(r'(?<=[.!?])\s+',clean_text)[:2])[:420]
             # Full article bodies are available through /article; feed pages stay small.
             a.pop('text',None)
             a.pop('images',None)

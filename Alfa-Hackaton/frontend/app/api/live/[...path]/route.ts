@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-const allowed=new Set(["health","companies","company","article","news","feed","insight","events","profile","saved","context","analysis","chat","runs","run","metrics","bank-sources","bank-file","review"]);
+const allowed=new Set(["health","companies","company","article","news","feed","insight","events","profile","saved","context","analysis","chat","runs","run","metrics","bank-sources","bank-file","review","scenario","scenarios"]);
 async function forward(request:NextRequest,context:{params:Promise<{path:string[]}>}){
  const {path}=await context.params;
  if(path.length!==1||!allowed.has(path[0]))return Response.json({error:"Not found"},{status:404});
