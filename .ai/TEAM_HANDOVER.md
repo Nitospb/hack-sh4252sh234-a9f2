@@ -191,3 +191,10 @@ Health учитывает суточный ledger/резервы; минимум
 Overlay compose.deploy.yaml требует полный каталог и непустые серверные секреты.
 Актуальный data bundle: distribution/online-serving-final-2026-10-26-v15, вне Git.
 Публичное размещение с настоящим IAM и внешний Linux стенд остаются открытыми.
+
+## Запуск сборщиков на сервере
+
+Инструкция: [COLLECTOR_STARTUP.md](COLLECTOR_STARTUP.md). Пути адаптированы к
+приложению в корне main93ce886; учтена прежняя вложенная структура data-ZIP.
+Описаны model/raw prerequisites и открытая TG fingerprint → publish интеграция.
+На прежнем Mac сбор не возобновлялся.

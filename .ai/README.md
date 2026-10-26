@@ -5,6 +5,7 @@
 **Передача разработчикам:** [TEAM_HANDOVER.md](TEAM_HANDOVER.md).
 **Актуальный backlog и журнал:** [NEXT_AGENT_HANDOFF.md](NEXT_AGENT_HANDOFF.md).
 **Исходное ТЗ кейса в Markdown:** [ТЗ_НОВОСТНАЯ_АНАЛИТИКА.md](ТЗ_НОВОСТНАЯ_АНАЛИТИКА.md).
+**Запуск сайтов и Telegram:** [COLLECTOR_STARTUP.md](COLLECTOR_STARTUP.md).
 **Поставка на сервер:** [DEPLOYMENT.md](../DEPLOYMENT.md).
 
 Лента на локальных E5-векторах, реальные обезличенные профили компаний,
