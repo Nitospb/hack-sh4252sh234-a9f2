@@ -16,6 +16,8 @@ def check(base):
                     headers={'Content-Type':'application/json'})
         with urlopen(req,timeout=30) as f:return json.load(f)
     health=request('health');assert health['ok']
+    assert health['analysis_availability']['available']==health['llm_available']
+    assert not {'tokens','calls','usage','day'} & health['analysis_availability'].keys()
     c=request('companies',{'limit':1})['items'][0]
     scope={k:c[k] for k in ('company_id','source_record_id')};scope['user_id']='smoke-'+uuid.uuid4().hex
     profile=request('profile',scope);request('profile',body={**scope,'role':'treasurer','topic_ids':profile['topic_ids']})
@@ -46,7 +48,7 @@ def check(base):
     assert request('metrics',scope)['runs']==0
     return {'ok':True,'dataset_kind':health.get('dataset_kind'),'news':health['counts']['news'],
       'company':c['company_id'],'feed_items':article_count,'bank_documents':len(bank['items']),
-      'llm_called':False,'verified':['health','companies','role','feed_idempotency','user_isolation','context_notes','bank_search','metrics','scenario_calculation','scenario_history','scenario_isolation']+(['article','save'] if article_count else [])+(['pdf'] if bank['items'] else []),'skipped':[] if bank['items'] else ['pdf:no_bank_documents']}
+      'llm_called':False,'verified':['health','analysis_availability','companies','role','feed_idempotency','user_isolation','context_notes','bank_search','metrics','scenario_calculation','scenario_history','scenario_isolation']+(['article','save'] if article_count else [])+(['pdf'] if bank['items'] else []),'skipped':[] if bank['items'] else ['pdf:no_bank_documents']}
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--base',default='http://127.0.0.1:3000/api/live');a=p.parse_args()

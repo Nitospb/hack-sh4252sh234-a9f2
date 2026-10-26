@@ -35,6 +35,16 @@ class HttpTests(unittest.TestCase):
                     self.assertEqual(json.load(response)['delta'],'0.00')
                 with urlopen(base+'/scenarios?company_id=SEED_1&source_record_id=SEED_1:line:2&user_id=another') as response:
                     self.assertEqual(json.load(response)['items'],[])
+                with patch.dict(os.environ,{'ALFA_API_KEY':'configured-test-key-no-network','ALFA_MAX_CALLS_PER_DAY':'1'}):
+                    with urlopen(base+'/health') as response:
+                        health=json.load(response);self.assertFalse(health['llm_available'])
+                        self.assertEqual(health['analysis_availability']['reason'],'calls')
+                    with self.assertRaises(HTTPError) as limited:
+                        urlopen(Request(base+'/analysis',data=json.dumps(scope).encode(),headers={'Content-Type':'application/json'}))
+                    self.assertEqual(limited.exception.code,503)
+                    with runtime.db() as db:self.assertEqual(db.execute('SELECT count(*) FROM calls').fetchone()[0],0)
+                    with urlopen(base+'/scenarios?company_id=SEED_1&source_record_id=SEED_1:line:2&user_id=u') as response:
+                        self.assertEqual(len(json.load(response)['items']),1)
                 with patch.dict(os.environ,{'ALFA_INTERNAL_TOKEN':'test-internal-only'}):
                     with self.assertRaises(HTTPError) as caught:urlopen(base+'/health')
                     self.assertEqual(caught.exception.code,403)

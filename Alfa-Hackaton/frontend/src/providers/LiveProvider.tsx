@@ -25,8 +25,10 @@ export default function LiveProvider({ children }: { children: ReactNode }) {
   },[]);
   useEffect(()=>{
     const abort=new AbortController();
-    const timer=setInterval(()=>{api<Health>("health",{signal:abort.signal}).then(setHealth).catch(()=>{});},30000);
-    return()=>{clearInterval(timer);abort.abort();};
+    const refreshHealth=()=>{if(!document.hidden)api<Health>("health",{signal:abort.signal}).then(setHealth).catch(()=>{});};
+    const timer=setInterval(refreshHealth,30000);
+    window.addEventListener("focus",refreshHealth);window.addEventListener("alfa:refresh-health",refreshHealth);document.addEventListener("visibilitychange",refreshHealth);
+    return()=>{clearInterval(timer);abort.abort();window.removeEventListener("focus",refreshHealth);window.removeEventListener("alfa:refresh-health",refreshHealth);document.removeEventListener("visibilitychange",refreshHealth);};
   },[]);
   useEffect(()=>{
     if(!company||!user)return;const abort=new AbortController();

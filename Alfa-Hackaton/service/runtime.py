@@ -21,6 +21,7 @@ from insight_generation.prompt import obj, TEXT
 from . import bank
 from .scenarios import calculate
 from .quality import status as quality_status
+from . import budget
 from .context import get_context
 from .planning import plan
 from .dialogue import remember,changes,analysis_changes
@@ -49,6 +50,7 @@ class Runtime:
             CREATE TABLE IF NOT EXISTS steps(run_id TEXT,seq INTEGER,tool TEXT,created_at TEXT,duration_ms REAL,input TEXT,output TEXT,PRIMARY KEY(run_id,seq));
             CREATE TABLE IF NOT EXISTS clarifications(id TEXT PRIMARY KEY,company TEXT,record_id TEXT,user TEXT,text TEXT,created_at TEXT);
             CREATE TABLE IF NOT EXISTS calls(id TEXT PRIMARY KEY,run_id TEXT,day TEXT,status TEXT,usage TEXT,created_at TEXT);
+            CREATE TABLE IF NOT EXISTS job_budgets(run_id TEXT PRIMARY KEY,day TEXT,remaining_calls INTEGER);
             CREATE TABLE IF NOT EXISTS scenarios(id TEXT PRIMARY KEY,company TEXT,record_id TEXT,user TEXT,created_at TEXT,result TEXT);
             CREATE TABLE IF NOT EXISTS runtime_meta(key TEXT PRIMARY KEY,value TEXT);
             CREATE TABLE IF NOT EXISTS reviews(run_id TEXT,user TEXT,rating TEXT,note TEXT,created_at TEXT,PRIMARY KEY(run_id,user));
@@ -60,12 +62,19 @@ class Runtime:
             db.execute('CREATE TABLE IF NOT EXISTS dialogue_messages(id TEXT PRIMARY KEY,company TEXT,record_id TEXT,user TEXT,parent_run_id TEXT,text TEXT,created_at TEXT)')
             # Queued work from a terminated process cannot silently look healthy forever.
             db.execute("UPDATE calls SET status='interrupted' WHERE status='reserved'")
+            db.execute('DELETE FROM job_budgets')
             db.execute("UPDATE runs SET status='interrupted',error='Сервис перезапущен. Повторите запуск явно.',updated_at=? WHERE status IN ('queued','running')",(now_iso(),))
         if not self.assets.exists():
             with sqlite3.connect(self.assets) as db:bank.schema(db)
 
     def db(self):
         db=sqlite3.connect(self.state,timeout=15);db.row_factory=sqlite3.Row;return db
+
+    def availability(self):
+        if self.generator is generate and not os.getenv('ALFA_API_KEY'):
+            return {'available':False,'reason':'missing_key','message':'Анализ отключён: на сервере не настроен ключ. Лента и калькулятор доступны.','resets_at':None,'policy':budget.POLICY}
+        with self.db() as db:status=budget.snapshot(db)
+        return {k:v for k,v in status.items() if k!='day'}
 
     def context(self, company, user):return get_context(self.assets,self.state,company,user)
 
@@ -169,30 +178,45 @@ class Runtime:
         rid=uuid.uuid4().hex
         try:
             with self.db() as db:
+                db.execute('BEGIN IMMEDIATE')
+                day=budget.require(db)
                 # Failed calls are retried only on an explicit new user action, never automatically.
                 if prior:db.execute('UPDATE runs SET cache_key=NULL WHERE id=?',(prior['id'],))
                 db.execute('INSERT INTO runs VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)',(rid,cache_key,company['company_id'],company['source_record_id'],user,article['article_id'],role,'queued',payload['as_of'],payload['as_of'],compact(payload),None,None))
+                db.execute('INSERT INTO job_budgets VALUES(?,?,?)',(rid,day,budget.MIN_JOB_CALLS))
             self.pool.submit(self.execute,rid,payload)
         except sqlite3.IntegrityError:
             self.slots.release()
             with self.db() as db:prior=db.execute('SELECT id,status FROM runs WHERE cache_key=?',(cache_key,)).fetchone()
             if prior:return {'run_id':prior['id'],'cached':True,'status':prior['status']}
             raise
-        except Exception:self.slots.release();raise
+        except Exception:
+            try:
+                with self.db() as db:
+                    db.execute('DELETE FROM job_budgets WHERE run_id=?',(rid,))
+                    db.execute("UPDATE runs SET status='error',error='Не удалось запустить задачу; повторите явно.',updated_at=? WHERE id=? AND status='queued'",(now_iso(),rid))
+            finally:self.slots.release()
+            raise
         return {'run_id':rid,'cached':False,'status':'queued'}
+
+    def reserve_remaining(self,rid,minimum):
+        day=datetime.now(timezone.utc).date().isoformat()
+        with self.db() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row=db.execute('SELECT day,remaining_calls FROM job_budgets WHERE run_id=?',(rid,)).fetchone()
+            credit=row['remaining_calls'] if row and row['day']==day else 0
+            budget.require(db,max(0,minimum-credit))
+            db.execute('INSERT OR REPLACE INTO job_budgets VALUES(?,?,?)',(rid,day,max(minimum,credit)))
 
     def paid(self,rid,fn):
         day=(datetime.now(timezone.utc)+timedelta(hours=0)).date().isoformat() # 03:00 Moscow = 00:00 UTC
         cid=uuid.uuid4().hex
         with self.db() as db:
             db.execute('BEGIN IMMEDIATE')
-            blocked=db.execute("SELECT value FROM runtime_meta WHERE key='budget_blocked_day'").fetchone()
-            if blocked and blocked[0]==day:raise RuntimeError('Шлюз сообщил об исчерпании общего бюджета; дождитесь 03:00 МСК')
-            count=db.execute('SELECT count(*) FROM calls WHERE day=?',(day,)).fetchone()[0]
-            if count>=int(os.getenv('ALFA_MAX_CALLS_PER_DAY','30')):raise RuntimeError('Достигнут локальный суточный лимит LLM-вызовов')
-            reservations=db.execute("SELECT count(*) FROM calls WHERE day=? AND status IN ('reserved','interrupted','error_unknown_usage')",(day,)).fetchone()[0]
-            usage=[json.loads(r[0]) for r in db.execute("SELECT usage FROM calls WHERE day=? AND usage IS NOT NULL",(day,))]
-            if sum(int(u.get('total_tokens') or 0) for u in usage)+30000*(reservations+1)>int(os.getenv('ALFA_MAX_TOKENS_PER_DAY','300000')):raise RuntimeError('Достигнут локальный лимит токенов')
+            credit=db.execute('SELECT day,remaining_calls FROM job_budgets WHERE run_id=?',(rid,)).fetchone()
+            if credit and credit['day']==day and credit['remaining_calls']>0:
+                db.execute('UPDATE job_budgets SET remaining_calls=remaining_calls-1 WHERE run_id=?',(rid,))
+            budget.require(db,1)
             db.execute('INSERT INTO calls VALUES(?,?,?,?,?,?)',(cid,rid,day,'reserved',None,now_iso()))
         try:
             result=fn()
@@ -324,6 +348,7 @@ class Runtime:
                 generated=self.trace_step(rid,'draft',{'model':os.getenv('ALFA_MODEL','z-ai/glm-5.3-flash'),'prompt_version':VERSION},lambda:self.paid(rid,lambda:self.generator(payload)))
             except (ValueError,ValidationError) as exc:
                 # One explicit contract revision, never a retry of transport/budget failures.
+                self.reserve_remaining(rid,2)  # A repair must still leave one verification call.
                 drafts=2
                 location='.'.join(map(str,exc.absolute_path)) if isinstance(exc,ValidationError) else 'source/fact IDs и статус'
                 rule=exc.validator if isinstance(exc,ValidationError) else 'semantic_contract'
@@ -333,7 +358,14 @@ class Runtime:
             generated['insight']['event']={'text':event_text,'source_ids':['news']}
             check=self.trace_step(rid,'verify_sources',{'draft':generated['insight']},lambda:self.paid(rid,lambda:self.verifier(payload,generated['insight'])))['verification']
             # A real adaptive tool branch, at most one extra generation, never transport retries.
-            if check['verdict']=='retrieve' and check['query'].strip() and drafts<2:
+            refine=check['verdict']=='retrieve' and bool(check['query'].strip()) and drafts<2
+            if refine:
+                try:self.reserve_remaining(rid,2)
+                except RuntimeError as error:
+                    refine=False
+                    self.trace_step(rid,'refinement_skipped',{},lambda:{'reason':'budget','message':str(error)})
+                    generated['insight']['limitations'].append('Дополнительная проверка ограничена доступным лимитом. Сохранены только выводы, прошедшие проверку.')
+            if refine:
                 passages=self.trace_step(rid,'search_bank_refined',{'query':check['query']},lambda:bank.search(self.assets,check['query'],p['as_of'],limit=7,event_vector=p.get('retrieval',{}).get('vector'),encoder_sha=p.get('retrieval',{}).get('encoder_sha'),semantic_index=self.semantic_index))
                 canonical_payload['bank_passages']=json.loads(compact(passages))
                 for n, passage in enumerate(passages,1):
@@ -365,7 +397,10 @@ class Runtime:
             message='Ответ не прошёл JSON Schema; результат не опубликован' if isinstance(exc,ValidationError) else str(exc) if isinstance(exc,(ValueError,RuntimeError)) else f'Ошибка анализа ({type(exc).__name__}); результат не опубликован'
             if os.getenv('ALFA_API_KEY'):message=message.replace(os.environ['ALFA_API_KEY'],'[redacted]')
             with self.db() as db:db.execute("UPDATE runs SET status='error',error=?,updated_at=? WHERE id=?",(message[:300],now_iso(),rid))
-        finally:self.slots.release()
+        finally:
+            try:
+                with self.db() as db:db.execute('DELETE FROM job_budgets WHERE run_id=?',(rid,))
+            finally:self.slots.release()
 
     def review(self,rid,company,user,rating,note='',record_id=None):
         self.scoped(rid,company,user,record_id)

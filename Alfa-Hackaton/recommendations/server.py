@@ -53,14 +53,15 @@ def handler(engine, runtime=None, snapshots=None):
                 url=urlparse(self.path);q={k:v[0] for k,v in parse_qs(url.query).items()}
                 if url.path=='/feed':result=engine.recommend(q['company_id'],q.get('user_id','local'),int(q.get('limit',20)),q.get('source_record_id'),q.get('request_id'),scope=q.get('scope','interest'),include_review=q.get('include_review')=='true',kind=q.get('kind','all'),mode=q.get('mode','ranked'),role=q.get('role'))
                 elif url.path=='/health':
-                    result=catalog.health(engine);result['catalog_publication']=snapshots.status();result['agent_version']=VERSION;result['bank_documents']=len(bank.documents(runtime.assets));result['bank_retrieval']=bank.retrieval_status(runtime.semantic_index,engine.encoder_sha)
+                    result=catalog.health(engine);result['catalog_publication']=snapshots.status();result['agent_version']=VERSION;result['analysis_availability']=runtime.availability();result['llm_available']=result['analysis_availability']['available'];result['bank_documents']=len(bank.documents(runtime.assets));result['bank_retrieval']=bank.retrieval_status(runtime.semantic_index,engine.encoder_sha)
                 elif url.path=='/companies':result=catalog.companies(engine,q.get('q',''),q.get('limit',25))
                 elif url.path=='/company':result=catalog.company(engine,q['company_id'],q.get('source_record_id'))
                 elif url.path=='/profile':result=catalog.profile_state(engine,q['company_id'],q.get('user_id','local'))
                 elif url.path=='/saved':result=catalog.saved(engine,q['company_id'],q.get('user_id','local'))
                 elif url.path=='/article':result=catalog.article(engine,q['article_id'])
                 elif url.path=='/news':result=catalog.news(engine,q.get('q',''),q.get('kind','all'),q.get('offset',0),q.get('limit',30))
-                elif url.path=='/insight':result=catalog.insight(engine,q['company_id'],q['article_id'],q.get('source_record_id'),role=q.get('role','general'))
+                elif url.path=='/insight':
+                    result=catalog.insight(engine,q['company_id'],q['article_id'],q.get('source_record_id'),role=q.get('role','general'));result['llm_available']=runtime.availability()['available']
                 elif url.path in ('/context','/runs','/run','/metrics','/scenarios'):
                     c,user=self.identity(q)
                     if url.path=='/context':result={**c,**runtime.context(c,user)}

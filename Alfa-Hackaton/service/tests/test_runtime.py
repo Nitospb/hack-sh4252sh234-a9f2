@@ -101,7 +101,8 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(r['result']['insight']['missing_context'],['Каков срок до погашения кредита?'])
     def test_daily_limit_and_freshness_fail_closed(self):
         with patch.dict(os.environ,{'ALFA_MAX_CALLS_PER_DAY':'1'}):
-            r=self.finished(self.r.submit(self.c,self.a,'u'));self.assertEqual(r['status'],'error');self.assertIn('лимит',r['error'])
+            with self.assertRaisesRegex(RuntimeError,'лимит'):self.r.submit(self.c,self.a,'u')
+            self.assertEqual(self.generated,0);self.assertEqual(self.r.list_runs('c','u')['items'],[])
         with self.assertRaises(ValueError):self.r.submit(self.c,{**self.a,'published_at':(datetime.now(timezone.utc)-timedelta(days=31)).isoformat()},'u')
     def test_adaptive_search_never_silently_publishes_unverified_revision(self):
         self.r.verifier=lambda p,d:{'verification':{'verdict':'retrieve','issues':['Нужен другой тезис банка'],'query':'инфляция','quotes':[]},'usage':{}}

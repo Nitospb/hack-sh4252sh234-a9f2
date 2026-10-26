@@ -158,3 +158,10 @@ Workflow `.github/workflows/service.yml` запускает синтетичес
 [новый репозиторий](https://github.com/holodnayazvezda/Alpha-Hackathon-97a673c845283079/actions/runs/40307914474),
 [командный](https://github.com/Nitospb/hack-sh4252sh234-a9f2/actions/runs/40307928416).
 Полный корпус проверен локально на Mac, Linux CI использует synthetic seed.
+
+Новый этап доступности анализа: [BUDGETS](Alfa-Hackaton/service/BUDGETS.md).
+Health учитывает суточный ledger/резервы; минимум draft+verify резервируется
+атомарно. При лимите UI показывает сброс, а калькулятор доступен без LLM-run.
+75service/28recommendations/16insight, lint/build и smoke15 прошли; браузерная
+проверка в Firefox и320px выполнена в указанном ограниченном сценарии.
+Живая проверка диалога всё ещё ожидает доступного бюджета, его не увеличивали.
