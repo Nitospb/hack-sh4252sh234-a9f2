@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="440" viewBox="0 0 1600 440" role="img" aria-labelledby="title desc">
+  <title id="title">Новости. Контекст. Решение.</title>
+  <desc id="desc">Красная обложка с тремя этапами персональной новостной аналитики.</desc>
+  <rect width="1600" height="440" fill="#f02d22"/>
+  <path d="M0 0h1600v440H0z" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
+  <path d="M1020 -70 1600 300M1160 -70 1600 215M920 440l350-440" stroke="#fff" stroke-opacity=".13" stroke-width="2"/>
+  <text x="72" y="64" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" letter-spacing="3">ALFA / НОВОСТНАЯ АНАЛИТИКА</text>
+  <rect x="72" y="94" width="78" height="6" fill="#fff"/>
+  <text x="70" y="210" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="800">Новости.</text>
+  <text x="70" y="294" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="800">Контекст.</text>
+  <text x="70" y="378" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="800">Решение.</text>
+  <g transform="translate(1110 110)" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="0" y="34" width="188" height="216" rx="22"/>
+    <path d="M42 86h104M42 128h104M42 170h64"/>
+    <circle cx="223" cy="105" r="80" fill="#f02d22"/>
+    <path d="m183 110 27 27 51-58"/>
+    <path d="M16 302h298" stroke-opacity=".6"/>
+  </g>
+  <text x="1110" y="415" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" letter-spacing="1.5">ОТ СОБЫТИЯ К ВЫВОДУ</text>
+</svg>

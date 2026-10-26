@@ -1907,6 +1907,12 @@ Smoke создаёт отдельный smoke-user, проверяет CRUD/из
   bundle с `catalog.sqlite`/`service-assets.sqlite` на этом Mac и сервере
   нет. Сборщики и обучение не запускались; synthetic fallback для production
   запрещён. Изменения не означают приёмку качества LLM.
+- Пользователь позже передал `ALFA_API_KEY`: GitHub `DEPLOY_ENV_FILE` и серверный
+  `/opt/alfahack/.env` обновлены без вывода секретов, права серверного файла
+  проверены (`alfadeploy`, 600). Временные копии удалены. Ключ не проверялся
+  платным запросом: full-mode не запущен без актуального serving bundle. Run
+  `40341887310` на `main` завершился успешно; deploy пропущен по
+  `ALFA_DEPLOY_READY=false`.
 
 ### 26.10.2026 — обзорный README и визуальная документация
 
