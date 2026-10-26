@@ -1056,6 +1056,17 @@ Smoke создаёт отдельный smoke-user, проверяет CRUD/из
 - Документы: tools/SERVING_BUNDLE.md, evaluation/README, service/DIALOGUE.md,
   SCENARIOS.md, service/README. Рабочий live-worker продолжает сбор отдельно.
 
+### 26.10.2026 — проверка remoteCI и зависимости pipeline-тестов
+
+- Commit0ff2109 отправлен в оба репозитория, веткаmain. GitHub jobs прошли
+  service/recommendations/insight/evaluation, остановились на pipeline.
+- Pipeline incremental test импортирует offline model_backend/evidence; чистому
+  CI нужны onnxruntime/tokenizers/snowballstemmer из существующего
+  news_matching/requirements.lock. Добавлен этот lock в CI-установку, online
+  requirements/Docker не расширялись, Torch/модели/обучение не запускаются.
+- Повторная проверка выполняется на чистом окружении и remoteCI; окончательный
+  результат сверять по последнему commit, не по прошлому failed job.
+
 ### Шаблон следующей записи — копировать для каждого завершённого изменения
 
 ```text
