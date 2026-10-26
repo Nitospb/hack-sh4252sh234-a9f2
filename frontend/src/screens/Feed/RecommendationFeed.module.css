@@ -77,3 +77,12 @@
 @media(max-width:950px){.layout{grid-template-columns:minmax(0,1fr)}.sidebar{display:none}}
 
 .emptyWide { grid-column: 1 / -1; }
+
+/* The introduction scrolls away; company navigation stays below the main header. */
+.quickbar{position:sticky;top:88px;z-index:25;background:var(--bg);padding:12px 0 16px;margin:0 -2px;border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.compactHeader{border-bottom-color:var(--line);box-shadow:0 8px 16px -16px rgb(0 0 0 / 22%)}
+.compactCompany{display:flex;align-items:center;justify-content:space-between;gap:12px;max-height:0;overflow:hidden;opacity:0;pointer-events:none;transition:max-height .2s ease,opacity .2s ease,margin .2s ease;margin-bottom:0}
+.compactHeader .compactCompany{max-height:48px;opacity:1;pointer-events:auto;margin-bottom:12px}
+.compactCompany>strong{font-size:15px;letter-spacing:-.02em}.compactCompany button{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:9px 12px;font:inherit;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}.compactCompany button:hover{border-color:var(--red)}
+@media(max-width:760px){.quickbar{top:76px;padding:10px 0 12px;margin-right:-16px;padding-right:16px}.compactCompany>strong{font-size:13px}.compactCompany button{font-size:11px;padding:8px 10px}}
+@media(prefers-reduced-motion:reduce){.quickbar,.compactCompany{transition:none}}

@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useSearchParams } from "next/navigation";
-import { api, post, ROLES, RELATIONS, displayDate, companyLabel, articleHeadline, type Article, type ArticleState, type Company, type Context, type Explanation, type FeedResult, type Health, type Profile } from "./recommendation-api";
+import { api, post, DEFAULT_WEIGHTS, ROLES, RELATIONS, displayDate, companyLabel, articleHeadline, type Article, type ArticleState, type Company, type Context, type Explanation, type FeedResult, type Health, type Profile, type FeedWeights } from "./recommendation-api";
 import s from "./RecommendationFeed.module.css";
+import CompanyContext from "./CompanyContext";
 import { StoryEvidence } from "@/src/components/StoryEvidence/StoryEvidence";
 import { useLive } from "@/src/providers/LiveProvider";
 import Icon from "@/src/components/UI/Icon/Icon";
@@ -114,6 +115,15 @@ function NewsCard({ article: a, state, user, company, requestId, onEvent, onRead
 
 const EMPTY_PROFILE: Profile = { role: "general", topic_ids: [], article_states: {}, stats: { viewed: 0, liked: 0, saved: 0 } };
 export default function RecommendationFeed() {
+  const heroRef = useRef<HTMLElement>(null);
+  const [compactHeader, setCompactHeader] = useState(false);
+  useEffect(() => {
+    let frame = 0;
+    const update = () => { const node = heroRef.current; if (node) setCompactHeader(node.getBoundingClientRect().bottom <= (window.innerWidth <= 760 ? 76 : 88)); frame = 0; };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    schedule(); window.addEventListener("scroll", schedule, true); window.addEventListener("resize", schedule);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", schedule, true); window.removeEventListener("resize", schedule); };
+  }, []);
   const live = useLive();
   const showToast = useToast();
   const urlQuery = useSearchParams().get("q") || "";
@@ -164,7 +174,7 @@ export default function RecommendationFeed() {
     return () => { cancelled = true; };
   }, [chooseCompany]);
 
-  const queryKey = [health?.ranking_version, company?.source_record_id, user, profile.role, profile.topic_ids.join(","), view, kind, strict].join("|");
+  const queryKey = [health?.ranking_version, company?.source_record_id, user, profile.role, profile.topic_ids.join(","), JSON.stringify(profile.weights), (profile.global_topic_ids || []).join(","), view, kind, strict].join("|");
   useEffect(() => { latestQuery.current = queryKey; }, [queryKey]);
   const fetchPage = useCallback(async (nextPage: number, append: boolean, fresh = false) => {
     if (!user || !company || !context) return;
@@ -215,20 +225,22 @@ export default function RecommendationFeed() {
     if (event === "unsave" && view === "saved") setItems(previous => previous.filter(item => item.article_id !== a.article_id));
   }, [company, user, view, showToast]);
 
-  async function savePreferences(role: string, topicIds: string[]) {
+  async function savePreferences(role: string, topicIds: string[], globalTopics = profile.global_topic_ids || [], weights: FeedWeights = profile.weights || DEFAULT_WEIGHTS) {
     if (!company) return;
-    await post("profile", { company_id: company.company_id, user_id: user, role, topic_ids: topicIds });
-    live.refresh(); invalidate(); setProfile(previous => ({ ...previous, role, topic_ids: topicIds })); showToast({ text: "Настройки сохранены. Обновляем рекомендации.", icon: "check" });
+    const owner = contextGeneration.current;
+    await post("profile", { company_id: company.company_id, source_record_id: company.source_record_id, user_id: user, role, topic_ids: topicIds, global_topic_ids: globalTopics, weights });
+    if (owner !== contextGeneration.current) return;
+    live.refresh(); invalidate(); setProfile(previous => ({ ...previous, role, topic_ids: topicIds, global_topic_ids: globalTopics, weights })); showToast({ text: "Настройки сохранены. Обновляем рекомендации.", icon: "check" });
   }
   function openArticle(a: Article) { localStorage.setItem("alfa-active-article-v1", a.article_id);  setArticle(a); if (company) recordEvent(a, "open").catch(() => {}); }
   const displayed = items.filter(a => (view !== "personal" || !profile.article_states[a.article_id]?.hidden) && (kind === "all" || a.kind === kind) && (!search || view === "all" || `${a.title} ${a.source} ${a.matched_objects?.map(m => m.name).join(" ")}`.toLowerCase().includes(search.toLowerCase())));
-  const currentRole = ROLES.find(r => r.id === profile.role) || ROLES[0]; const sources = new Set(displayed.map(a => a.source)).size;
-  const mainInterests = context?.interests.filter(i => i.relation !== "operating_exposure") || [];
-  const mix = [{ label: "Компания и отрасль", value: 60, color: "#8c9fb7" }, { label: "Общее для бизнеса", value: 10, color: "#c1cbd8" }, { label: "Популярность", value: 10, color: "#d8dee7" }, { label: "Личные интересы", value: 20, color: "#dfbcb5" }];
+  const sources = new Set(displayed.map(a => a.source)).size;
+  const weights = profile.weights || DEFAULT_WEIGHTS;
+  const mix = [{ label: "Компания и отрасль", value: Math.round(weights.company * 100), color: "#8c9fb7" }, { label: "Общее для бизнеса", value: Math.round(weights.general * 100), color: "#c1cbd8" }, { label: "Популярность", value: Math.round(weights.popular * 100), color: "#d8dee7" }, { label: "Личные интересы", value: Math.round(weights.personal * 100), color: "#dfbcb5" }];
 
   return <div className={s.page}>
-    <header className={s.header}><div><p className={s.eyebrow}>АЛЬФА-БИЗНЕС / НОВОСТНАЯ АНАЛИТИКА</p><h1>Важное для вашего бизнеса</h1><p className={s.subtitle}>Новости вашей отрасли, новые возможности и деловая повестка.</p></div><button className={s.switch} onClick={() => setCompanyOpen(true)} aria-label="Сменить компанию" aria-haspopup="dialog"><span className={s.companyIcon}><Icon name="building" size={19} /></span><span><strong>{company ? companyLabel(company) : "Выберите компанию"}</strong><small>Сменить компанию · {company?.company_id}</small></span><span className={s.chevron}><Icon name="switch" size={16} /></span></button></header>
-    <div className={s.quickbar}><FilterPills label="Быстрое переключение компании" options={featured.map(c => ({ value: c.source_record_id, label: companyLabel(c) }))} value={company?.source_record_id || ""} onChange={id => { const selected = featured.find(c => c.source_record_id === id); if (selected && id !== company?.source_record_id) chooseCompany(selected, user); }} action={{ label: "Все компании ↗", onClick: () => setCompanyOpen(true) }} nowrap /></div>
+    <header ref={heroRef} className={s.header}><div><p className={s.eyebrow}>АЛЬФА-БИЗНЕС / НОВОСТНАЯ АНАЛИТИКА</p><h1>Важное для вашего бизнеса</h1><p className={s.subtitle}>Новости вашей отрасли, новые возможности и деловая повестка.</p></div><button className={s.switch} onClick={() => setCompanyOpen(true)} aria-label="Сменить компанию" aria-haspopup="dialog"><span className={s.companyIcon}><Icon name="building" size={19} /></span><span><strong>{company ? companyLabel(company) : "Выберите компанию"}</strong><small>Сменить компанию · {company?.company_id}</small></span><span className={s.chevron}><Icon name="switch" size={16} /></span></button></header>
+    <div className={`${s.quickbar} ${compactHeader ? s.compactHeader : ""}`}><div className={s.compactCompany} aria-hidden={!compactHeader}><strong>Новостная аналитика</strong><button onClick={() => setCompanyOpen(true)} tabIndex={compactHeader ? 0 : -1} aria-label="Сменить компанию в закреплённой шапке"><Icon name="building" size={16}/>{company ? companyLabel(company) : "Выбрать компанию"}<Icon name="switch" size={14}/></button></div><FilterPills label="Быстрое переключение компании" options={featured.map(c => ({ value: c.source_record_id, label: companyLabel(c) }))} value={company?.source_record_id || ""} onChange={id => { const selected = featured.find(c => c.source_record_id === id); if (selected && id !== company?.source_record_id) chooseCompany(selected, user); }} action={{ label: "Все компании ↗", onClick: () => setCompanyOpen(true) }} nowrap /></div>
     <div className={s.layout}><section className={s.stream} aria-label="Новостная лента">
       <div className={s.toolbar} data-onboarding="feed-tabs"><div className={s.tabs} ref={tabsRef}>{[["personal", "Для вас"], ["saved", "Сохранённое"], ["all", "Все новости"]].map(([id, label]) => <button key={id} data-feed-tab className={`${s.tab} ${view === id ? s.selected : ""}`} aria-pressed={view === id} onClick={() => { if (view !== id) { invalidate(); setView(id); setSearch(""); } }}>{label}{id === "saved" && profile.stats.saved > 0 && <span className={s.count}>{profile.stats.saved}</span>}</button>)}<span ref={tabIndicatorRef} className={s.tabIndicator} aria-hidden="true" /><button className={s.searchButton} aria-label="Искать новости" aria-expanded={searchOpen} onClick={() => setSearchOpen(previous => !previous)}><Icon name="search" size={19} /></button></div></div>
       {searchOpen && <div className={s.searchBox}><Icon name="search" size={16} /><input aria-label="Поиск новостей" placeholder={view === "all" ? "Поиск во всём корпусе" : "Найти в текущей подборке"} value={search} onChange={e => setSearch(e.target.value)} /><button aria-label="Очистить поиск" onClick={() => setSearch("")}><Icon name="close" size={15} /></button></div>}
@@ -239,9 +251,7 @@ export default function RecommendationFeed() {
       {!loading && view !== "saved" && displayed.length > 0 && <div className={s.loadMore}><button className={s.secondary} disabled={moreLoading || (view === "all" && items.length >= total) || (view === "personal" && shortfall > 0)} onClick={() => fetchPage(page + 1, true)}>{moreLoading ? "Подбираем ещё…" : view === "personal" ? "Ещё 24 новости ↓" : "Показать ещё ↓"}</button></div>}
       {!loading && view === "personal" && shortfall > 0 && <p className={s.micro}>Свежая подборка короче: подходящие непрочитанные материалы заканчиваются. Мы не заполняем её повторами.</p>}
     </section><aside className={s.sidebar}>
-      <section className={s.contextCard}><div className={s.sectionTitle}><h2>Ваш контекст</h2><button className={s.iconButton} onClick={() => setPreferencesOpen(true)} aria-label="Настроить личные интересы"><Icon name="settings" size={15} /></button></div><button className={s.roleBadge} style={{ border: 0, width: "100%", textAlign: "left", cursor: "pointer" }} onClick={() => setPreferencesOpen(true)}><Icon name="user" size={17} /><span><strong>{currentRole.label}</strong><small>Настроить личные интересы ↗</small></span></button>
-        <span className={s.smallLabel}>ДЕЯТЕЛЬНОСТЬ И СМЕЖНЫЕ ТЕМЫ</span><LoadingSwap className={s.interestChips} loading={!context&&loading} placeholder={<Skeleton count={2} label="Загрузка интересов компании"/>}>{mainInterests.length ? mainInterests.slice(0, 7).map(i => <span key={i.family_key} className={s.interestChip} title={RELATIONS[i.relation]}>{i.object}</span>) : context ? <Empty title="Темы пока не определены" description="Уточните профиль компании, чтобы увидеть связанные темы." icon="document" compact /> : null}</LoadingSwap><button className={s.textButton} onClick={() => setPreferencesOpen(true)}>Все {context?.interests.length || 0} тем и интересов →</button><p className={s.micro}>Профиль по ОКВЭД {company?.okved}. Операционные интересы — отдельные предположения, а не специализации.</p>
-      </section>
+      {context ? <CompanyContext key={context.source_record_id} context={context} profile={profile} onRole={role => savePreferences(role, profile.topic_ids)} /> : !error ? <Skeleton variant="cards" count={1} label="Загрузка контекста компании" /> : null}
       <section className={s.contextCard}><div className={s.sectionTitle}><h2>Как устроена подборка</h2><button className={s.iconButton} onClick={() => setMethodOpen(true)} aria-label="Как работают рекомендации"><Icon name="info" size={15} /></button></div><div className={s.mix}>{mix.map(m => <i key={m.label} style={{ width: `${m.value}%`, background: m.color }} />)}</div><div className={s.mixLegend}>{mix.map(m => <div key={m.label} className={s.legendRow}><i className={s.dot} style={{ background: m.color }} />{m.label}<strong>{m.value}%</strong></div>)}</div><p className={s.micro}>Веса ранжирования. Разнообразие тем и источников учитывается отдельно.</p></section>
       <section className={s.learnCard}><div className={s.learnIcon}><Icon name="spark" size={22} /></div><h3>Лента узнаёт ваши интересы</h3><p>Отмечайте полезное и скрывайте лишнее. Просмотры и реакции помогают подбирать следующие новости.</p><button className={s.textButton} onClick={() => setPreferencesOpen(true)}>Настроить под себя →</button></section>
       <div className={s.dataNote}><div className={s.footerInfo}><i className={s.statusDot} />{health ? `${(health.counts.news + health.counts.telegram_post).toLocaleString("ru-RU")} материалов · сайты и Telegram` : "Подключаем источники"}</div><p>Обновлено {health ? displayDate(health.catalog_updated_at) : "…"}. Тематическая связь не подтверждает финансовый эффект. Точность ещё не измерена на ручной разметке.</p></div>

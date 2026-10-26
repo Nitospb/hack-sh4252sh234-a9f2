@@ -41,3 +41,9 @@ distribution/
 training/data/
 pipeline/output-candidate/
 training/labels/
+
+# Local runtime retained after moving the application to the repository root.
+/Alfa-Hackaton/
+/pipeline/output
+/news_matching/.venv
+/news_matching/.venv-mps

@@ -15,6 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 WEIGHTS = {'company': .60, 'general': .10, 'popular': .10, 'personal': .20}
 ROLE_TERMS = {'accountant': 'налог бухгалтер отчетн ндс учет аудит', 'treasurer': 'ставк валют ликвидност платеж кредит облигац', 'director': 'рынок стратеги инвестици экономик бизнес', 'it': 'ии искусствен интеллект технолог программ кибер цифров', 'sales': 'продаж спрос потребител розниц маркетинг экспорт', 'finance':'ставк валют ликвидност платеж кредит облигац', 'procurement':'закуп поставк сырь логист транспорт цен', 'general':'экономик бизнес технолог рынок'}
+GLOBAL_TOPICS = {'taxes':'налог ндс бухгалтер отчетн', 'rates':'ставк кредит инфляц облигац', 'currency':'валют курс доллар юань экспорт', 'technology':'технолог программ цифров искусствен интеллект', 'regulation':'закон регулир правил постановлен', 'markets':'рынок инвестици экономик спрос'}
 SIGNALS = {'view': .08, 'open': .15, 'like': 1., 'save': 1.5, 'dislike': -1., 'hide': -2., 'unlike':0., 'unsave':0., 'unhide':0., 'undislike':0.}
 
 def publication_stamp(value):
@@ -43,7 +44,8 @@ class Feed:
             CREATE TABLE IF NOT EXISTS deliveries(request_id TEXT PRIMARY KEY,company TEXT,user TEXT,
               ts REAL,response TEXT);
             CREATE TABLE IF NOT EXISTS profiles(company TEXT,user TEXT,topics TEXT,
-              PRIMARY KEY(company,user));''')
+              PRIMARY KEY(company,user));
+            CREATE TABLE IF NOT EXISTS feed_settings(company TEXT,user TEXT,weights TEXT,global_topics TEXT,PRIMARY KEY(company,user));''')
         with self.connect() as db:
             if 'role' not in {r[1] for r in db.execute('PRAGMA table_info(profiles)')}:
                 db.execute("ALTER TABLE profiles ADD COLUMN role TEXT DEFAULT 'director'")
@@ -82,7 +84,7 @@ class Feed:
         for aid, vector in self.vectors.items():
             self.vectors[aid] = vector / max(float(np.linalg.norm(vector)), 1e-12)
 
-    def profile(self, company, user, topic_ids, role="director"):
+    def profile(self, company, user, topic_ids, role="director", weights=None, global_topic_ids=None):
         if role not in ROLE_TERMS:
             raise ValueError("unknown role")
         if not isinstance(topic_ids, list) or len(topic_ids) > 100 or any(not isinstance(t,str) for t in topic_ids):
@@ -91,8 +93,22 @@ class Feed:
             known = {r[0] for r in db.execute('SELECT topic_id FROM topics')}
         if not set(topic_ids) <= known:
             raise ValueError('unknown topic ID')
+        if weights is not None:
+            if not isinstance(weights,dict) or set(weights)!=set(WEIGHTS) or any(type(v) not in (int,float) or not math.isfinite(v) or not 0<=v<=1 for v in weights.values()) or not math.isclose(sum(weights.values()),1.,abs_tol=1e-8):
+                raise ValueError('weights must contain company/general/popular/personal and sum to 1')
+        if global_topic_ids is not None and (not isinstance(global_topic_ids,list) or any(not isinstance(t,str) or t not in GLOBAL_TOPICS for t in global_topic_ids) or len(global_topic_ids)>len(GLOBAL_TOPICS)):
+            raise ValueError('unknown global topic')
         with self.connect() as db:
             db.execute('INSERT OR REPLACE INTO profiles(company,user,topics,role) VALUES(?,?,?,?)', (company,user,json.dumps(topic_ids),role))
+            old=db.execute('SELECT weights,global_topics FROM feed_settings WHERE company=? AND user=?',(company,user)).fetchone()
+            saved_weights=weights if weights is not None else (json.loads(old[0]) if old else dict(WEIGHTS))
+            saved_topics=list(dict.fromkeys(global_topic_ids)) if global_topic_ids is not None else (json.loads(old[1]) if old else [])
+            db.execute('INSERT OR REPLACE INTO feed_settings VALUES(?,?,?,?)',(company,user,json.dumps(saved_weights),json.dumps(saved_topics)))
+
+    def feed_settings(self, company, user):
+        with self.connect() as db:
+            row=db.execute('SELECT weights,global_topics FROM feed_settings WHERE company=? AND user=?',(company,user)).fetchone()
+        return {'weights':json.loads(row[0]) if row else dict(WEIGHTS),'global_topic_ids':json.loads(row[1]) if row else []}
 
     def event(self, company, user, article_id, kind, event_id):
         if kind not in SIGNALS or not event_id:
@@ -146,8 +162,11 @@ class Feed:
             raise ValueError('invalid scope or kind')
         if not isinstance(limit,int) or not 1 <= limit <= 100:
             raise ValueError('limit must be 1..100')
+        settings=self.feed_settings(company,user)
+        weights=settings['weights']
         request_context={'source_record_id':source_record_id,'scope':scope,'include_review':include_review,'kind':kind,'mode':mode,'role':role,'limit':limit}
         request_context['catalog_version']=f'{self.catalog.stat().st_mtime_ns}:{self.catalog.stat().st_size}'
+        request_context['feed_settings']=settings
         request_context['policy']='ranked-v5-story-groups'
         request_context['assets_version']=f'{self.assets.stat().st_mtime_ns}:{self.assets.stat().st_size}' if self.assets.is_file() else None
         now = time.time() if now is None else now
@@ -368,15 +387,17 @@ class Feed:
                 company_score=min(1.,company_score+network_boost)
             role_terms = ROLE_TERMS[role].split()
             role_score = min(1., sum(bool(re.search(r'\b'+re.escape(term)+r'\b',headline.lower())) if len(term)<=2 else bool(re.search(r'\b'+re.escape(term),headline.lower())) for term in role_terms) / 2.)
+            global_terms=' '.join(GLOBAL_TOPICS[t] for t in settings['global_topic_ids']).split()
+            global_score=min(1.,sum(bool(re.search(r'\b'+re.escape(term),headline.lower())) for term in global_terms)/2.)
             preference_keys = a['_topics'] | {'industry::'+m['sector_id'] for m in industries}
             personal = max(-1.,min(1.,sum(preferences[t] for t in preference_keys)/max(1,len(preference_keys))))
-            personal = max(-1.,min(1.,personal + float(bool(preference_keys & (explicit | explicit_objects))) + .5*role_score))
+            personal = max(-1.,min(1.,personal + float(bool(preference_keys & (explicit | explicit_objects))) + .5*role_score + global_score))
             if mode == 'ranked' and not company_score and not general and personal <= 0 and popular.get(aid,0) < 2:
                 continue
             components = dict(company=company_score,general=general,popular=math.log1p(popular.get(aid,0))/math.log1p(max_pop),personal=personal)
             freshness = math.exp(-max(0,now-stamp)/(7*86400))
             a['components'] = components
-            a['score'] = sum(WEIGHTS[k]*v for k,v in components.items())*(.7+.3*freshness)
+            a['score'] = sum(weights[k]*v for k,v in components.items())*(.7+.3*freshness)
             a['matched_topics'] = [{'topic_id':t,'name':topic_names[t],'relation':interests[t]} for t in sorted(topics & interests.keys())]
             a['matched_objects'] = matched_objects
             a['matched_industries'] = industries
@@ -392,7 +413,7 @@ class Feed:
             if industries:
                 a['recommendation_reasons'].append({'kind':'industry_context','text':'Отраслевая связь: ' + industries[0]['reason']})
             a['match_level'] = 'thematic_candidate' if a['review_required'] else ('verified_object' if matched_objects else ('industry_context' if industries else 'business_context'))
-            a['recommended_lane'] = max(components,key=lambda key: WEIGHTS[key]*max(0.,components[key]))
+            a['recommended_lane'] = max(components,key=lambda key: weights[key]*max(0.,components[key]))
             if not a.pop('_feed_prepared',False):
                 clean_text = re.sub(r'<[^>]+>', ' ', a.get('text') or '')
                 clean_text = re.sub(r'\s+', ' ', clean_text).strip()
@@ -420,7 +441,7 @@ class Feed:
             selected.append(best)
         items = [{k:v for k,v in a.items() if not k.startswith('_')} for a in selected]
         result = dict(request_id=request_id or str(uuid.uuid4()), company_id=company,user_id=user,items=items,
-            weights=WEIGHTS,weights_mode='score_blend_not_slot_quotas',similarity='embedding_cosine' if self.vectors else 'topic_title_jaccard',
+            weights=weights,weights_mode='score_blend_not_slot_quotas',similarity='embedding_cosine' if self.vectors else 'topic_title_jaccard',
             eligible_catalog=len(articles),shortfall=max(0,limit-len(items)),company_topic_count=len(interests),
             warnings=['Insufficient eligible news; quality gates were preserved.'] if len(items)<limit else [])
         result.update(scope=scope,include_review=include_review,kind=kind,mode=mode,role=role)

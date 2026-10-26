@@ -102,7 +102,7 @@ def handler(engine, runtime=None, snapshots=None):
                 p=json.loads(self.rfile.read(size));c,user=self.identity(p);company=c['company_id']
                 if self.path=='/events':result=engine.event(company,user,p['article_id'],p['kind'],p['event_id'])
                 elif self.path=='/profile':
-                    engine.profile(company,user,p.get('topic_ids',[]),role=p.get('role','general'));result={'saved':True}
+                    engine.profile(company,user,p.get('topic_ids',[]),role=p.get('role','general'),weights=p.get('weights'),global_topic_ids=p.get('global_topic_ids'));result={'saved':True}
                 elif self.path=='/review':result=runtime.review(p['run_id'],company,user,p['rating'],p.get('note',''),c['source_record_id'])
                 elif self.path in ('/analysis','/chat'):
                     a=catalog.article(engine,p['article_id'])

@@ -89,6 +89,8 @@ def company(feed, uid, source_record_id=None):
         result['interest_method'] = 'inferred_from_okved'
         result['names_available'] = False
         result['interest_counts']={relation:sum(i['relation']==relation for i in objects.values()) for relation in RELATION_RANK}
+    from recommendations.context_summary import business_context
+    result['business_context']=business_context(feed.assets,result)
     return result
 
 def profile_state(feed, uid, user):
@@ -104,7 +106,7 @@ def profile_state(feed, uid, user):
         if kind in toggle:
             field,value=toggle[kind];state[field]=value
         if kind in ('view','open'):state['viewed']=True;views.add(aid)
-    return {'company_id':uid,'user_id':user,'topic_ids':json.loads(row[0]) if row else [],
+    return {**feed.feed_settings(uid,user),'company_id':uid,'user_id':user,'topic_ids':json.loads(row[0]) if row else [],
             'role':row[1] if row and len(row)>1 else 'general','article_states':states,
             'stats':{'viewed':len(views),'saved':sum(bool(s.get('saved')) for s in states.values()),'liked':sum(bool(s.get('liked')) for s in states.values())}}
 

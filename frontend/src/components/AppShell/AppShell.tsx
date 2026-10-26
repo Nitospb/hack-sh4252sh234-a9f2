@@ -3,6 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar/Sidebar";
+import Topbar from "./Topbar/Topbar";
 import Drawer from "@/src/components/UI/Drawer/Drawer";
 import Icon from "@/src/components/UI/Icon/Icon";
 import { useLive } from "@/src/providers/LiveProvider";
@@ -46,6 +47,7 @@ const AppShell = ({ children }: { children: ReactNode }) => {
         <Sidebar mobile onNavigate={closeMenu} />
       </Drawer>
       <main className={`${styles.main} ${showDemoNotice ? styles.mainWithDemoNotice : ""}`} id="main-content">
+        <Topbar onMenu={() => setMenuOpen(true)} menuOpen={menuOpen} />
         <div className={styles.pageContent} key={pathname}>
           {children}
         </div>

@@ -9,3 +9,6 @@ export default function Skeleton({ variant = "lines", count = 3, label = "Заг
     </div>)}
   </div>;
 }
+
+export function PageSkeleton() { return <Skeleton variant="cards" count={3} label="Загрузка страницы" />; }
+export function ContextSkeleton() { return <Skeleton variant="facts" count={3} label="Загрузка ваших интересов" />; }

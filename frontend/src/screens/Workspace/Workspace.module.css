@@ -55,3 +55,13 @@
 @media (max-width: 760px) { .heading { display: block; } .heading h1 { font-size: 28px; } .panel { padding: var(--gap-20); } .table { min-width: 540px; } .button, .secondary { min-height: var(--size-s-height); } }
 @media (max-width: 760px) { .limitationsGrid { grid-template-columns: 1fr; } .limitationsPanel { padding: var(--gap-20); } }
 @media (max-width: 480px) { .insightToolbar { align-items: flex-start; } .insightToolbar > .secondary { width: 100%; } }
+
+/* Consistent Alfa form controls and analysis surfaces. */
+.input,.textarea,.select{box-sizing:border-box;min-height:54px;border:1px solid var(--line);border-radius:14px;background:var(--bg);font-size:14px;line-height:1.45;transition:border-color .15s,box-shadow .15s}
+.select{appearance:none;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23777' stroke-width='1.6'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");background-position:right 16px center;background-repeat:no-repeat;cursor:pointer}
+.input:focus,.textarea:focus,.select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgb(239 49 36 / 9%);background-color:var(--card)}
+.grid>label{display:flex;flex-direction:column;font-size:12px;font-weight:600;color:var(--ink-2);line-height:1.5;align-self:end}.grid>label .input,.grid>label .select{margin:8px 0 0;font-weight:400}
+.panel{padding:28px;border-radius:24px}.panel h2{font-size:22px;line-height:1.35}.button,.secondary{min-height:46px;border-radius:12px;padding:12px 18px}.button:disabled{opacity:1;background:var(--color-light-neutral-300);color:var(--ink-3)}
+.notice{display:flex;align-items:flex-start;gap:12px;background:var(--card);color:var(--ink-2);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:16px;padding:16px 20px;line-height:1.55}.notice svg{flex:none;color:var(--red);margin-top:2px}.notice strong{display:block;margin-bottom:2px;color:var(--ink);font-size:13px}
+.panel details{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}.panel summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--ink-2)}.panel input[type=checkbox]{accent-color:var(--red);width:17px;height:17px;vertical-align:middle;margin-right:8px}
+@media(max-width:760px){.panel{padding:20px}.grid{gap:18px}.panel h2{font-size:20px}.notice{padding:14px 16px}.row{gap:8px}.row .button,.row .secondary{font-size:12px;padding:10px 14px}}

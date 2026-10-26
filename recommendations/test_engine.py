@@ -89,3 +89,24 @@ class ToggleTests(FeedTests):
         r=self.feed.recommend('c','role-boundary',role='it')
         article=next(a for a in r['items'] if a['article_id']=='2')
         self.assertEqual(article['components']['personal'],0)
+
+class FeedSettingsTests(FeedTests):
+    def test_weights_change_ranking_and_preserve_existing_callers(self):
+        self.feed.profile('c','u',[],role='general',weights={'company':0,'general':0,'popular':0,'personal':1},global_topic_ids=['technology'])
+        result=self.feed.recommend('c','u',source_record_id='r',request_id='settings',mode='ranked')
+        self.assertEqual(result['items'][0]['article_id'],'1')
+        self.assertEqual(result['weights']['personal'],1)
+        self.assertEqual(result,self.feed.recommend('c','u',source_record_id='r',request_id='settings',mode='ranked'))
+        self.feed.profile('c','u',['t'],role='accountant')
+        self.assertEqual(self.feed.feed_settings('c','u')['global_topic_ids'],['technology'])
+        self.assertEqual(self.feed.feed_settings('c','u')['weights']['personal'],1)
+        self.assertEqual(self.feed.feed_settings('c','other')['weights']['company'],.6)
+        self.assertEqual(self.feed.feed_settings('other','u')['global_topic_ids'],[])
+
+    def test_invalid_settings_are_atomic(self):
+        bad=[{'company':1},dict(company=.6,general=.1,popular=.1,personal=.3),dict(company=float('nan'),general=0,popular=0,personal=1),dict(company=-.1,general=.1,popular=0,personal=1)]
+        self.feed.profile('c','u',[],role='treasurer')
+        for weights in bad:
+            with self.assertRaises(ValueError):self.feed.profile('c','u',[],role='it',weights=weights)
+        with self.assertRaises(ValueError):self.feed.profile('c','u',[],global_topic_ids=['unknown'])
+        with self.feed.connect() as db:self.assertEqual(db.execute("SELECT role FROM profiles WHERE company='c' AND user='u'").fetchone()[0],'treasurer')
