@@ -1116,8 +1116,15 @@ Smoke создаёт отдельный smoke-user, проверяет CRUD/из
   В Firefox private profile проверены причина/reset/disabled CTA и калькулятор
   без LLM-run:160000→140000RUB, delta−20000. На320px сообщение и кнопки
   помещаются. Это ограниченная browser-приёмка, не полный mobile matrix.
-  Живой LLM-тест не запускался из-за исчерпанного бюджета. RemoteCI проверяется
-  после push. Свидетельства: .release-downloads/budget-*.log/json (вне Git).
+  Живой LLM-тест не запускался из-за исчерпанного бюджета. Свидетельства: .release-downloads/budget-*.log/json (вне Git).
+- Код8c96fd9 опубликован в main обоих репозиториев; remoteCI completed/success,
+  включая clean Docker smoke. Новый:
+  https://github.com/holodnayazvezda/Alpha-Hackathon-97a673c845283079/actions/runs/40311520791
+  Командный:
+  https://github.com/Nitospb/hack-sh4252sh234-a9f2/actions/runs/40311532402
+  API/браузерная приёмка выполнены после backup и обновления без активных jobs;
+  здоровый live-worker не останавливался. Ближайший незавершённый пункт — живая
+  LLM-приёмка диалога после сброса; независимый human gold по-прежнему отсутствует.
   Документ политики: service/BUDGETS.md. Предыдущие ZIP не изменялись.
 
 ### Шаблон следующей записи — копировать для каждого завершённого изменения
