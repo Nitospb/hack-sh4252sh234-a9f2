@@ -31,7 +31,11 @@ Workflow `.github/workflows/service.yml` после успешных прове�
 передаёт исходники через rsync в `/opt/alfahack`, выполняет там
 `ALFA_REQUIRE_FULL=1 docker compose -f compose.yaml -f compose.production.yaml up --build -d --wait`
 и проверяет `/api/live/health` через loopback. Его можно запустить вручную через
-`workflow_dispatch`; pull request не развёртывается. SSH-пользователь должен
+`workflow_dispatch`; pull request не развёртывается. Job деплоя включается
+только при repository variable `ALFA_DEPLOY_READY=true`. Держите его выключенным,
+пока на сервере нет актуального serving-комплекта; после его размещения
+включите переменную и запустите workflow вручную на `main`.
+SSH-пользователь должен
 иметь право записи в `/opt/alfahack` и право выполнять `docker compose` без
 `sudo`. На сервере также нужны Docker Compose v2, `curl` и существующая Docker
 сеть `traefik_traefik_proxy`.

@@ -12,6 +12,8 @@ Production override подключает web к `traefik_traefik_proxy`, пуб�
 
 Секреты `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS`
 и `DEPLOY_ENV_FILE` настроены в GitHub Actions; значения не входят в Git.
+Repository variable `ALFA_DEPLOY_READY` пока выключена: она разрешает job
+деплоя только после размещения актуального serving-комплекта на сервере.
 На текущем Mac serving bundle отсутствует, поэтому фактический запуск полного
 корпуса на сервере зависит от отдельной передачи комплекта ниже. В
 предоставленном `_env.team` ключ `ALFA_API_KEY` пустой: лента работает без
