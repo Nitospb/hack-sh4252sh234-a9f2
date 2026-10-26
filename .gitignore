@@ -2,6 +2,7 @@
 **/node_modules/
 **/.venv/
 **/.venv-mps/
+**/.venv-mock/
 **/vendor/
 **/.next/
 **/.next-*/
@@ -24,9 +25,9 @@
 imports/
 **/runtime/
 **/output/
-Alfa-Hackaton/pipeline/output-updated/
-Alfa-Hackaton/news_matching/input/
-Alfa-Hackaton/news_matching/models/
+pipeline/output-updated/
+news_matching/input/
+news_matching/models/
 **/*.sqlite
 **/*.sqlite3
 **/*.sqlite-wal
@@ -37,6 +38,6 @@ Alfa-Hackaton/news_matching/models/
 **/*.safetensors
 .release-downloads/
 distribution/
-Alfa-Hackaton/training/data/
-Alfa-Hackaton/pipeline/output-candidate/
-Alfa-Hackaton/training/labels/
+training/data/
+pipeline/output-candidate/
+training/labels/

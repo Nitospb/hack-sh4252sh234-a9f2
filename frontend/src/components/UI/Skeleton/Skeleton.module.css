@@ -1,0 +1,18 @@
+.lines,.cards,.facts{display:grid;gap:16px;min-width:0;grid-column:1/-1;animation:fadeInUp .3s ease-out both}
+.cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.item{display:grid;align-content:start;gap:12px;min-width:0;padding:18px 0;border-bottom:1px solid var(--line)}
+.cards .item{min-height:148px;padding:20px;border:1px solid var(--line);border-radius:var(--border-radius-16);background:var(--card)}
+.facts .item{min-height:110px}
+.item i{display:block;height:12px;border-radius:6px;background:linear-gradient(100deg,var(--color-light-neutral-300) 15%,var(--color-light-neutral-400) 45%,var(--color-light-neutral-300) 75%);background-size:220% 100%;animation:shimmer 1.5s ease-in-out infinite}
+.item .short{width:34%;height:10px}.item .long{width:88%}.item .medium{width:64%}
+.swap{min-width:0}
+.enter>*{animation:fadeInUp .3s ease-out both}
+.placeholder>*{animation:fadeInUp .3s ease-out both}
+.leaving>*{animation:fadeOutUp .3s ease-in both}
+.placeholder :is(.lines,.cards,.facts),.leaving :is(.lines,.cards,.facts){animation:none}
+.placeholder>:is(.lines,.cards,.facts){animation:fadeInUp .3s ease-out both}
+.leaving>:is(.lines,.cards,.facts){animation:fadeOutUp .3s ease-in both}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeOutUp{to{opacity:0;transform:translateY(-12px)}}
+@keyframes shimmer{to{background-position:-220% 0}}
+@media(prefers-reduced-motion:reduce){.item i,.lines,.cards,.facts,.enter>*,.placeholder>*,.leaving>*,.placeholder>:is(.lines,.cards,.facts),.leaving>:is(.lines,.cards,.facts){animation:none}}

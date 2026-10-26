@@ -1,0 +1,1 @@
+../.ai/training/AGENTS.md

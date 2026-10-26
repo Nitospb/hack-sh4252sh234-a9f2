@@ -1,0 +1,55 @@
+/* Public Core Components tokens, selected for the light corporate UI.
+ * Source: https://github.com/core-ds/core-components/tree/master/packages/vars/src
+ * Keep this small local mapping in sync with the references in .ai/frontend/DESIGN_SYSTEM.md.
+ */
+:root {
+  --color-static-brand-red: #ef3124;
+  --color-static-brand-black: #000;
+  --color-static-brand-white: #fff;
+  --color-static-brand-violet: #6a4dff;
+
+  --color-light-accent-primary: #ef3124;
+  --color-light-accent-primary-hover: #e32a17;
+  --color-light-accent-primary-press: #d72505;
+  --color-light-accent-secondary: #212124;
+  --color-light-accent-secondary-hover: #2f2f32;
+  --color-light-accent-secondary-press: #353539;
+
+  --color-light-base-bg-primary: #fff;
+  --color-light-base-bg-secondary: #f2f3f5;
+  --color-light-neutral-300: #e7e8eb;
+  --color-light-neutral-400: #d2d3d9;
+  --color-light-neutral-700-hover: #75757d;
+  --color-light-neutral-1300: #212124;
+  --color-light-neutral-1500: #121213;
+  --color-light-text-primary: rgba(3, 3, 6, 0.88);
+  --color-light-text-secondary: rgba(4, 4, 19, 0.55);
+  --color-light-status-muted-negative: #ffebeb;
+  --color-light-status-muted-positive: #dff8e5;
+  --color-light-status-muted-attention: #ffefd9;
+  --color-light-text-positive: #0d9336;
+  --color-light-text-attention-press: #b45a06;
+  --color-light-status-info: #2288fa;
+
+  --font-family-system: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, sans-serif;
+  --gap-4: 4px;
+  --gap-8: 8px;
+  --gap-12: 12px;
+  --gap-16: 16px;
+  --gap-20: 20px;
+  --gap-24: 24px;
+  --gap-32: 32px;
+  --gap-40: 40px;
+  --gap-48: 48px;
+  --border-radius-4: 4px;
+  --border-radius-8: 8px;
+  --border-radius-10: 10px;
+  --border-radius-12: 12px;
+  --border-radius-16: 16px;
+  --border-radius-24: 24px;
+  --size-xxs-height: 32px;
+  --size-xs-height: 40px;
+  --size-s-height: 48px;
+  --size-m-height: 56px;
+  --focus-color: var(--color-light-status-info);
+}

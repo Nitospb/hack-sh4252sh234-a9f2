@@ -13,7 +13,7 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT/'Alfa-Hackaton'))
+sys.path.insert(0, str(ROOT))
 from pipeline.publication import FileLease, validate
 from package_release import Parts, digest
 
@@ -22,7 +22,7 @@ def package(root, output, *, allow_synthetic=False, part_mib=64, with_training=F
     root, output = Path(root).resolve(), Path(output).resolve()
     if part_mib < 1:raise ValueError('part_mib must be positive')
     if output.exists():raise ValueError('Use a new bundle directory')
-    base=root/'Alfa-Hackaton/pipeline/output'
+    base=root/'pipeline/output'
     releases=base/'releases'
     version=json.loads((releases/'current.json').read_text())['version']
     if not isinstance(version,str) or not re.fullmatch('[0-9a-f]{64}',version):raise ValueError('Invalid generation')
@@ -38,10 +38,10 @@ def package(root, output, *, allow_synthetic=False, part_mib=64, with_training=F
             if Path(name).name!=name or (generation/name).is_symlink() or digest(generation/name)!=sha:
                 raise ValueError('Generation integrity failed')
         counts=validate(generation,synthetic=allow_synthetic)
-        paths={f'Alfa-Hackaton/pipeline/output/{name}':generation/name for name in files}
+        paths={f'pipeline/output/{name}':generation/name for name in files}
         for name in ('service-assets.sqlite','bank-semantic.sqlite'):
             source=base/name
-            if name=='service-assets.sqlite' or source.exists():paths[f'Alfa-Hackaton/pipeline/output/{name}']=source
+            if name=='service-assets.sqlite' or source.exists():paths[f'pipeline/output/{name}']=source
         with sqlite3.connect((base/'service-assets.sqlite').as_uri()+'?mode=ro',uri=True) as db:
             for stored,expected_sha in db.execute('SELECT path,sha256 FROM bank_documents'):
                 name=Path(stored).name
@@ -50,7 +50,7 @@ def package(root, output, *, allow_synthetic=False, part_mib=64, with_training=F
                 if pdf.is_symlink() or digest(pdf)!=expected_sha:raise ValueError('PDF integrity failed')
                 paths['data/reports/'+name]=pdf
         if with_training:
-            for relative in ('Alfa-Hackaton/news_matching/models','Alfa-Hackaton/training/data/news-v1'):
+            for relative in ('news_matching/models','training/data/news-v1'):
                 directory=root/relative
                 if not directory.is_dir() or directory.is_symlink():raise ValueError('Missing training kit: '+relative)
                 for source in directory.rglob('*'):
@@ -85,7 +85,7 @@ def package(root, output, *, allow_synthetic=False, part_mib=64, with_training=F
         manifest['total_uncompressed_bytes']=sum(f['bytes'] for f in manifest['files'])
         manifest['total_compressed_bytes']=writer.total
         (output/'release-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
-        (output/'README.md').write_text('''# Online serving bundle\n\nRestore into a NEW checkout/folder:\n\n    python3 tools/restore_release.py --no-download --directory /absolute/bundle --target /absolute/checkout\n\nThe catalog is a frozen generation placed at pipeline/output for first startup.\nNo active-worker status, leases or old generation pointers are restored.\nRun Docker with ALFA_REQUIRE_FULL=1. Supply a gateway key separately.\nUser state is deliberately excluded; transfer it separately with service.backup.\nThis bundle runs the web/API with precomputed vectors. Training/rebuilding/live\nindexing requires the original model/data kit described in training/RUNBOOK.md.\nDo not publish company assets or private state without the owner's approval.\n''')
+        (output/'README.md').write_text('''# Online serving bundle\n\nRestore into a NEW checkout/folder:\n\n    python3 tools/restore_release.py --no-download --directory /absolute/bundle --target /absolute/checkout\n\nThe catalog is a frozen generation placed at pipeline/output for first startup.\nNo active-worker status, leases or old generation pointers are restored.\nRun Docker with ALFA_REQUIRE_FULL=1. Supply a gateway key separately.\nUser state is deliberately excluded; transfer it separately with service.backup.\nThis bundle runs the web/API with precomputed vectors. Training/rebuilding/live\nindexing requires the original model/data kit described in .ai/training/RUNBOOK.md.\nDo not publish company assets or private state without the owner's approval.\n''')
         return manifest
     finally:lease.close()
 

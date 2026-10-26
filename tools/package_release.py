@@ -18,9 +18,9 @@ import tempfile
 ROOT=Path(__file__).resolve().parents[1]
 REPO='Nitospb/hack-sh4252sh234-a9f2'
 TAG='full-snapshot-v1'
-ASSET_ROOTS=['data','imports','Alfa-Hackaton/taxonomy/output','Alfa-Hackaton/news_matching/input',
-    'Alfa-Hackaton/news_matching/output','Alfa-Hackaton/news_matching/models',
-    'Alfa-Hackaton/parser/runtime','Alfa-Hackaton/pipeline/output']
+ASSET_ROOTS=['data','imports','taxonomy/output','news_matching/input',
+    'news_matching/output','news_matching/models',
+    'parser/runtime','pipeline/output']
 SKIP_DIRS={'.git','.codex','.agents','node_modules','.next','.venv','.venv-mps','__pycache__',
     'vendor','profiles','diagnostics','logs','.pytest_cache'}
 
@@ -47,7 +47,7 @@ def assets():
             for name in files:
                 path=Path(folder)/name
                 if allowed(path):found[path.relative_to(ROOT).as_posix()]=path
-    for path in (ROOT/'Alfa-Hackaton/recommendations').glob('*.sqlite'):
+    for path in (ROOT/'recommendations').glob('*.sqlite'):
         if allowed(path):found[path.relative_to(ROOT).as_posix()]=path
     return sorted(found.items())
 

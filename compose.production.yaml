@@ -1,0 +1,25 @@
+services:
+  api:
+    environment:
+      ALFA_REQUIRE_FULL: "1"
+      ALFA_INTERNAL_TOKEN: ${ALFA_INTERNAL_TOKEN:?Set ALFA_INTERNAL_TOKEN in DEPLOY_ENV_FILE}
+  web:
+    environment:
+      ALFA_INTERNAL_TOKEN: ${ALFA_INTERNAL_TOKEN:?Set ALFA_INTERNAL_TOKEN in DEPLOY_ENV_FILE}
+    networks:
+      - default
+      - traefik_proxy
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: traefik_traefik_proxy
+      traefik.http.routers.alfa.rule: Host(`alfa.aezakmi.org`)
+      traefik.http.routers.alfa.entrypoints: websecure
+      traefik.http.routers.alfa.tls: "true"
+      traefik.http.routers.alfa.tls.certresolver: le
+      traefik.http.routers.alfa.service: alfa
+      traefik.http.services.alfa.loadbalancer.server.port: "3000"
+
+networks:
+  traefik_proxy:
+    external: true
+    name: traefik_traefik_proxy

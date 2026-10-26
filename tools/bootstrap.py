@@ -21,7 +21,7 @@ def environment(path,requirements):
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--skip-parser',action='store_true');parser.add_argument('--skip-web',action='store_true');args=parser.parse_args()
     if not (3,11)<=sys.version_info[:2]<=(3,12):raise SystemExit('Use Python 3.11 or 3.12 for the pinned ML wheels.')
-    project=ROOT/'Alfa-Hackaton'
+    project=ROOT
     python=environment(project/'news_matching/.venv',project/'news_matching/requirements.lock')
     run([python,'-m','pip','install','-r',project/'insight_generation/requirements.txt'])
     if not args.skip_parser:environment(project/'parser/.venv',project/'parser/requirements.lock')
@@ -29,6 +29,6 @@ def main():
         npm=shutil.which('npm')
         if not npm:raise SystemExit('Install Node.js 20.9+ and npm first.')
         run([npm,'ci'],cwd=project/'frontend')
-    print('Ready: cd Alfa-Hackaton && python3 run_local.py')
+    print('Ready: python3 run_local.py')
 
 if __name__=='__main__':main()

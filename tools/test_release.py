@@ -47,4 +47,16 @@ class ReleaseTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'Existing file differs'):restore_release.restore(self.out,target)
         self.assertEqual((target/'data/example.txt').read_text(),'My local edits')
 
+    def test_legacy_nested_application_restores_at_repository_root(self):
+        legacy=self.root/'Alfa-Hackaton/pipeline/output'
+        legacy.mkdir(parents=True)
+        (legacy/'catalog.sqlite').write_bytes(b'legacy catalog')
+        archive=Path(self.temp.name)/'legacy-parts'
+        with patch.object(package_release,'ROOT',self.root), patch.object(package_release,'ASSET_ROOTS',['Alfa-Hackaton/pipeline/output']), patch.object(sys,'argv',['package_release','--output',str(archive)]), contextlib.redirect_stdout(io.StringIO()):
+            package_release.main()
+        target=Path(self.temp.name)/'legacy-restored'
+        with contextlib.redirect_stdout(io.StringIO()):restore_release.restore(archive,target)
+        self.assertEqual((target/'pipeline/output/catalog.sqlite').read_bytes(),b'legacy catalog')
+        self.assertFalse((target/'Alfa-Hackaton').exists())
+
 if __name__=='__main__':unittest.main()

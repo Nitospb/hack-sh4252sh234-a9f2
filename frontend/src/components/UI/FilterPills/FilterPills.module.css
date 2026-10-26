@@ -1,0 +1,41 @@
+.FilterPills {
+  display: flex;
+  gap: var(--gap-8);
+  flex-wrap: wrap;
+}
+.nowrap { flex-wrap: nowrap; }
+.pill {
+  min-height: var(--size-xs-height);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 var(--gap-16);
+  border-radius: var(--border-radius-10);
+  background: var(--color-light-neutral-300);
+  border: 1px solid transparent;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color var(--motion-fast) ease,
+    color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease;
+}
+.pill:focus-visible { outline: 2px solid var(--focus-color); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .pill:hover {
+    background: var(--color-light-neutral-400);
+  }
+}
+.on {
+  background: var(--color-light-accent-secondary);
+  color: #fff;
+  border-color: var(--color-light-accent-secondary);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .on:hover { background: var(--color-light-accent-secondary-hover); }
+}
+
+@media (max-width: 760px) {
+  .pill { min-height: var(--size-s-height); border-radius: var(--border-radius-12); }
+}

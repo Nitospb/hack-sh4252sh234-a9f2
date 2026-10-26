@@ -14,10 +14,10 @@ from restore_release import restore
 class ServingBundleTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.root=Path(self.temp.name)/'repo'
-        self.base=self.root/'Alfa-Hackaton/pipeline/output';create(self.base)
+        self.base=self.root/'pipeline/output';create(self.base)
         self.generation=publish(self.base,self.base/'releases',allow_synthetic=True)
         (self.base/'feedback.sqlite').write_text('private user state')
-        (self.root/'Alfa-Hackaton/.env').write_text('SECRET=do-not-export')
+        (self.root/'.env').write_text('SECRET=do-not-export')
         self.out=Path(self.temp.name)/'bundle'
 
     def tearDown(self):self.temp.cleanup()
@@ -28,7 +28,7 @@ class ServingBundleTests(unittest.TestCase):
         self.assertFalse(any('feedback' in n or '.env' in n or 'releases/' in n for n in names))
         target=Path(self.temp.name)/'clean'
         with contextlib.redirect_stdout(io.StringIO()):restore(self.out,target)
-        restored=target/'Alfa-Hackaton/pipeline/output'
+        restored=target/'pipeline/output'
         self.assertEqual(validate(restored,synthetic=True)['articles'],6)
         self.assertTrue((restored/'service-assets.sqlite').exists())
         self.assertFalse(list((self.base/'reader-leases').glob('**/*.lease')))
@@ -47,9 +47,9 @@ class ServingBundleTests(unittest.TestCase):
         self.assertFalse(self.out.exists())
 
     def test_training_option_is_explicit_and_does_not_package_runtime(self):
-        models=self.root/'Alfa-Hackaton/news_matching/models';models.mkdir(parents=True)
+        models=self.root/'news_matching/models';models.mkdir(parents=True)
         (models/'weights.onnx').write_bytes(b'test weights')
-        training=self.root/'Alfa-Hackaton/training/data/news-v1';training.mkdir(parents=True)
+        training=self.root/'training/data/news-v1';training.mkdir(parents=True)
         (training/'manifest.json').write_text('{}')
         manifest=package(self.root,self.out,allow_synthetic=True,with_training=True)
         self.assertEqual(manifest['bundle_kind'],'online-serving-and-training-kit')

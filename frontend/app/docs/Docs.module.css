@@ -1,0 +1,11 @@
+.page { max-width: 1320px; margin: 0 auto; }
+.page > h1 { margin: 4px 0 8px; font-size: clamp(28px, 3vw, 38px); letter-spacing: -.035em; }
+.page > p { margin: 0 0 var(--gap-24); color: var(--ink-3); }
+.page :global(.swagger-ui) { font-family: var(--font-family-system); color: var(--ink); }
+.page :global(.swagger-ui .topbar) { display: none; }
+.page :global(.swagger-ui .info) { margin: 0 0 var(--gap-24); }
+.page :global(.swagger-ui .scheme-container) { border: 1px solid var(--line); border-radius: var(--border-radius-16); background: var(--card); box-shadow: none; }
+.page :global(.swagger-ui .opblock-tag) { border-color: var(--line); font-family: var(--font-family-system); }
+.page :global(.swagger-ui .opblock) { border-radius: var(--border-radius-16); box-shadow: none; }
+.page :global(.swagger-ui .btn) { border-radius: var(--border-radius-10); font-family: var(--font-family-system); }
+@media (max-width: 760px) { .page :global(.swagger-ui .wrapper) { padding: 0; } }

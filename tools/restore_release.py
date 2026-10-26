@@ -45,10 +45,16 @@ def restore(folder,target,overwrite=False,verify_only=False):
         if path.stat().st_size!=part['bytes'] or digest(path)!=part['sha256']:raise ValueError('Part integrity failed: '+part['file'])
         parts.append(path)
     expected={f['path']:f for f in manifest['files']};seen=set();restored=0
+    # full-snapshot-v1 used the former nested application directory.
+    destinations={}
+    for name in expected:
+        relative=name.removeprefix('Alfa-Hackaton/')
+        if relative in destinations:raise ValueError('Duplicate restore destination: '+relative)
+        destinations[relative]=name
     with Joined(parts) as stream,tarfile.open(fileobj=stream,mode='r|gz') as tar:
         for entry in tar:
             if not entry.isfile() or entry.name not in expected:raise ValueError('Unexpected archive member: '+entry.name)
-            path=(target/entry.name).resolve()
+            path=(target/entry.name.removeprefix('Alfa-Hackaton/')).resolve()
             if not path.is_relative_to(target):raise ValueError('Unsafe archive path')
             if entry.name in seen:raise ValueError('Duplicate archive member')
             seen.add(entry.name);record=expected[entry.name]

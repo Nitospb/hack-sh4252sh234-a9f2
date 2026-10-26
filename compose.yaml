@@ -1,0 +1,35 @@
+name: alfa-hackaton
+services:
+  api:
+    build:
+      context: .
+      dockerfile: service/Dockerfile
+    environment:
+      ALFA_API_KEY: ${ALFA_API_KEY:-}
+      ALFA_BASE_URL: ${ALFA_BASE_URL:-https://changellenge.up.railway.app/v1}
+      ALFA_MODEL: ${ALFA_MODEL:-qwen/qwen3.6-35b-a3b}
+      ALFA_MAX_CALLS_PER_DAY: ${ALFA_MAX_CALLS_PER_DAY:-30}
+      ALFA_MAX_TOKENS_PER_DAY: ${ALFA_MAX_TOKENS_PER_DAY:-300000}
+      ALFA_CATALOG_RELEASES: ${ALFA_CATALOG_RELEASES:-/catalog/releases}
+      ALFA_LIVE_STATUS: /catalog/live-status.json
+      ALFA_REQUIRE_FULL: ${ALFA_REQUIRE_FULL:-0}
+      ALFA_INTERNAL_TOKEN: ${ALFA_INTERNAL_TOKEN:-local-compose-prototype}
+    volumes:
+      - service-state:/state
+      - ./pipeline/output:/catalog:ro
+      - ./pipeline/output/reader-leases:/catalog/reader-leases
+      - ./data:/data:ro
+    restart: unless-stopped
+  web:
+    build: ./frontend
+    environment:
+      ALFA_API_URL: http://api:8091
+      ALFA_INTERNAL_TOKEN: ${ALFA_INTERNAL_TOKEN:-local-compose-prototype}
+    ports:
+      - "127.0.0.1:${ALFA_WEB_PORT:-3000}:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  service-state:

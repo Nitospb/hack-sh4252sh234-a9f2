@@ -1,0 +1,74 @@
+.reopen{border:1px solid #d9dfe8;background:#fff;color:#364559;border-radius:10px;padding:11px 18px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.sheetContent{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,38%);width:min(920px,100%);max-height:calc(100dvh - 32px);overflow:hidden;color:#202939;background:#fff;border:1px solid rgb(255 255 255 / 40%);border-radius:24px;box-shadow:0 30px 100px rgb(11 31 53 / 30%);outline:none;animation:none}
+.content{min-width:0;min-height:0;overflow-y:auto;padding:44px 40px 34px;line-height:1.58}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:#b52b30}
+.content h2{font-size:29px;line-height:1.15;letter-spacing:-.7px;margin:14px 0 12px}
+.intro,.count{color:#667286;font-size:14px}
+.progress{display:flex;gap:7px;margin:30px 0 18px}
+.progress span{height:5px;flex:1;border-radius:10px;background:#e7eaf0;transition:background-color 300ms ease}
+.progress .active{background:#e3292e}
+.stage{min-height:190px;transition:opacity 180ms ease,transform 180ms ease;opacity:1;transform:translateY(0)}
+.stage.leaving{opacity:0;transform:translateY(9px)}
+.count{margin:0 0 12px}
+.content h3{font-size:22px;line-height:1.25;margin:0 0 12px}
+.content p{margin:0 0 17px}
+.link{display:inline-block;color:#b52b30;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:3px;margin:0 0 18px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.primary,.secondary{display:inline-flex;justify-content:center;align-items:center;border:0;border-radius:11px;padding:12px 22px;font:inherit;font-size:14px;font-weight:700;text-decoration:none;cursor:pointer;transition:transform 180ms ease,box-shadow 180ms ease,background-color 180ms ease}
+.primary{background:#e3292e;color:#fff;box-shadow:0 8px 20px rgb(227 41 46 / 20%)}
+.primary:hover:not(:disabled){background:#cc2028;transform:translateY(-2px);box-shadow:0 12px 24px rgb(227 41 46 / 25%)}
+.secondary{background:#f0f3f7;color:#364559}
+.secondary:hover:not(:disabled){background:#e7ecf2}
+.primary:disabled,.secondary:disabled{opacity:.6;cursor:default}
+.skip{display:block;margin-top:18px;border:0;background:none;color:#667286;text-decoration:underline;text-underline-offset:3px;font:inherit;font-size:13px;cursor:pointer;padding:6px 0}
+.visual{position:relative;min-height:490px;overflow:hidden;margin:12px 12px 12px 0;border-radius:18px;transition:opacity 180ms ease,background-color 420ms ease;isolation:isolate}
+.visualLeaving{opacity:.15}
+.visual::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgb(255 255 255 / 55%),transparent 65%);z-index:-1}
+.imageLayer{position:absolute;inset:52px 4px 50px;opacity:0;transform:translateY(14px) scale(.96);transition:opacity 380ms ease,transform 500ms cubic-bezier(.2,.8,.2,1)}
+.imageLayer.imageActive{opacity:1;transform:translateY(0) scale(1)}
+.imageLayer img{object-fit:contain;padding:10px}
+.visualIndex{position:absolute;top:22px;left:22px;padding:6px 10px;border-radius:8px;background:rgb(255 255 255 / 80%);color:#4b5a70;font-size:11px;font-weight:800;letter-spacing:1px}
+.credit{position:absolute;bottom:18px;left:18px;right:18px;padding:8px 10px;border-radius:8px;background:rgb(255 255 255 / 82%);color:#516075;text-align:center;text-decoration:none;font-size:11px}
+.credit:hover{text-decoration:underline}
+.sheetContent :focus-visible{outline:3px solid #8a40e8;outline-offset:3px}
+@media(max-width:700px){.sheetContent{display:flex;flex-direction:column;overflow-y:auto}.visual{order:-1;min-height:180px;flex:none;margin:10px 10px 0}.imageLayer{inset:8px 52px 15px}.visualIndex{top:12px;left:12px}.credit{bottom:10px;right:10px;left:auto}.content{overflow:visible;padding:24px}.content h2{font-size:24px}.progress{margin:20px 0 14px}.stage{min-height:0}.close{top:16px;right:16px}}
+@media(max-width:380px){.visual{min-height:145px}.content{padding:20px}.content h2{font-size:22px}.imageLayer{inset:5px 50px}.actions>*{flex:1}}
+@media(prefers-reduced-motion:reduce){.sheetContent{animation:none}.stage,.visual,.imageLayer,.progress span,.primary,.secondary{transition:none}}
+.tourLayer{position:fixed;inset:0;z-index:1200;pointer-events:none}
+.spotlight{position:fixed;border:2px solid #ff4852;border-radius:15px;box-shadow:0 0 0 9999px rgb(10 20 36 / 72%),0 0 0 6px rgb(255 255 255 / 65%);pointer-events:none;animation:spotlightIn 180ms ease-out both}
+@keyframes spotlightIn{from{opacity:0}to{opacity:1}}
+.tourScrim{position:fixed;inset:0;background:rgb(10 20 36 / 72%);pointer-events:none}
+.tourTip{position:fixed;max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow:visible;z-index:1;padding:22px 24px 18px;background:#fff;border:1px solid #eef0f4;border-radius:17px;box-shadow:0 20px 60px rgb(4 13 31 / 30%);pointer-events:auto;line-height:1.5;animation:tipIn 300ms cubic-bezier(.2,.8,.2,1) both}
+.tourTip h2{font-size:20px;line-height:1.25;margin:12px 0 9px;color:#202939}
+.tourTip p{font-size:14px;color:#4f5d71;margin:0 0 18px}
+.tourTop{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#b52b30;font-size:11px;font-weight:800;letter-spacing:1px}
+.tourTop button{border:0;background:#f0f3f7;color:#364559;border-radius:9px;width:32px;height:32px;font:inherit;font-size:22px;line-height:1;cursor:pointer}
+.tourActions{display:flex;gap:9px;flex-wrap:wrap}
+.tourActions .primary,.tourActions .secondary{padding:10px 15px}
+.tourSkip{border:0;background:none;color:#667286;text-decoration:underline;text-underline-offset:3px;font:inherit;font-size:12px;margin-top:14px;padding:4px 0;cursor:pointer}
+.tourArrow{position:absolute;width:17px;height:17px;background:#fff;transform:translateX(-50%) rotate(45deg)}
+.arrowUp{top:-9px;border-left:2px solid #ff4852;border-top:2px solid #ff4852}
+.arrowDown{bottom:-9px;border-right:2px solid #ff4852;border-bottom:2px solid #ff4852}
+.tourTip :focus-visible{outline:3px solid #8a40e8;outline-offset:3px}
+@keyframes tipIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){.tourTip{padding:18px}.tourTip h2{font-size:18px}.tourTip p{font-size:13px}.tourActions>*{flex:1}}
+@media(max-height:420px){.tourTip{overflow-y:auto}}
+@media(prefers-reduced-motion:reduce){.spotlight,.tourTip{animation:none}}
+
+/* Onboarding follows the same component kit as the rest of the workspace. */
+.reopen,.secondary,.tourTop button{border-color:var(--line);background:var(--color-light-neutral-300);color:var(--ink)}
+.sheetContent,.tourTip{color:var(--ink);border-color:var(--line);border-radius:var(--border-radius-24)}
+.content h2,.content h3,.tourTip h2{color:var(--ink)}
+.intro,.count,.skip,.tourSkip,.tourTip p{color:var(--ink-3)}
+.eyebrow,.link,.tourTop{color:var(--color-light-accent-primary-press)}
+.progress span{background:var(--line)}.progress .active,.primary{background:var(--red)}
+.primary:hover:not(:disabled){background:var(--color-light-accent-primary-hover)}
+.secondary:hover:not(:disabled){background:var(--color-light-neutral-400)}
+.spotlight{border-color:var(--red);border-radius:var(--border-radius-16)}
+.sheetContent :focus-visible,.tourTip :focus-visible{outline-color:var(--focus-color)}
+
+/* The guided introduction now lives inside the shared Sheet. */
+.sheetContent{width:100%;height:100%;max-height:none;border:0;border-radius:0;box-shadow:none;animation:none}
+.tourTop button{min-width:32px;padding:0}
+@media(max-width:700px){.content{overflow-y:auto}.sheetContent{overflow-y:auto}.visual{min-height:180px}}
+@media(max-width:600px){.sheetContent{padding-top:16px}}
