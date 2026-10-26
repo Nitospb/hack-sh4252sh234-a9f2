@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="390" viewBox="0 0 1600 390" role="img" aria-labelledby="title desc">
+  <title id="title">Путь данных в Alfa</title>
+  <desc id="desc">Источники и профили попадают в каталог; Python API и агент формируют ответ; Next.js показывает его пользователю.</desc>
+  <rect width="1600" height="390" fill="#f7f7f7"/>
+  <text x="58" y="54" fill="#f02d22" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" letter-spacing="2">КАК РАБОТАЕТ СЕРВИС</text>
+  <text x="58" y="100" fill="#121212" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="800">От проверяемого источника к персональному ответу</text>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <g transform="translate(58 142)">
+      <rect width="335" height="190" rx="17" fill="#fff" stroke="#dedede" stroke-width="2"/>
+      <rect width="335" height="7" rx="3" fill="#f02d22"/>
+      <text x="26" y="57" fill="#f02d22" font-size="18" font-weight="700">01 / ИСТОЧНИКИ</text>
+      <text x="26" y="97" fill="#121212" font-size="30" font-weight="800">Новости и банк</text>
+      <text x="26" y="132" fill="#5e6067" font-size="19">Публикации, PDF,</text>
+      <text x="26" y="158" fill="#5e6067" font-size="19">профили компаний</text>
+    </g>
+    <g transform="translate(441 142)">
+      <rect width="335" height="190" rx="17" fill="#fff" stroke="#dedede" stroke-width="2"/>
+      <rect width="335" height="7" rx="3" fill="#f02d22"/>
+      <text x="26" y="57" fill="#f02d22" font-size="18" font-weight="700">02 / ПОДГОТОВКА</text>
+      <text x="26" y="97" fill="#121212" font-size="30" font-weight="800">Каталог и поиск</text>
+      <text x="26" y="132" fill="#5e6067" font-size="19">Очистка, OCR, группы,</text>
+      <text x="26" y="158" fill="#5e6067" font-size="19">векторы и ранжирование</text>
+    </g>
+    <g transform="translate(824 142)">
+      <rect width="335" height="190" rx="17" fill="#fff" stroke="#dedede" stroke-width="2"/>
+      <rect width="335" height="7" rx="3" fill="#f02d22"/>
+      <text x="26" y="57" fill="#f02d22" font-size="18" font-weight="700">03 / АНАЛИЗ</text>
+      <text x="26" y="97" fill="#121212" font-size="30" font-weight="800">Python API + агент</text>
+      <text x="26" y="132" fill="#5e6067" font-size="19">План, оценка, поиск</text>
+      <text x="26" y="158" fill="#5e6067" font-size="19">и проверка оснований</text>
+    </g>
+    <g transform="translate(1207 142)">
+      <rect width="335" height="190" rx="17" fill="#fff" stroke="#dedede" stroke-width="2"/>
+      <rect width="335" height="7" rx="3" fill="#f02d22"/>
+      <text x="26" y="57" fill="#f02d22" font-size="18" font-weight="700">04 / ИНТЕРФЕЙС</text>
+      <text x="26" y="97" fill="#121212" font-size="30" font-weight="800">Next.js</text>
+      <text x="26" y="132" fill="#5e6067" font-size="19">Лента, диалог, PDF,</text>
+      <text x="26" y="158" fill="#5e6067" font-size="19">история и trace</text>
+    </g>
+  </g>
+  <g fill="#f02d22">
+    <path d="m412 232 15 10-15 10z"/>
+    <path d="m795 232 15 10-15 10z"/>
+    <path d="m1178 232 15 10-15 10z"/>
+  </g>
+  <text x="58" y="370" fill="#72747a" font-family="Arial, Helvetica, sans-serif" font-size="17">User state хранится отдельно · LLM-ключ остаётся на сервере · Каждый вывод связан с основанием</text>
+</svg>
